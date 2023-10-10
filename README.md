@@ -1,2 +1,34 @@
 # KotlinCodeJourney
+
 This is just a little space where I'm messing around with Kotlin and trying to crack some LeetCode puzzles along the way. Not here to show off big, fancy code—just sharing my small wins, learnings, and (let’s be honest) the stumbles I make while getting to know Kotlin a bit better.
+
+## What’s Inside? 📦
+
+- **LeetCode Fun**: A bunch of LeetCode solutions, written as I wrangle through them in Kotlin.
+- **Kotlin Play**: Small experiments, codes, and notes as I muddle my way through learning Kotlin.
+
+## Table of Contents 🗂
+
+- [LeetCode Solutions](#leetcode-solutions)
+- [Kotlin Learnings](#kotlin-learnings)
+
+## LeetCode Solutions 🧠🧩
+
+In here, I'm sharing the solutions (or attempts at solutions) for problems over at LeetCode, all written in Kotlin because why not? We’ve got:
+
+| No. | Title                                                                              | Solution                                 | Difficulty |
+|-----|------------------------------------------------------------------------------------|------------------------------------------|------------|
+| 1   | [ContainsDuplicates](https://leetcode.com/problems/contains-duplicate/description/) | [Code](./LeetCode/ContainsDuplicates.kt) | Easy |
+| 2   | [Two-Sum](https://leetcode.com/problems/two-sum/description/)                      | [Code](./LeetCode/TwoSum.kt)             | Easy |
+| 3   | [IsAnagram](https://leetcode.com/problems/valid-anagram/)                     | [Code](./LeetCode/IsAnagram.kt)          | Easy |
+
+## Kotlin Learnings 📘🚀
+
+This part is just a collection of random thoughts, mini-projects, or tiny victories while getting my hands dirty with Kotlin. May include:
+- Neat Kotlin tricks (or traps!).
+- Moments of “Aha!” and “Oh no...” in equal measure.
+- Possibly, some cat GIFs. 🐱‍👤🐱‍🏍 (because why not?)
+
+
+**Happy Coding!** 🚀🎉
+
