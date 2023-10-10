@@ -9,10 +9,10 @@ This is just a little space where I'm messing around with Kotlin and trying to c
 
 ## Table of Contents 🗂
 
-- [LeetCode Solutions](#leetcode-solutions)
+- [LeetCode Solutions](#LeetCode-Solutions)
 - [Kotlin Learnings](#kotlin-learnings)
 
-## LeetCode Solutions 🧠🧩
+## LeetCode-Solutions
 
 In here, I'm sharing the solutions (or attempts at solutions) for problems over at LeetCode, all written in Kotlin because why not? We’ve got:
 
@@ -22,7 +22,7 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 | 2   | [Two-Sum](https://leetcode.com/problems/two-sum/description/)                      | [Code](./LeetCode/TwoSum.kt)             | Easy |
 | 3   | [IsAnagram](https://leetcode.com/problems/valid-anagram/)                     | [Code](./LeetCode/IsAnagram.kt)          | Easy |
 
-## Kotlin Learnings 📘🚀
+## Kotlin-Learnings
 
 This part is just a collection of random thoughts, mini-projects, or tiny victories while getting my hands dirty with Kotlin. May include:
 - Neat Kotlin tricks (or traps!).
