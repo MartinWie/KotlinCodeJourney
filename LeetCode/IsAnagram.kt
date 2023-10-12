@@ -43,6 +43,31 @@ class IsAnagram {
         return null
     }
 
+    // A bit better but there must be a better solution, lets search for other approaches...
+    fun isAnagram3(s: String, t: String): Boolean {
+        if (s == t) return true
+        if (s.length != t.length) return false
+
+        val sHashMap = s.toAnagramHashMap()
+        val tHashMap = t.toAnagramHashMap()
+
+        if (sHashMap.size != tHashMap.size) return false
+
+        return sHashMap == tHashMap
+    }
+
+    private fun String.toAnagramHashMap(): HashMap<Char, Int> {
+        val hashMap = hashMapOf<Char,Int>()
+        this.forEach { c ->
+            if (hashMap.containsKey(c)) {
+                hashMap[c] = hashMap[c]!! + 1
+            } else {
+                hashMap[c] = 1
+            }
+        }
+        return hashMap
+    }
+
     // TODO: find simple solution
     //tbd
 }
