@@ -68,6 +68,29 @@ class IsAnagram {
         return hashMap
     }
 
-    // TODO: find simple solution
-    //tbd
+    // Final solution for now there are more memory efficient solutionsliek working with an IntArray, but this is sufficient enough for now
+    fun isAnagram4(s: String, t: String): Boolean {
+        if (s == t) return true
+        if (s.length != t.length) return false
+
+        val hasMap = hashMapOf<Char, Int>()
+
+        s.forEach {
+            if (hasMap.containsKey(it)) {
+                hasMap[it] = hasMap[it]!! + 1
+            } else {
+                hasMap[it] = 1
+            }
+        }
+
+        t.forEach {
+            if (hasMap.containsKey(it)) {
+                hasMap[it] = hasMap[it]!! - 1
+                if (hasMap[it]!! < 0) return false
+            } else {
+                return false
+            }
+        }
+        return true
+    }
 }
