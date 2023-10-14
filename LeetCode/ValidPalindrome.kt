@@ -10,4 +10,41 @@ class ValidPalindrome {
         }
         return true
     }
+
+    fun isPalindrom2(s: String): Boolean {
+        var leftPointer = 0
+        var leftPointerIsAlphanumeric = true
+        var leftPointerChar: Char
+
+        var rightPointer = s.length - 1
+        var rightPointerIsAlphanumeric = true
+        var righPointerChar: Char
+
+        while (leftPointer < rightPointer) {
+            leftPointerChar = s[leftPointer]
+            righPointerChar = s[rightPointer]
+
+            if (!leftPointerChar.isLetterOrDigit()) leftPointerIsAlphanumeric = false
+
+            if (!righPointerChar.isLetterOrDigit()) rightPointerIsAlphanumeric = false
+
+            if (leftPointerIsAlphanumeric && rightPointerIsAlphanumeric) {
+                if (leftPointerChar.lowercase() != righPointerChar.lowercase()) return false
+                leftPointer++
+                rightPointer--
+            } else {
+                if (leftPointerIsAlphanumeric) rightPointer--
+                if (rightPointerIsAlphanumeric) leftPointer++
+                if (!rightPointerIsAlphanumeric && !leftPointerIsAlphanumeric) {
+                    leftPointer++
+                    rightPointer--
+                }
+            }
+
+            leftPointerIsAlphanumeric = true
+            rightPointerIsAlphanumeric = true
+        }
+
+        return true
+    }
 }
