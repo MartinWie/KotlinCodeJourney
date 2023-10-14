@@ -1,4 +1,5 @@
 class ValidPalindrome {
+    // Thanks to Kotlins filter with the Char.isLetterOrDigit() this is pretty straight forward
     fun isPalindrom(s: String): Boolean {
         val sOnlyLetters = s.lowercase().filter { it.isLetterOrDigit() }
         val checkUntil = sOnlyLetters.length / 2
