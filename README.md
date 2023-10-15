@@ -22,6 +22,7 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 | 2   | [Two-Sum](https://leetcode.com/problems/two-sum/description/)                       | [Code](./LeetCode/TwoSum.kt)             | Easy |
 | 3   | [IsAnagram](https://leetcode.com/problems/valid-anagram/)                           | [Code](./LeetCode/IsAnagram.kt)          | Easy |
 | 4   | [IsPalindrom](https://leetcode.com/problems/valid-palindrome/)                         | [Code](./LeetCode/ValidPalindrome.kt)          | Easy |
+| 4   | [BestTimeToBuyAndSellStock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)                         | [Code](./LeetCode/BestTimeToBuyAndSellStock.kt)          | Easy |
 
 ## Kotlin-Learnings
 
