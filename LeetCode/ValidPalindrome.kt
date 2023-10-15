@@ -50,6 +50,7 @@ class ValidPalindrome {
         return true
     }
 
+    // This is an refined version of solution 2, which is more perfomand and more memory efficient than solution 1 and ok'ish on readibility
     fun isPalindrom3(s: String): Boolean {
         var leftPointer = 0
         var rightPointer = s.length - 1 // Used for the index of the string s (index starting at 0)
