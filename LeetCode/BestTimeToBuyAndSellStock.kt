@@ -6,7 +6,7 @@ class BestTimeToBuyAndSellStock {
 
         for ((index, item) in prices.withIndex()) {
             val currentList = prices.drop(index + 1)
-            currentList.forEach{
+            currentList.forEach {
                 val tempProfit = it - item
                 if (tempProfit > currentMaxProfit) currentMaxProfit = tempProfit
             }
