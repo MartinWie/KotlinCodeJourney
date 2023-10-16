@@ -18,16 +18,16 @@ class BestTimeToBuyAndSellStock {
     // Slightly better solution only trying the numbers that could be better
     fun maxProfit2(prices: IntArray): Int {
         var currentMaxProfit = 0
-        var currentHighestNumber: Int? = null
+        var currentLowestNumber: Int? = null
 
         for ((index, item) in prices.withIndex()) {
-            if (item >= (currentHighestNumber ?: (item + 1))) continue
+            if (item >= (currentLowestNumber ?: (item + 1))) continue
             val currentList = prices.drop(index + 1)
             currentList.forEach {
                 val tempProfit = it - item
                 if (tempProfit > currentMaxProfit) {
                     currentMaxProfit = tempProfit
-                    currentHighestNumber = item
+                    currentLowestNumber = item
                 }
             }
         }
