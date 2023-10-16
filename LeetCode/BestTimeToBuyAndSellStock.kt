@@ -35,5 +35,4 @@ class BestTimeToBuyAndSellStock {
         return currentMaxProfit
     }
 
-    // Test if multithreading for searching the sublists brings any benefit here(Good opportunity to practice multi Threading a bti ;) )
 }
