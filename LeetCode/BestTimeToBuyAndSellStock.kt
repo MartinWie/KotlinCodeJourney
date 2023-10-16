@@ -15,6 +15,7 @@ class BestTimeToBuyAndSellStock {
         return currentMaxProfit
     }
 
+    // Slightly better solution only trying the numbers that could be better
     fun maxProfit2(prices: IntArray): Int {
         var currentMaxProfit = 0
         var currentHighestNumber: Int? = null
