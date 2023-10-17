@@ -75,4 +75,43 @@ class BestTimeToBuyAndSellStock {
         return currentMaxProfit
     }
 
+    // Same as solution 3 but saving one iteration if the highest number is smaller than the maximum profit
+    fun maxProfit4(prices: IntArray): Int {
+        var currentMaxProfit = 0
+        var higherstRemainingNumber = 0
+        var higherstRemainingNumberIndex = 0
+        var lowestNumberInSubList: Int? = null
+
+        var remainingList = prices.toList()
+
+        while (remainingList.size > 1) {
+            for ((index, item) in remainingList.withIndex()) {
+                if (item > higherstRemainingNumber) {
+                    higherstRemainingNumber = item
+                    higherstRemainingNumberIndex = index
+                }
+            }
+            if (currentMaxProfit < higherstRemainingNumber) {
+                for (item in remainingList.dropLast(remainingList.size - higherstRemainingNumberIndex)) {
+                    if (item < (lowestNumberInSubList ?: higherstRemainingNumber)) {
+                        lowestNumberInSubList = item
+                    }
+                }
+
+                if ((higherstRemainingNumber - (lowestNumberInSubList ?: higherstRemainingNumber)) > currentMaxProfit) {
+                    currentMaxProfit = higherstRemainingNumber - lowestNumberInSubList!!
+                }
+            }
+
+            remainingList = remainingList.drop(higherstRemainingNumberIndex + 1)
+
+            // Reset numbers for the next iteration
+            lowestNumberInSubList = higherstRemainingNumber
+            higherstRemainingNumber = 0
+            higherstRemainingNumberIndex = 0
+        }
+
+        return currentMaxProfit
+    }
+
 }
