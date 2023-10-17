@@ -114,4 +114,16 @@ class BestTimeToBuyAndSellStock {
         return currentMaxProfit
     }
 
+    // Turns out this can be done in one with just 2 variables :D
+    fun maxProfit5(prices: IntArray): Int {
+        var currentMaxProfit = 0
+        var minFoundPrice = prices[0]
+
+        prices.forEach {
+            if (minFoundPrice > it) minFoundPrice = it
+            if (it - minFoundPrice > currentMaxProfit) currentMaxProfit = it - minFoundPrice
+        }
+
+        return currentMaxProfit
+
 }
