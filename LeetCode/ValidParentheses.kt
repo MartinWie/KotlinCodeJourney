@@ -20,5 +20,21 @@ class ValidParentheses {
         return true
     }
 
-    // TODO: fix case "{[]}" -> true in next version
+    // Found a way to fix the former issue, the trick was actually a last in first out stack.
+    // Here done with mutableList there is probably a better was to do this in kotlin, I will check this tomorrow.
+    fun isValid2(s: String): Boolean {
+        val list = mutableListOf<Char>()
+
+        s.forEach {
+            val lastInChar = list.lastOrNull()
+            when (it) {
+                '(', '[', '{' -> list.add(it)
+                ')' -> if (lastInChar == '(') list.removeLast() else return false
+                ']' -> if (lastInChar == '[') list.removeLast() else return false
+                '}' -> if (lastInChar == '{') list.removeLast() else return false
+            }
+        }
+
+        return list.isEmpty()
+    }
 }
