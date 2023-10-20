@@ -37,4 +37,37 @@ class ValidParentheses {
 
         return list.isEmpty()
     }
+
+    fun isValid2(s: String): Boolean {
+        val list = mutableListOf<Char>()
+
+        s.forEach {
+            val lastInChar = list.lastOrNull()
+            when (it) {
+                '(', '[', '{' -> list.add(it)
+                ')' -> if (lastInChar == '(') list.removeLast() else return false
+                ']' -> if (lastInChar == '[') list.removeLast() else return false
+                '}' -> if (lastInChar == '{') list.removeLast() else return false
+            }
+        }
+
+        return list.isEmpty()
+    }
+
+    // Another variant with ArrayDeque(According to the Leetcode stats the MutableList is faster and more memory efficient)
+    fun isValid3(s: String): Boolean {
+        val stack = ArrayDeque<Char>()
+
+        s.forEach {
+            val lastInChar = stack.lastOrNull()
+            when (it) {
+                '(', '[', '{' -> stack.add(it)
+                ')' -> if (lastInChar == '(') stack.removeLast() else return false
+                ']' -> if (lastInChar == '[') stack.removeLast() else return false
+                '}' -> if (lastInChar == '{') stack.removeLast() else return false
+            }
+        }
+
+        return stack.isEmpty()
+    }
 }
