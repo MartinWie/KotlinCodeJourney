@@ -1,3 +1,6 @@
+import kotlin.test.Test
+import kotlin.test.assertEquals
+
 class ValidParentheses {
     fun isValid(s: String): Boolean {
         var lastRound: Char? = null
@@ -38,7 +41,7 @@ class ValidParentheses {
         return list.isEmpty()
     }
 
-    fun isValid2(s: String): Boolean {
+    fun isValid3(s: String): Boolean {
         val list = mutableListOf<Char>()
 
         s.forEach {
@@ -55,7 +58,7 @@ class ValidParentheses {
     }
 
     // Another variant with ArrayDeque(According to the Leetcode stats the MutableList is faster and more memory efficient)
-    fun isValid3(s: String): Boolean {
+    fun isValid4(s: String): Boolean {
         val stack = ArrayDeque<Char>()
 
         s.forEach {
@@ -69,5 +72,13 @@ class ValidParentheses {
         }
 
         return stack.isEmpty()
+    }
+
+    @Test
+    fun testFunc() {
+        assertEquals(true, isValid3("[](){}"))
+        assertEquals(false, isValid3("[](}"))
+        assertEquals(true, isValid3("{[]}"))
+        assertEquals(false, isValid3("([)]"))
     }
 }

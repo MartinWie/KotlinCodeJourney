@@ -125,5 +125,5 @@ class BestTimeToBuyAndSellStock {
         }
 
         return currentMaxProfit
-
+    }
 }
