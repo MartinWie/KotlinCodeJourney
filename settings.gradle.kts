@@ -1,1 +1,1 @@
-rootProject.name = "de.mw.customerservice"
+rootProject.name = "de.mw.koltincodejoueney"

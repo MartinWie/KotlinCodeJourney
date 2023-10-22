@@ -13,7 +13,15 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    create("leetcode") {
+        kotlin.srcDir("LeetCode")
+    }
+}
+
 dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    "leetcodeImplementation"("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    "leetcodeRuntimeOnly"("ch.qos.logback:logback-classic:$logback_version")
 }
