@@ -15,8 +15,13 @@ repositories {
 
 sourceSets {
     create("leetcode") {
-        kotlin.srcDir("LeetCode")
+        kotlin.srcDirs("LeetCode")
     }
+}
+
+tasks.register<Test>("testLeetcode") {
+    testClassesDirs = sourceSets["leetcode"].output.classesDirs
+    classpath = sourceSets["leetcode"].runtimeClasspath
 }
 
 dependencies {
@@ -24,4 +29,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     "leetcodeImplementation"("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     "leetcodeRuntimeOnly"("ch.qos.logback:logback-classic:$logback_version")
+    "leetcodeImplementation"("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    "leetcodeImplementation"("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
