@@ -7,7 +7,24 @@ class ReverseLinkedList {
     }
 
     fun reverseList(head: ListNode?): ListNode? {
-        return head
+        if (head == null) return null
+
+        val nodeList = mutableListOf<ListNode>()
+        var currentNode = head
+
+        while (currentNode != null) {
+            nodeList.add(currentNode)
+            currentNode = currentNode.next
+        }
+
+        var tail: ListNode? = null
+
+        nodeList.forEach {
+            it.next = tail
+            tail = it
+        }
+
+        return tail
     }
 
     @Test
