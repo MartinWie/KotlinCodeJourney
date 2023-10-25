@@ -27,6 +27,24 @@ class ReverseLinkedList {
         return tail
     }
 
+    fun reverseList2(head: ListNode?): ListNode? {
+        val currntNode = head
+
+        while (currntNode != null) {
+
+        }
+
+    }
+
+    fun reverseList3(head: ListNode?): ListNode? {
+        val currntNode = head
+
+        while (currntNode != null) {
+
+        }
+
+    }
+
     @Test
     fun test() {
         val n1 = ListNode(1)
@@ -41,6 +59,36 @@ class ReverseLinkedList {
 
         assertEquals(shouldBe.toString(), solution.toString())
     }
+    @Test
+    fun test2() {
+        val n1 = ListNode(1)
+        val n2 = ListNode(2)
+        n1.next = n2
+
+        val solution = getValListFromNodes(reverseList2(n1))
+
+        n1.next = null
+        n2.next = n1
+        val shouldBe = getValListFromNodes(n2)
+
+        assertEquals(shouldBe.toString(), solution.toString())
+    }
+
+    @Test
+    fun test3() {
+        val n1 = ListNode(1)
+        val n2 = ListNode(2)
+        n1.next = n2
+
+        val solution = getValListFromNodes(reverseList3(n1))
+
+        n1.next = null
+        n2.next = n1
+        val shouldBe = getValListFromNodes(n2)
+
+        assertEquals(shouldBe.toString(), solution.toString())
+    }
+
 
     private fun getValListFromNodes(head: ListNode?): MutableList<Int> {
         val list = mutableListOf<Int>()
