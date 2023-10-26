@@ -6,7 +6,7 @@ class ReverseLinkedList {
         var next: ListNode? = null
     }
 
-    fun reverseList(head: ListNode?): ListNode? {
+    private fun reverseList(head: ListNode?): ListNode? {
         if (head == null) return null
 
         val nodeList = mutableListOf<ListNode>()
@@ -27,22 +27,23 @@ class ReverseLinkedList {
         return tail
     }
 
-    fun reverseList2(head: ListNode?): ListNode? {
-        val currntNode = head
+    private fun reverseList2(head: ListNode?): ListNode? {
+        var currentNode = head
+        var formerNode: ListNode? = null
 
-        while (currntNode != null) {
-
+        while (currentNode != null) {
+            val nextNode = currentNode.next
+            currentNode.next = formerNode
+            formerNode = currentNode
+            currentNode = nextNode
         }
 
+        return formerNode
     }
 
-    fun reverseList3(head: ListNode?): ListNode? {
-        val currntNode = head
-
-        while (currntNode != null) {
-
-        }
-
+    private fun reverseList3(head: ListNode?): ListNode? {
+        return null
+        // TODO: implement recursive solution
     }
 
     @Test
@@ -59,6 +60,7 @@ class ReverseLinkedList {
 
         assertEquals(shouldBe.toString(), solution.toString())
     }
+
     @Test
     fun test2() {
         val n1 = ListNode(1)
@@ -88,7 +90,6 @@ class ReverseLinkedList {
 
         assertEquals(shouldBe.toString(), solution.toString())
     }
-
 
     private fun getValListFromNodes(head: ListNode?): MutableList<Int> {
         val list = mutableListOf<Int>()
