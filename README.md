@@ -25,7 +25,7 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 | 5   | [BestTimeToBuyAndSellStock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Code](./LeetCode/BestTimeToBuyAndSellStock.kt) | Easy |
 | 6   | [ValidParentheses](https://leetcode.com/problems/valid-parentheses/)                        | [Code](./LeetCode/ValidParentheses.kt)          | Easy |
 | 7   | [ReverseLinkedList](https://leetcode.com/problems/reverse-linked-list/)                     | [Code](./LeetCode/ReverseLinkedList.kt)         | Easy |
-| 8   | [ReverseLinkedList](https://leetcode.com/problems/merge-two-sorted-lists/)                     | [Code](./LeetCode/MergeTwoSortedLists.kt)       | Easy |
+| 8   | [MergeTwoSortedLists](https://leetcode.com/problems/merge-two-sorted-lists/)                     | [Code](./LeetCode/MergeTwoSortedLists.kt)       | Easy |
 ## Kotlin-Learnings
 
 This part is just a collection of random thoughts, mini-projects, or tiny victories while getting my hands dirty with Kotlin. May include:
