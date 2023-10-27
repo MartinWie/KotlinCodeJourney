@@ -42,8 +42,16 @@ class ReverseLinkedList {
     }
 
     private fun reverseList3(head: ListNode?): ListNode? {
-        return null
-        // TODO: implement recursive solution
+        if (head == null) return null
+
+        var newHead = head
+        if (head.next != null) {
+            newHead = reverseList3(head.next)
+            head.next!!.next = head
+        }
+
+        head.next = null
+        return newHead
     }
 
     @Test
