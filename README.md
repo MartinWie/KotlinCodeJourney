@@ -16,15 +16,16 @@ This is just a little space where I'm messing around with Kotlin and trying to c
 
 In here, I'm sharing the solutions (or attempts at solutions) for problems over at LeetCode, all written in Kotlin because why not? We’ve got:
 
-| No. | Title                                                                                       | Solution                                 | Difficulty |
-|-----|---------------------------------------------------------------------------------------------|------------------------------------------|------------|
-| 1   | [ContainsDuplicates](https://leetcode.com/problems/contains-duplicate/description/)         | [Code](./LeetCode/ContainsDuplicates.kt) | Easy |
-| 2   | [Two-Sum](https://leetcode.com/problems/two-sum/description/)                               | [Code](./LeetCode/TwoSum.kt)             | Easy |
-| 3   | [IsAnagram](https://leetcode.com/problems/valid-anagram/)                                   | [Code](./LeetCode/IsAnagram.kt)          | Easy |
-| 4   | [IsPalindrom](https://leetcode.com/problems/valid-palindrome/)                              | [Code](./LeetCode/ValidPalindrome.kt)          | Easy |
-| 5   | [BestTimeToBuyAndSellStock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Code](./LeetCode/BestTimeToBuyAndSellStock.kt)       | Easy |
+| No. | Title                                                                                       | Solution                                        | Difficulty |
+|-----|---------------------------------------------------------------------------------------------|-------------------------------------------------|------------|
+| 1   | [ContainsDuplicates](https://leetcode.com/problems/contains-duplicate/description/)         | [Code](./LeetCode/ContainsDuplicates.kt)        | Easy |
+| 2   | [Two-Sum](https://leetcode.com/problems/two-sum/description/)                               | [Code](./LeetCode/TwoSum.kt)                    | Easy |
+| 3   | [IsAnagram](https://leetcode.com/problems/valid-anagram/)                                   | [Code](./LeetCode/IsAnagram.kt)                 | Easy |
+| 4   | [IsPalindrom](https://leetcode.com/problems/valid-palindrome/)                              | [Code](./LeetCode/ValidPalindrome.kt)           | Easy |
+| 5   | [BestTimeToBuyAndSellStock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Code](./LeetCode/BestTimeToBuyAndSellStock.kt) | Easy |
 | 6   | [ValidParentheses](https://leetcode.com/problems/valid-parentheses/)                        | [Code](./LeetCode/ValidParentheses.kt)          | Easy |
-| 7   | [ReverseLinkedList](https://leetcode.com/problems/reverse-linked-list/)                     | [Code](./LeetCode/ReverseLinkedList.kt)          | Easy |
+| 7   | [ReverseLinkedList](https://leetcode.com/problems/reverse-linked-list/)                     | [Code](./LeetCode/ReverseLinkedList.kt)         | Easy |
+| 8   | [ReverseLinkedList](https://leetcode.com/problems/merge-two-sorted-lists/)                     | [Code](./LeetCode/MergeTwoSortedLists.kt)       | Easy |
 ## Kotlin-Learnings
 
 This part is just a collection of random thoughts, mini-projects, or tiny victories while getting my hands dirty with Kotlin. May include:
