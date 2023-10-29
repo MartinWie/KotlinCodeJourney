@@ -81,7 +81,7 @@ class MergeTwoSortedLists {
         }
         return list
     }
-} // Test
+}
 
 class ListNode(var `val`: Int) {
     var next: ListNode? = null
