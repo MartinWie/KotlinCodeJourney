@@ -26,6 +26,7 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 | 6   | [ValidParentheses](https://leetcode.com/problems/valid-parentheses/)                        | [Code](./LeetCode/ValidParentheses.kt)          | Easy |
 | 7   | [ReverseLinkedList](https://leetcode.com/problems/reverse-linked-list/)                     | [Code](./LeetCode/ReverseLinkedList.kt)         | Easy |
 | 8   | [MergeTwoSortedLists](https://leetcode.com/problems/merge-two-sorted-lists/)                     | [Code](./LeetCode/MergeTwoSortedLists.kt)       | Easy |
+| 9   | [MergeTwoSortedLists](https://leetcode.com/problems/invert-binary-tree/description/)                     | [Code](./LeetCode/InvertBinaryTree.kt)       | Easy |
 ## Kotlin-Learnings
 
 This part is just a collection of random thoughts, mini-projects, or tiny victories while getting my hands dirty with Kotlin. May include:
