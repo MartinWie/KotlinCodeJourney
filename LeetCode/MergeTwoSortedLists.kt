@@ -131,6 +131,60 @@ class MergeTwoSortedLists {
         assertEquals(expectedList.toString(), solutionList.toString())
     }
 
+    private fun mergeTwoLists3(list1: ListNode?, list2: ListNode?): ListNode? {
+        val dummyHead = ListNode(0)
+        var currentList1 = list1
+        var currentList2 = list2
+        var currentTail = dummyHead
+
+        while (currentList1 != null || currentList2 != null) {
+            if (currentList1 == null) {
+                currentTail.next = currentList2
+                break
+            } else if (currentList2 == null) {
+                currentTail.next = currentList1
+                break
+            } else if (currentList1.`val` <= currentList2.`val`) {
+                currentTail.next = currentList1
+                currentList1 = currentList1.next
+            } else {
+                currentTail.next = currentList2
+                currentList2 = currentList2.next
+            }
+            currentTail = currentTail.next!!
+        }
+        return dummyHead.next
+    }
+
+    @Test
+    fun testMerge3() {
+        val a1 = ListNode(1)
+        val a2 = ListNode(2)
+        val a3 = ListNode(3)
+        val a4 = ListNode(10)
+        val a5 = ListNode(11)
+        val b1 = ListNode(9)
+        val b2 = ListNode(2)
+
+        a1.next = a2
+        a2.next = a3
+        a3.next = a4
+        a4.next = a5
+        b2.next = b1
+        val solutionNodes = mergeTwoLists3(a1, b2)
+        val solutionList = nodesToList(solutionNodes)
+
+        a1.next = a2
+        a2.next = b2
+        b2.next = a3
+        a3.next = b1
+        b1.next = a4
+        a4.next = a5
+        val expectedList = nodesToList(a1)
+
+        assertEquals(expectedList.toString(), solutionList.toString())
+    }
+
     private fun nodesToList(head: ListNode?): List<Int> {
         val list = mutableListOf<Int>()
         var currentNode = head
