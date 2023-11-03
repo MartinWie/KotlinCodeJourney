@@ -4,7 +4,17 @@ import kotlin.test.assertTrue
 class InvertBinaryTree {
 
     fun invertTree(root: TreeNode?): TreeNode? {
-        return TreeNode(1)
+        if (root == null) return null
+
+        val tmpNode: TreeNode? = root.right
+
+        root.right = root.left
+        root.left = tmpNode
+
+        invertTree(root.left)
+        invertTree(root.right)
+
+        return root
     }
 
     @Test
