@@ -1,6 +1,3 @@
-import org.junit.Test
-import kotlin.test.assertTrue
-
 class InvertBinaryTree {
 
     fun invertTree(root: TreeNode?): TreeNode? {
