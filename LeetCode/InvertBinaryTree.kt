@@ -1,3 +1,5 @@
+import java.util.LinkedList
+
 class InvertBinaryTree {
 
     fun invertTree(root: TreeNode?): TreeNode? {
@@ -22,6 +24,25 @@ class InvertBinaryTree {
             invertTree2(left)
             invertTree2(right)
         }
+    }
+
+    fun invertTree3(root: TreeNode?): TreeNode? {
+        val queue = LinkedList<TreeNode>()
+
+        root?.let { queue.add(it) }
+
+        while (queue.isNotEmpty()) {
+            val current = queue.remove()
+
+            val tmpNode = current.left
+            current.left = current.right
+            current.right = tmpNode
+
+            if (current.left != null) queue.add(current.left!!)
+            if (current.right != null) queue.add(current.right!!)
+        }
+
+        return root
     }
 
     class TreeNode(var `val`: Int) {
