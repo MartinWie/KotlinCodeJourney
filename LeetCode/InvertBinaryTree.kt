@@ -17,9 +17,14 @@ class InvertBinaryTree {
         return root
     }
 
-    @Test
-    fun test() {
-        assertTrue { true }
+    fun invertTree2(root: TreeNode?): TreeNode? {
+        return root?.apply {
+            val tmp = this.left
+            this.left = right
+            this.right = tmp
+            invertTree2(left)
+            invertTree2(right)
+        }
     }
 
     class TreeNode(var `val`: Int) {
