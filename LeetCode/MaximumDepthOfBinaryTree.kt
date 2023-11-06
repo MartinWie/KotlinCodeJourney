@@ -30,6 +30,15 @@ class MaximumDepthOfBinaryTree {
         return currentMaxDepth
     }
 
+    fun maxDepth3(root: TreeNode?): Int {
+        if (root == null) return 0
+
+        val lDepth = 1 + maxDepth3(root.left)
+        val rDepth = 1 + maxDepth3(root.right)
+
+        return maxOf(lDepth, rDepth)
+    }
+
     class TreeNode(var `val`: Int) {
         var left: TreeNode? = null
         var right: TreeNode? = null
