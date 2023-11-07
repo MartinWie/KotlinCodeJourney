@@ -34,8 +34,7 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 
 This part is just a collection of random thoughts, mini-projects, or tiny victories while getting my hands dirty with Kotlin. May include:
 - Neat Kotlin tricks (or traps!).
-- Moments of “Aha!” and “Oh no...” in equal measure.
-- Possibly, some cat GIFs. 🐱‍👤🐱‍🏍 (because why not?)
+- Moments of “Aha!” and “Oh no...” in more or less equal measure.
 
 
 **Happy Coding!** 🚀🎉
