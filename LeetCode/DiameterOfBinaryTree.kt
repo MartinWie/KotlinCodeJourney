@@ -1,7 +1,7 @@
 import java.util.Stack
 
 class DiameterOfBinaryTree {
-    fun diameterOfBinaryTree(root: TreeNode?): Int {
+    fun diameterOfBinaryTree(root: TreeNode?): Int { // fails for [4,2,null,1,3]
         if (root == null) return 0
 
         var currentMaxDiameterLeftBranch = 0
@@ -25,6 +25,23 @@ class DiameterOfBinaryTree {
         }
 
         return currentMaxDiameterLeftBranch + currentMaxDiameterRightBranch
+    }
+
+    private var maxDiameter = 0
+    fun diameterOfBinaryTree2(root: TreeNode?): Int {
+        maxDepth(root)
+        return maxDiameter
+    }
+
+    private fun maxDepth(root: TreeNode?): Int {
+        if (root == null) return 0
+
+        val lDepth = maxDepth(root.left)
+        val rDepth = maxDepth(root.right)
+
+        maxDiameter = maxOf(maxDiameter, lDepth + rDepth)
+
+        return 1 + maxOf(lDepth, rDepth)
     }
 }
 
