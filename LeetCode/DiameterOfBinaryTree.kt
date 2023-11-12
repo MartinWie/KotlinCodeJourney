@@ -49,4 +49,3 @@ class DiameterOfBinaryTree {
         var right: TreeNode? = null
     }
 }
-
