@@ -1,3 +1,5 @@
+import java.util.Stack
+
 class SameTree {
     fun isSameTree(p: TreeNode?, q: TreeNode?): Boolean {
         val pList = treeToList(p)
@@ -14,7 +16,31 @@ class SameTree {
         return listOf(node.`val`) + lList + rList
     }
 
-    // TODO: implement a solution where both trees are compared node by node
+    fun isSameTree2(p: TreeNode?, q: TreeNode?): Boolean {
+        val pStack = Stack<TreeNode?>()
+        val qStack = Stack<TreeNode?>()
+
+        pStack.add(p)
+        qStack.add(q)
+
+        while (!pStack.isEmpty()) {
+            val currentP = pStack.pop()
+            val currentQ = qStack.pop()
+
+            if (currentP?.`val` != currentQ?.`val`) return false
+
+            if (currentP != null) {
+                pStack.add(currentP.left)
+                pStack.add(currentP.right)
+            }
+            if (currentQ != null) {
+                qStack.add(currentQ.left)
+                qStack.add(currentQ.right)
+            }
+        }
+
+        return qStack.isEmpty()
+    }
 
     class TreeNode(var `val`: Int) {
         var left: TreeNode? = null
