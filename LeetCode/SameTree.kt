@@ -42,6 +42,13 @@ class SameTree {
         return qStack.isEmpty()
     }
 
+    fun isSameTree3(p: TreeNode?, q: TreeNode?): Boolean {
+        if (p == null && q == null) return true
+        if (p == null || q == null) return false
+
+        return (p.`val` == q.`val`) && isSameTree3(p.left, q.left) && isSameTree3(p.right, q.right)
+    }
+
     class TreeNode(var `val`: Int) {
         var left: TreeNode? = null
         var right: TreeNode? = null
