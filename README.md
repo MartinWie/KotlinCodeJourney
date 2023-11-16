@@ -31,6 +31,7 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 | 11  | [DiameterOfBinaryTree](https://leetcode.com/problems/diameter-of-binary-tree/description/)          | [Code](./LeetCode/DiameterOfBinaryTree.kt)       | Easy |
 | 12  | [BalancedBinaryTree](https://leetcode.com/problems/balanced-binary-tree/description/)               | [Code](./LeetCode/BalancedBinaryTree.kt)       | Easy |
 | 13  | [SameTree](https://leetcode.com/problems/same-tree/description/)                                    | [Code](./LeetCode/SameTree.kt)       | Easy |
+| 14  | [SubtreeOfAnotherTree](https://leetcode.com/problems/subtree-of-another-tree/description/)          | [Code](./LeetCode/SubtreeOfAnotherTree.kt)       | Easy |
 
 
 ## Kotlin-Learnings
