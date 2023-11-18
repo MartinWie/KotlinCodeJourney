@@ -28,9 +28,9 @@ class SubtreeOfAnotherTree {
     }
 
     fun isSubtree2(root: TreeNode?, subRoot: TreeNode?): Boolean {
-        if(subRoot == null) return true
-        if(root == null) return false
-        if(isSameTree(root, subRoot)) return true
+        if (subRoot == null) return true
+        if (root == null) return false
+        if (isSameTree(root, subRoot)) return true
 
         return (isSubtree2(root.left, subRoot) || isSubtree2(root.right, subRoot))
     }
