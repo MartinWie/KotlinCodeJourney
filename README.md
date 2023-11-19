@@ -16,22 +16,23 @@ This is just a little space where I'm messing around with Kotlin and trying to c
 
 In here, I'm sharing the solutions (or attempts at solutions) for problems over at LeetCode, all written in Kotlin because why not? We’ve got:
 
-| No. | Title                                                                                               | Solution                                        | Difficulty |
-|-----|-----------------------------------------------------------------------------------------------------|-------------------------------------------------|------------|
-| 1   | [ContainsDuplicates](https://leetcode.com/problems/contains-duplicate/description/)                 | [Code](./LeetCode/ContainsDuplicates.kt)        | Easy |
-| 2   | [Two-Sum](https://leetcode.com/problems/two-sum/description/)                                       | [Code](./LeetCode/TwoSum.kt)                    | Easy |
-| 3   | [IsAnagram](https://leetcode.com/problems/valid-anagram/)                                           | [Code](./LeetCode/IsAnagram.kt)                 | Easy |
-| 4   | [IsPalindrom](https://leetcode.com/problems/valid-palindrome/)                                      | [Code](./LeetCode/ValidPalindrome.kt)           | Easy |
-| 5   | [BestTimeToBuyAndSellStock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)         | [Code](./LeetCode/BestTimeToBuyAndSellStock.kt) | Easy |
-| 6   | [ValidParentheses](https://leetcode.com/problems/valid-parentheses/)                                | [Code](./LeetCode/ValidParentheses.kt)          | Easy |
-| 7   | [ReverseLinkedList](https://leetcode.com/problems/reverse-linked-list/)                             | [Code](./LeetCode/ReverseLinkedList.kt)         | Easy |
-| 8   | [MergeTwoSortedLists](https://leetcode.com/problems/merge-two-sorted-lists/)                        | [Code](./LeetCode/MergeTwoSortedLists.kt)       | Easy |
-| 9   | [InvertBinaryTree](https://leetcode.com/problems/invert-binary-tree/description/)                   | [Code](./LeetCode/InvertBinaryTree.kt)       | Easy |
-| 10  | [MaximumDepthOfBinaryTree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/) | [Code](./LeetCode/MaximumDepthOfBinaryTree.kt)       | Easy |
-| 11  | [DiameterOfBinaryTree](https://leetcode.com/problems/diameter-of-binary-tree/description/)          | [Code](./LeetCode/DiameterOfBinaryTree.kt)       | Easy |
-| 12  | [BalancedBinaryTree](https://leetcode.com/problems/balanced-binary-tree/description/)               | [Code](./LeetCode/BalancedBinaryTree.kt)       | Easy |
-| 13  | [SameTree](https://leetcode.com/problems/same-tree/description/)                                    | [Code](./LeetCode/SameTree.kt)       | Easy |
-| 14  | [SubtreeOfAnotherTree](https://leetcode.com/problems/subtree-of-another-tree/description/)          | [Code](./LeetCode/SubtreeOfAnotherTree.kt)       | Easy |
+| No. | Title                                                                                                 | Solution                                          | Difficulty |
+|-----|-------------------------------------------------------------------------------------------------------|---------------------------------------------------|------|
+| 1   | [ContainsDuplicates](https://leetcode.com/problems/contains-duplicate/description/)                   | [Code](./LeetCode/ContainsDuplicates.kt)          | Easy |
+| 2   | [Two-Sum](https://leetcode.com/problems/two-sum/description/)                                         | [Code](./LeetCode/TwoSum.kt)                      | Easy |
+| 3   | [IsAnagram](https://leetcode.com/problems/valid-anagram/)                                             | [Code](./LeetCode/IsAnagram.kt)                   | Easy |
+| 4   | [IsPalindrom](https://leetcode.com/problems/valid-palindrome/)                                        | [Code](./LeetCode/ValidPalindrome.kt)             | Easy |
+| 5   | [BestTimeToBuyAndSellStock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)           | [Code](./LeetCode/BestTimeToBuyAndSellStock.kt)   | Easy |
+| 6   | [ValidParentheses](https://leetcode.com/problems/valid-parentheses/)                                  | [Code](./LeetCode/ValidParentheses.kt)            | Easy |
+| 7   | [ReverseLinkedList](https://leetcode.com/problems/reverse-linked-list/)                               | [Code](./LeetCode/ReverseLinkedList.kt)           | Easy |
+| 8   | [MergeTwoSortedLists](https://leetcode.com/problems/merge-two-sorted-lists/)                          | [Code](./LeetCode/MergeTwoSortedLists.kt)         | Easy |
+| 9   | [InvertBinaryTree](https://leetcode.com/problems/invert-binary-tree/description/)                     | [Code](./LeetCode/InvertBinaryTree.kt)            | Easy |
+| 10  | [MaximumDepthOfBinaryTree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)   | [Code](./LeetCode/MaximumDepthOfBinaryTree.kt)    | Easy |
+| 11  | [DiameterOfBinaryTree](https://leetcode.com/problems/diameter-of-binary-tree/description/)            | [Code](./LeetCode/DiameterOfBinaryTree.kt)        | Easy |
+| 12  | [BalancedBinaryTree](https://leetcode.com/problems/balanced-binary-tree/description/)                 | [Code](./LeetCode/BalancedBinaryTree.kt)          | Easy |
+| 13  | [SameTree](https://leetcode.com/problems/same-tree/description/)                                      | [Code](./LeetCode/SameTree.kt)                    | Easy |
+| 14  | [SubtreeOfAnotherTree](https://leetcode.com/problems/subtree-of-another-tree/description/)            | [Code](./LeetCode/SubtreeOfAnotherTree.kt)        | Easy |
+| 15  | [LongestConsecutiveSequence](https://leetcode.com/problems/longest-consecutive-sequence/description/) | [Code](./LeetCode/LongestConsecutiveSequence.kt)  | Medium |
 
 
 ## Kotlin-Learnings
