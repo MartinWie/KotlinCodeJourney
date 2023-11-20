@@ -19,6 +19,29 @@ class LongestConsecutiveSequence {
         return overallHighestCons
     }
 
+    private fun longestConsecutive2(nums: IntArray): Int {
+        if (nums.isEmpty()) return 0
+        if (nums.size == 1) return 1
+
+        val numsHashSet = nums.toHashSet()
+        var maxStreak = 1
+
+        for (num in numsHashSet) {
+            if (!numsHashSet.contains(num-1)) {
+                var currentStreak = 1
+                var currentNum = num + 1
+
+                while (numsHashSet.contains(currentNum)) {
+                    currentStreak++
+                    currentNum++
+                }
+
+                maxStreak = maxOf(maxStreak, currentStreak)
+            }
+        }
+        return maxStreak
+    }
+
     @Test
     fun testLongestConsecutive() {
         assertEquals(4, longestConsecutive(intArrayOf(100, 4, 200, 1, 3, 2)))
