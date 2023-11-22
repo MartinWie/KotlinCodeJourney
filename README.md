@@ -33,7 +33,7 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 | 13  | [SameTree](https://leetcode.com/problems/same-tree/description/)                                      | [Code](./LeetCode/SameTree.kt)                   | Easy |
 | 14  | [SubtreeOfAnotherTree](https://leetcode.com/problems/subtree-of-another-tree/description/)            | [Code](./LeetCode/SubtreeOfAnotherTree.kt)       | Easy |
 | 15  | [LongestConsecutiveSequence](https://leetcode.com/problems/longest-consecutive-sequence/description/) | [Code](./LeetCode/LongestConsecutiveSequence.kt) | Medium |
-| 16  | [3Sum](https://leetcode.com/problems/3sum/description/)                                               | [Code](./LeetCode/3Sum.kt)                       | Medium |
+| 16  | [3Sum](https://leetcode.com/problems/3sum/description/)                                               | [Code](./LeetCode/ThreeSum.kt)                   | Medium |
 
 
 ## Kotlin-Learnings
