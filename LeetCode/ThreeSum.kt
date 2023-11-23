@@ -22,7 +22,7 @@ class ThreeSum {
         nums.sort()
 
         for (index in nums.indices) {
-            if (index > 0 && nums[index] == nums[index -1]) continue
+            if (index > 0 && nums[index] == nums[index - 1]) continue
 
             var leftPointer = index + 1
             var rightPointer = nums.size - 1
@@ -53,5 +53,34 @@ class ThreeSum {
         }
 
         return resultList
+    }
+
+    fun threeSum3(nums: IntArray): List<List<Int>> {
+        nums.sort()
+
+        val resultList = mutableListOf<List<Int>>()
+        for (index in nums.indices) {
+            // Avoid duplicate triplets
+            if (index == 0 || nums[index] != nums[index - 1]) {
+                twoSum(nums, index, -nums[index], resultList)
+            }
+        }
+
+        return resultList
+    }
+
+    private fun twoSum(nums: IntArray, startIndex: Int, target: Int, resultList: MutableList<List<Int>>) {
+        val seen = HashSet<Int>()
+
+        for (i in startIndex + 1 until nums.size) {
+            if (seen.contains(target - nums[i])) {
+                val triplet = listOf(-target, target - nums[i], nums[i])
+                // Add the triplet if it's not already in the list to avoid duplicates
+                if (!resultList.contains(triplet)) {
+                    resultList.add(triplet)
+                }
+            }
+            seen.add(nums[i])
+        }
     }
 }
