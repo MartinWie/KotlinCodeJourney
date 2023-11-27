@@ -2,7 +2,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 class LongestSubstringWithoutRepeatingCharacters {
-    fun lengthOfLongestSubstring(s: String): Int {
+    private fun lengthOfLongestSubstring(s: String): Int {
         if (s.isEmpty()) return 0
         if (s.length == 1) return 1
         var maxStreak = 0
@@ -10,20 +10,20 @@ class LongestSubstringWithoutRepeatingCharacters {
             val hashMap = HashMap<Char, String>()
             var currentStreak = 0
             for (innerLetter in s) {
-                if(hashMap.containsKey(innerLetter)) {
+                if (hashMap.containsKey(innerLetter)) {
                     break
                 } else {
                     hashMap[innerLetter] = ""
                     currentStreak++
                 }
             }
-            if(currentStreak > maxStreak) maxStreak = currentStreak
+            if (currentStreak > maxStreak) maxStreak = currentStreak
         }
         return maxStreak
     }
 
     @Test
     fun test() {
-        assertEquals(3,lengthOfLongestSubstring("pwwkew"))
+        assertEquals(3, lengthOfLongestSubstring("pwwkew"))
     }
 }
