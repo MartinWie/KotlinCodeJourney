@@ -7,16 +7,18 @@ class LongestSubstringWithoutRepeatingCharacters {
         if (s.length == 1) return 1
         var currentString = s
         var maxStreak = 0
-        while (currentString.length > 0) {
-            val hashMap = HashMap<Char, String>()
+        var endOfStringReached = false
+        while (currentString.isNotEmpty() && !endOfStringReached) {
+            val hashMap = HashMap<Char, Int>()
             var currentStreak = 0
-            for (innerLetter in currentString) {
+            for ((index, innerLetter) in currentString.withIndex()) {
                 if (hashMap.containsKey(innerLetter)) {
+                    currentString = currentString.drop(hashMap[innerLetter]!! + 1)
                     break
                 } else {
-                    hashMap[innerLetter] = ""
+                    hashMap[innerLetter] = index
                     currentStreak++
-                    currentString = currentString.drop(1)
+                    if (currentString.length == index + 1) endOfStringReached = true
                 }
             }
             if (currentStreak > maxStreak) maxStreak = currentStreak
