@@ -17,6 +17,9 @@ sourceSets {
     create("leetcode") {
         kotlin.srcDirs("LeetCode")
     }
+    create("AdventOfCode") {
+        kotlin.srcDirs("AdventOfCode")
+    }
 }
 
 tasks.register<Test>("testLeetcode") {
@@ -24,11 +27,30 @@ tasks.register<Test>("testLeetcode") {
     classpath = sourceSets["leetcode"].runtimeClasspath
 }
 
+tasks.register<Test>("testAdventOfCode") {
+    testClassesDirs = sourceSets["AdventOfCode"].output.classesDirs
+    classpath = sourceSets["AdventOfCode"].runtimeClasspath
+}
+
 dependencies {
+    val commonTestDependencies = listOf(
+        "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+        "org.junit.jupiter:junit-jupiter-api:5.8.1",
+        "org.junit.jupiter:junit-jupiter-engine:5.8.1",
+    )
+
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
-    "leetcodeImplementation"("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
-    "leetcodeRuntimeOnly"("ch.qos.logback:logback-classic:$logback_version")
-    "leetcodeImplementation"("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    "leetcodeImplementation"("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+
+    // Apply common dependencies to LeetCode source set
+    commonTestDependencies.forEach {
+        "leetcodeImplementation"(it)
+        "leetcodeRuntimeOnly"("ch.qos.logback:logback-classic:$logback_version")
+    }
+
+    // Apply common dependencies to AdventOfCode source set
+    commonTestDependencies.forEach {
+        "AdventOfCodeImplementation"(it)
+        "AdventOfCodeRuntimeOnly"("ch.qos.logback:logback-classic:$logback_version")
+    }
 }

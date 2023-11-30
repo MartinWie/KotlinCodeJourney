@@ -10,6 +10,7 @@ This is just a little space where I'm messing around with Kotlin and trying to c
 ## Table of Contents 🗂
 
 - [LeetCode Solutions](#LeetCode-Solutions)
+- [AdventOfCode Solutions](#AdventOfCode)
 - [Kotlin Learnings](#kotlin-learnings)
 
 ## LeetCode-Solutions
@@ -36,6 +37,14 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 | 16  | [3Sum](https://leetcode.com/problems/3sum/description/)                                                                                 | [Code](./LeetCode/ThreeSum.kt)                   | Medium |
 | 17  | [ContainerWithMostWater](https://leetcode.com/problems/container-with-most-water/description/)                                          | [Code](./LeetCode/ContainerWithMostWater.kt)     | Medium |
 | 18  | [LongestSubstringWithoutRepeatingCharacters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/) | [Code](./LeetCode/LongestSubstringWithoutRepeatingCharacters.kt)     | Medium |
+
+
+## AdventOfCode
+You know the drill, here is what we got:
+
+| No. | Title                                                                    | Solution                                         |
+|-----|--------------------------------------------------------------------------|--------------------------------------------------|
+| 1   | [2023-01](https://adventofcode.com/2023) | [Code](./AdventOfCode/Challenge2023Day01.kt)         |
 
 
 ## Kotlin-Learnings
