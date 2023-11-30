@@ -26,11 +26,38 @@ class LongestSubstringWithoutRepeatingCharacters {
         return maxStreak
     }
 
+    private fun lengthOfLongestSubstring2(s: String): Int {
+        if (s.isEmpty()) return 0
+        if (s.length == 1) return 1
+        val charSet = HashSet<Char>()
+        var leftPointer = 0
+        var maxStreak = 0
+
+        for (currentPointer in s.indices) {
+            while (charSet.contains(s[currentPointer])) {
+                charSet.remove(s[leftPointer])
+                leftPointer++
+            }
+            charSet.add(s[currentPointer])
+            maxStreak = maxOf(maxStreak, currentPointer - leftPointer + 1)
+        }
+
+        return maxStreak
+    }
+
     @Test
     fun test() {
         assertEquals(3, lengthOfLongestSubstring("dvdf"))
         assertEquals(2, lengthOfLongestSubstring("aab"))
         assertEquals(3, lengthOfLongestSubstring("pwwkew"))
         assertEquals(3, lengthOfLongestSubstring("abcabcbb"))
+    }
+
+    @Test
+    fun test2() {
+        assertEquals(3, lengthOfLongestSubstring2("dvdf"))
+        assertEquals(2, lengthOfLongestSubstring2("aab"))
+        assertEquals(3, lengthOfLongestSubstring2("pwwkew"))
+        assertEquals(3, lengthOfLongestSubstring2("abcabcbb"))
     }
 }
