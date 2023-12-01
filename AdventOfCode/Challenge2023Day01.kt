@@ -1,6 +1,7 @@
 import org.junit.Test
 import java.io.File
 import java.lang.IllegalArgumentException
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class Challenge2023Day01 {
@@ -31,7 +32,7 @@ class Challenge2023Day01 {
     }
 
     private fun solve2(): Int {
-        val lines = File("./AdventOfCode/Data/Day01-2-test.txt").bufferedReader().readLines()
+        val lines = File("./AdventOfCode/Data/Day01-1.txt").bufferedReader().readLines()
         val numberList = mutableListOf<Int>()
         for (line in lines) {
             val currentNumber = "${getFirstDigit(line)}${getLastDigit(line)}"
@@ -63,11 +64,13 @@ class Challenge2023Day01 {
         val charList = mutableListOf<Char>()
         for (char in reversedText) {
             charList.add(char)
-            if (char.isDigit()) {
+            if (charList.size > 2) {
                 val stringBeforeNumber = charList.joinToString(separator = "").reversed()
                 for (numberString in numberStringList) {
                     if (stringBeforeNumber.contains(numberString.key)) return numberString.value
                 }
+            }
+            if (char.isDigit()) {
                 return char.digitToInt()
             }
         }
@@ -80,6 +83,8 @@ class Challenge2023Day01 {
     fun test() {
         println("Solution 1: ${solve1()}")
         println("Solution 2: ${solve2()}")
+        assertEquals(57346, solve1())
+        assertEquals(57345, solve2())
         assertTrue { true }
     }
 }
