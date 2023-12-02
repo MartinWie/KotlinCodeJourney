@@ -79,12 +79,57 @@ class Challenge2023Day01 {
 
     private val numberStringList = mutableMapOf("one" to 1, "two" to 2, "three" to 3, "four" to 4, "five" to 5, "six" to 6, "seven" to 7, "eight" to 8, "nine" to 9)
 
+    private fun solve3(): Int {
+        val lines = File("./AdventOfCode/Data/Day01-1.txt").bufferedReader().readLines()
+        val numberList = mutableListOf<Int>()
+        for (line in lines) {
+            val currentNumber = "${getFirstDigit3(line)}${getLastDigit3(line)}"
+            numberList.add(currentNumber.toInt())
+        }
+        return numberList.sum()
+    }
+
+    private fun getFirstDigit3(text: String): Int {
+        val charList = mutableListOf<Char>()
+        for (char in text) {
+            charList.add(char)
+            val currentSubString = charList.joinToString(separator = "")
+            val found = findNumber(currentSubString)
+            if (found != null) return found
+        }
+        throw IllegalArgumentException("No digit in text: $text")
+    }
+
+    private fun getLastDigit3(text: String): Int {
+        val reversedText = text.reversed()
+        val charList = mutableListOf<Char>()
+        for (char in reversedText) {
+            charList.add(char)
+            val currentSubString = charList.joinToString(separator = "").reversed()
+            val found = findNumber(currentSubString)
+            if (found != null) return found
+        }
+        throw IllegalArgumentException("No digit in text: $text")
+    }
+
+    private fun findNumber(text: String): Int? {
+        val regex = Regex("(one|two|three|four|five|six|seven|eight|nine)|\\d")
+        val found = regex.find(text)
+        return when {
+            found == null -> null
+            found.value.length > 1 -> numberStringList[found.value]
+            else -> found.value.toInt()
+        }
+    }
+
     @Test
     fun test() {
         println("Solution 1: ${solve1()}")
         println("Solution 2: ${solve2()}")
+        println("Solution 3: ${solve3()}")
         assertEquals(57346, solve1())
         assertEquals(57345, solve2())
+        assertEquals(57345, solve3())
         assertTrue { true }
     }
 }
