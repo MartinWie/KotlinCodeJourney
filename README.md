@@ -42,9 +42,10 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 ## AdventOfCode
 You know the drill, here is what we got:
 
-| No. | Title                                                                    | Solution                                         |
-|-----|--------------------------------------------------------------------------|--------------------------------------------------|
-| 1   | [2023-01](https://adventofcode.com/2023) | [Code](./AdventOfCode/Challenge2023Day01.kt)         |
+| No. | Title                                             | Solution                                     |
+|-----|---------------------------------------------------|----------------------------------------------|
+| 1   | [2023-12-01](https://adventofcode.com/2023/day/1) | [Code](./AdventOfCode/Challenge2023Day01.kt) |
+| 1   | [2023-12-02](https://adventofcode.com/2023/day/2) | [Code](./AdventOfCode/Challenge2023Day02.kt) |
 
 
 ## Kotlin-Learnings
