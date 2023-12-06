@@ -64,7 +64,7 @@ class Challenge2023Day03 {
         return false
     }
 
-    fun Char.isSymbol(): Boolean {
+    private fun Char.isSymbol(): Boolean {
         return (this != '.' && !this.isLetterOrDigit())
     }
 
