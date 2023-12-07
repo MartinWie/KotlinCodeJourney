@@ -25,10 +25,12 @@ class Challenge2023Day04 {
         return numberList.sum()
     }
 
+    private fun splitAndMapToNumbers(str: String): List<Int> = str.trim().split(" ").map { it.toInt() }
+
     private fun lineToGameNumbers(line: String): Pair<HashSet<Int>, List<Int>> {
-        val rawGame = line.replace("  ", " ").split(":")[1]
-        val winningNumbersHashSet = rawGame.split("|")[0].trim().split(" ").map { it.toInt() }.toHashSet()
-        val ownNumbers = rawGame.split("|")[1].trim().split(" ").map { it.toInt() }
+        val rawGame = line.replace("  ", " ").split(":")[1].split("|")
+        val winningNumbersHashSet = splitAndMapToNumbers(rawGame[0]).toHashSet()
+        val ownNumbers = splitAndMapToNumbers(rawGame[1])
 
         return winningNumbersHashSet to ownNumbers
     }
