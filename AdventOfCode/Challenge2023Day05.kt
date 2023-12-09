@@ -32,8 +32,8 @@ class Challenge2023Day05 {
                 // Lines that contain the actual mapping
                 else -> {
                     val mappingsRaw = line.split(" ").map { it.toLong() }
-                    val sourceStart = mappingsRaw.first()
-                    val targetStart = mappingsRaw[1]
+                    val targetStart = mappingsRaw.first()
+                    val sourceStart = mappingsRaw[1]
                     val range = mappingsRaw.last()
                     val tmpSeeds = mutableListOf<Pair<Long, Int>>()
 
