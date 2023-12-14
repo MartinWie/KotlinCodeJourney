@@ -20,17 +20,54 @@ class Challenge2023Day07 {
             '2' to 2
         )
 
-        val (currentCardsRaw, winningAmountRaw) = lines[0].split(" ")
-        val currentCards = currentCardsRaw.map { valueMap[it]!! }
-        val winningAmount = winningAmountRaw.toInt()
+        val hands = mutableListOf<Hand>()
+        lines.forEach { line ->
+            val (currentCardsRaw, winningAmountRaw) = line.split(" ")
+            val currentCards = currentCardsRaw.map { valueMap[it]!! }
+            val winningAmount = winningAmountRaw.toInt()
+            val numberCounts = currentCards.groupingBy { it }.eachCount()
+            val classification = classifyHand(numberCounts)
 
-        val currentHand = currentCards to winningAmount
-        // check how often a number is in a list of numbers
-        val numberCounts: Map<Int, Int> = currentHand.first.groupingBy { it }.eachCount()
+            val currentHand = Hand(
+                currentCards,
+                winningAmount,
+                numberCounts,
+                classification
+            )
+
+            hands.add(currentHand)
+        }
 
 
 
         return 0
+    }
+
+    data class Hand(
+        val currentCards: List<Int>,
+        val winningAmount: Int,
+        val numberCounts: Map<Int, Int>,
+        val classification: Int
+    )
+
+    private fun classifyHand(numberCounts: Map<Int, Int>): Int {
+        // For simplicity I will map the different types of hands to simple integers, this makes compares straight forward
+        return when {
+            // Five of a kind
+            numberCounts.containsValue(5) -> 7
+            // Four of a kind
+            numberCounts.containsValue(4) -> 6
+            // Full house
+            numberCounts.containsValue(3) && numberCounts.containsValue(2) -> 5
+            // Three of a kind
+            numberCounts.containsValue(3) -> 4
+            // Two pairs
+            numberCounts.filter { it.value == 2 }.size ==  2 -> 3
+            // One pair
+            numberCounts.filter { it.value == 2 }.size == 1 -> 2
+            // No matches
+            else -> 1
+        }
     }
 
     @Test
