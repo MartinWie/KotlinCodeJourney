@@ -38,9 +38,21 @@ class Challenge2023Day07 {
             hands.add(currentHand)
         }
 
+        val sortedHands = hands.sortedWith(
+            compareBy<Hand> { it.classification }
+                .then {
+                      h1, h2 -> Hand.compare.compare(h1, h2)
+                }
+        )
+
+        var winningSum = 0
+
+        sortedHands.forEachIndexed { index, hand ->
+            winningSum += hand.winningAmount * (index + 1)
+        }
 
 
-        return 0
+        return winningSum
     }
 
     data class Hand(
@@ -48,7 +60,19 @@ class Challenge2023Day07 {
         val winningAmount: Int,
         val numberCounts: Map<Int, Int>,
         val classification: Int
-    )
+    ) {
+        companion object {
+            val compare = Comparator { h1: Hand, h2: Hand ->
+                val minHandSize = minOf(h1.currentCards.size, h2.currentCards.size)
+                for (cardNum in 0 until minHandSize) {
+                    val compareResult = h1.currentCards[cardNum].compareTo(h2.currentCards[cardNum])
+                    if (compareResult != 0) return@Comparator compareResult
+                }
+
+                h1.currentCards.size.compareTo(h2.currentCards.size)
+            }
+        }
+    }
 
     private fun classifyHand(numberCounts: Map<Int, Int>): Int {
         // For simplicity I will map the different types of hands to simple integers, this makes compares straight forward
@@ -75,11 +99,11 @@ class Challenge2023Day07 {
         val lines = File("./AdventOfCode/Data/Day07-1-Test-Data.txt").bufferedReader().readLines()
         val exampleSolution1 = solve1(lines)
         println("Example solution 1: $exampleSolution1")
-        assertEquals(288, exampleSolution1)
+        assertEquals(6440, exampleSolution1)
 
         val realLines = File("./AdventOfCode/Data/Day07-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
-        assertEquals(3316275, solution1)
+        assertEquals(249748283, solution1)
     }
 }
