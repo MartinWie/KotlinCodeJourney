@@ -14,10 +14,11 @@ class Challenge2023Day08 {
         val mapLines = getMapLines(lines.drop(2))
 
         while (currentPointer != "ZZZ") {
+            val mapLine = mapLines[currentPointer]
             currentPointer = if (moves[moveIndex] == 'L') {
-                mapLines[currentPointer]!!.first
+                mapLine!!.first
             } else {
-                mapLines[currentPointer]!!.second
+                mapLine!!.second
             }
             steps++
             // moveIndex = (moveIndex + 1) % moves.size
@@ -47,6 +48,11 @@ class Challenge2023Day08 {
         val exampleSolution1 = solve1(lines)
         println("Example solution 1: $exampleSolution1")
         assertEquals(2, exampleSolution1)
+
+        val lines2 = File("./AdventOfCode/Data/Day08-1-Test-Data2.txt").bufferedReader().readLines()
+        val exampleSolution2 = solve1(lines2)
+        println("Example solution 2: $exampleSolution2")
+        assertEquals(6, exampleSolution2)
 
         val realLines = File("./AdventOfCode/Data/Day08-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
