@@ -14,11 +14,11 @@ class Challenge2023Day08 {
         val mapLines = getMapLines(lines.drop(2))
 
         while (currentPointer != "ZZZ") {
-            val mapLine = mapLines[currentPointer]
+            val mapLine = mapLines[currentPointer]!!
             currentPointer = if (moves[moveIndex] == 'L') {
-                mapLine!!.first
+                mapLine.first
             } else {
-                mapLine!!.second
+                mapLine.second
             }
             steps++
             // moveIndex = (moveIndex + 1) % moves.size
