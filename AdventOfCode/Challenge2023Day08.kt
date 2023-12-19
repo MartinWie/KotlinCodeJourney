@@ -6,7 +6,9 @@ class Challenge2023Day08 {
 
     private fun solve1(lines: List<String>): Int {
 
-        var currentPointer = lines[2].take(3) // Get the starting key
+        // var currentPointer = lines[2].take(3) // Get the starting key
+
+        var currentPointer = "AAA"
         var steps = 0
 
         val moves = getMoves(lines.first())
