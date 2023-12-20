@@ -1,7 +1,10 @@
 import java.util.Stack
 
 class SubtreeOfAnotherTree {
-    fun isSubtree(root: TreeNode?, subRoot: TreeNode?): Boolean {
+    fun isSubtree(
+        root: TreeNode?,
+        subRoot: TreeNode?,
+    ): Boolean {
         if (root == null && subRoot == null) return true
         if (root == null || subRoot == null) return false
 
@@ -27,7 +30,10 @@ class SubtreeOfAnotherTree {
         return false
     }
 
-    fun isSubtree2(root: TreeNode?, subRoot: TreeNode?): Boolean {
+    fun isSubtree2(
+        root: TreeNode?,
+        subRoot: TreeNode?,
+    ): Boolean {
         if (subRoot == null) return true
         if (root == null) return false
         if (isSameTree(root, subRoot)) return true
@@ -35,7 +41,10 @@ class SubtreeOfAnotherTree {
         return (isSubtree2(root.left, subRoot) || isSubtree2(root.right, subRoot))
     }
 
-    private fun isSameTree(tree1: TreeNode?, tree2: TreeNode?): Boolean {
+    private fun isSameTree(
+        tree1: TreeNode?,
+        tree2: TreeNode?,
+    ): Boolean {
         if (tree1 == null && tree2 == null) return true
         if (tree1 == null || tree2 == null) return false
         if (tree1.`val` != tree2.`val`) return false

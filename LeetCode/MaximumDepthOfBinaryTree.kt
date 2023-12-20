@@ -1,7 +1,6 @@
 import java.util.Stack
 
 class MaximumDepthOfBinaryTree {
-
     fun maxDepth(root: TreeNode?): Int {
         if (root == null) return 0
 

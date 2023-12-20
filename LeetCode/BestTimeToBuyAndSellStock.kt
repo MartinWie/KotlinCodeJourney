@@ -1,5 +1,4 @@
 class BestTimeToBuyAndSellStock {
-
     // First version jusr stupid brute force.
     fun maxProfit(prices: IntArray): Int {
         var currentMaxProfit = 0

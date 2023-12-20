@@ -1,7 +1,10 @@
 import java.util.Stack
 
 class SameTree {
-    fun isSameTree(p: TreeNode?, q: TreeNode?): Boolean {
+    fun isSameTree(
+        p: TreeNode?,
+        q: TreeNode?,
+    ): Boolean {
         val pList = treeToList(p)
         val qList = treeToList(q)
         return pList == qList
@@ -16,7 +19,10 @@ class SameTree {
         return listOf(node.`val`) + lList + rList
     }
 
-    fun isSameTree2(p: TreeNode?, q: TreeNode?): Boolean {
+    fun isSameTree2(
+        p: TreeNode?,
+        q: TreeNode?,
+    ): Boolean {
         val pStack = Stack<TreeNode?>()
         val qStack = Stack<TreeNode?>()
 
@@ -42,7 +48,10 @@ class SameTree {
         return qStack.isEmpty()
     }
 
-    fun isSameTree3(p: TreeNode?, q: TreeNode?): Boolean {
+    fun isSameTree3(
+        p: TreeNode?,
+        q: TreeNode?,
+    ): Boolean {
         if (p == null && q == null) return true
         if (p == null || q == null) return false
 

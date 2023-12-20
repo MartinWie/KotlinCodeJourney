@@ -28,6 +28,7 @@ class DiameterOfBinaryTree {
     }
 
     private var maxDiameter = 0
+
     fun diameterOfBinaryTree2(root: TreeNode?): Int {
         maxDepth(root)
         return maxDiameter

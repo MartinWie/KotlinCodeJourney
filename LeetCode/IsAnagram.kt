@@ -1,8 +1,10 @@
 class IsAnagram {
-
     // First version trying to trick the system, by adding the ASCI int values together but the test account for such trickery
     // This would be very memory efficient :D
-    fun isAnagram(s: String, t: String): Boolean {
+    fun isAnagram(
+        s: String,
+        t: String,
+    ): Boolean {
         if (s.length != t.length) return false
 
         var asciValueS = 0
@@ -21,7 +23,10 @@ class IsAnagram {
 
     // Version 2: Dumb brute force utilizing a helper function for better readibility
     // Going through every letter and check if there is a proper counter part in the other string
-    fun isAnagram2(s: String, t: String): Boolean {
+    fun isAnagram2(
+        s: String,
+        t: String,
+    ): Boolean {
         if (s.length != t.length) return false
 
         var controlString: String? = t
@@ -34,7 +39,10 @@ class IsAnagram {
         return true
     }
 
-    private fun dropFirstAppearenceLetterFromString(char: Char, text: String?): String? {
+    private fun dropFirstAppearenceLetterFromString(
+        char: Char,
+        text: String?,
+    ): String? {
         if (text == null) return null
 
         for (s in text) {
@@ -44,7 +52,10 @@ class IsAnagram {
     }
 
     // A bit better but there must be a better solution, lets search for other approaches...
-    fun isAnagram3(s: String, t: String): Boolean {
+    fun isAnagram3(
+        s: String,
+        t: String,
+    ): Boolean {
         if (s == t) return true
         if (s.length != t.length) return false
 
@@ -57,7 +68,7 @@ class IsAnagram {
     }
 
     private fun String.toAnagramHashMap(): HashMap<Char, Int> {
-        val hashMap = hashMapOf<Char,Int>()
+        val hashMap = hashMapOf<Char, Int>()
         this.forEach { c ->
             if (hashMap.containsKey(c)) {
                 hashMap[c] = hashMap[c]!! + 1
@@ -69,7 +80,10 @@ class IsAnagram {
     }
 
     // Final solution for now there are more memory efficient solutionsliek working with an IntArray, but this is sufficient enough for now
-    fun isAnagram4(s: String, t: String): Boolean {
+    fun isAnagram4(
+        s: String,
+        t: String,
+    ): Boolean {
         if (s == t) return true
         if (s.length != t.length) return false
 

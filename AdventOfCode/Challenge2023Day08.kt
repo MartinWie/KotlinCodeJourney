@@ -3,9 +3,7 @@ import java.io.File
 import kotlin.test.assertEquals
 
 class Challenge2023Day08 {
-
     private fun solve1(lines: List<String>): Int {
-
         // var currentPointer = lines[2].take(3) // Get the starting key
 
         var currentPointer = "AAA"
@@ -17,11 +15,12 @@ class Challenge2023Day08 {
 
         while (currentPointer != "ZZZ") {
             val mapLine = mapLines[currentPointer]!!
-            currentPointer = if (moves[moveIndex] == 'L') {
-                mapLine.first
-            } else {
-                mapLine.second
-            }
+            currentPointer =
+                if (moves[moveIndex] == 'L') {
+                    mapLine.first
+                } else {
+                    mapLine.second
+                }
             steps++
             // moveIndex = (moveIndex + 1) % moves.size
             moveIndex++

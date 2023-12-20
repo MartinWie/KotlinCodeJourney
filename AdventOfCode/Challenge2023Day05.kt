@@ -37,11 +37,10 @@ class Challenge2023Day05 {
                     val range = mappingsRaw.last()
                     val tmpSeeds = mutableListOf<Pair<Long, Int>>()
 
-                    seeds.forEach{ seed ->
+                    seeds.forEach { seed ->
                         if (
                             seed.second < currentMappingCounter && (seed.first in sourceStart..<(sourceStart + range))
-                            )
-                        {
+                        ) {
                             val newValue = (seed.first - sourceStart) + targetStart
                             tmpSeeds.add(newValue to currentMappingCounter)
                         } else {
@@ -96,7 +95,7 @@ class Challenge2023Day05 {
         rawSeedRange.mapIndexed { index, s ->
             var seedRange = rawSeedRange[index].toInt()
             for (num in 0..<seedRange) {
-                seeds.add((s.toInt()+num).toLong() to 0)
+                seeds.add((s.toInt() + num).toLong() to 0)
             }
         }
         var currentMappingCounter = 0
@@ -129,11 +128,10 @@ class Challenge2023Day05 {
                     val range = mappingsRaw.last()
                     val tmpSeeds = mutableListOf<Pair<Long, Int>>()
 
-                    seeds.forEach{ seed ->
+                    seeds.forEach { seed ->
                         if (
                             seed.second < currentMappingCounter && (seed.first in sourceStart..<(sourceStart + range))
-                        )
-                        {
+                        ) {
                             val newValue = (seed.first - sourceStart) + targetStart
                             tmpSeeds.add(newValue to currentMappingCounter)
                         } else {

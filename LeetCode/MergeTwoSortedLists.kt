@@ -2,7 +2,10 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 class MergeTwoSortedLists {
-    private fun mergeTwoLists(list1: ListNode?, list2: ListNode?): ListNode? {
+    private fun mergeTwoLists(
+        list1: ListNode?,
+        list2: ListNode?,
+    ): ListNode? {
         val mergedList = mutableListOf<Int>()
         var list1Pointer = list1
         var list2Pointer = list2
@@ -31,25 +34,30 @@ class MergeTwoSortedLists {
         var firstNode: ListNode? = null
         mergedList.forEach {
             val tmpNode = ListNode(it)
-            firstNode = if (firstNode == null) {
-                tmpNode
-            } else {
-                appendNodeToEndOfList(firstNode, tmpNode)
-            }
+            firstNode =
+                if (firstNode == null) {
+                    tmpNode
+                } else {
+                    appendNodeToEndOfList(firstNode, tmpNode)
+                }
         }
 
         return firstNode
     }
 
-    private fun appendNodeToEndOfList(head: ListNode?, append: ListNode): ListNode {
+    private fun appendNodeToEndOfList(
+        head: ListNode?,
+        append: ListNode,
+    ): ListNode {
         append.next = null
         if (head == null) return append
 
-        head.next = if (head.next == null) {
-            append
-        } else {
-            appendNodeToEndOfList(head.next, append)
-        }
+        head.next =
+            if (head.next == null) {
+                append
+            } else {
+                appendNodeToEndOfList(head.next, append)
+            }
 
         return head
     }
@@ -72,7 +80,10 @@ class MergeTwoSortedLists {
         assertEquals(expectedList.toString(), solutionList.toString())
     }
 
-    private fun mergeTwoLists2(list1: ListNode?, list2: ListNode?): ListNode? {
+    private fun mergeTwoLists2(
+        list1: ListNode?,
+        list2: ListNode?,
+    ): ListNode? {
         val placeholderNode = ListNode(0)
         var currentLastNode = placeholderNode
         var list1Pointer = list1
@@ -131,7 +142,10 @@ class MergeTwoSortedLists {
         assertEquals(expectedList.toString(), solutionList.toString())
     }
 
-    private fun mergeTwoLists3(list1: ListNode?, list2: ListNode?): ListNode? {
+    private fun mergeTwoLists3(
+        list1: ListNode?,
+        list2: ListNode?,
+    ): ListNode? {
         val dummyHead = ListNode(0)
         var currentList1 = list1
         var currentList2 = list2

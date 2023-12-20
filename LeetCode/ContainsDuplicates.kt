@@ -1,5 +1,4 @@
 class ContainsDuplicates {
-
     // Simple start solution using a set and comparing the sizes
     fun containsDuplicates(numbers: List<Int>): Boolean {
         val numbersSet = numbers.toSet()

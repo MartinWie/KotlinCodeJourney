@@ -3,7 +3,6 @@ import java.io.File
 import kotlin.test.assertEquals
 
 class Challenge2023Day04 {
-
     private fun solve1(lines: List<String>): Int {
         val numberList = mutableListOf<Int>()
         val games = lines.map { lineToGameNumbers(it) }

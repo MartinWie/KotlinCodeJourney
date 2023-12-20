@@ -69,7 +69,12 @@ class ThreeSum {
         return resultList
     }
 
-    private fun twoSum(nums: IntArray, startIndex: Int, target: Int, resultList: MutableList<List<Int>>) {
+    private fun twoSum(
+        nums: IntArray,
+        startIndex: Int,
+        target: Int,
+        resultList: MutableList<List<Int>>,
+    ) {
         val seen = HashSet<Int>()
 
         for (i in startIndex + 1 until nums.size) {

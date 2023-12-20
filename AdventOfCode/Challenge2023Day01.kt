@@ -5,7 +5,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class Challenge2023Day01 {
-
     private fun solve1(): Int {
         val lines = File("./AdventOfCode/Data/Day01-1.txt").bufferedReader().readLines()
         val numberList = mutableListOf<Int>()
@@ -77,7 +76,8 @@ class Challenge2023Day01 {
         throw IllegalArgumentException("No digit in text: $text")
     }
 
-    private val numberStringList = mutableMapOf("one" to 1, "two" to 2, "three" to 3, "four" to 4, "five" to 5, "six" to 6, "seven" to 7, "eight" to 8, "nine" to 9)
+    private val numberStringList =
+        mutableMapOf("one" to 1, "two" to 2, "three" to 3, "four" to 4, "five" to 5, "six" to 6, "seven" to 7, "eight" to 8, "nine" to 9)
 
     private fun solve3(): Int {
         val lines = File("./AdventOfCode/Data/Day01-1.txt").bufferedReader().readLines()

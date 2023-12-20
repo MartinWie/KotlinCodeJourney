@@ -26,13 +26,15 @@ tasks.register<Test>("testAdventOfCode") {
     classpath = sourceSets["AdventOfCode"].runtimeClasspath
 }
 dependencies {
-    val commonTestDependencies = listOf(
-        "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
-        "org.junit.jupiter:junit-jupiter-api:5.8.1",
-        "org.junit.jupiter:junit-jupiter-engine:5.8.1",
-    )
+    val commonTestDependencies =
+        listOf(
+            "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+            "org.junit.jupiter:junit-jupiter-api:5.8.1",
+            "org.junit.jupiter:junit-jupiter-engine:5.8.1",
+        )
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
     // Apply common dependencies to source sets
     fun addCommonTestDependenciesToSourceSet(sourceSetName: String) {
         commonTestDependencies.forEach {

@@ -17,7 +17,6 @@ class Challenge2023Day06 {
             if (winningHolds.isNotEmpty()) winningAmounts.add(winningHolds.size)
         }
 
-
         return winningAmounts.reduce { acc, number -> acc * number }
     }
 

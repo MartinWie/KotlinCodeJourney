@@ -1,6 +1,9 @@
 class TwoSum {
     // First quick and dirty brute force
-    fun twoSum(nums: IntArray, target: Int): IntArray {
+    fun twoSum(
+        nums: IntArray,
+        target: Int,
+    ): IntArray {
         for ((index, num) in nums.withIndex()) {
             var firstIndex = index
             for ((compareIndex, compareNum) in nums.drop(index + 1).withIndex()) {
@@ -11,7 +14,10 @@ class TwoSum {
     }
 
     // After that try implementing with hashmap (target = a+b, we have a and t so check in hashmap for b)
-    fun twoSum2(nums: IntArray, target: Int): IntArray {
+    fun twoSum2(
+        nums: IntArray,
+        target: Int,
+    ): IntArray {
         val hashMap = HashMap<Int, List<Int>>()
 
         nums.forEachIndexed { index: Int, num: Int ->
@@ -30,11 +36,12 @@ class TwoSum {
             counterpartIndex = target - num
 
             if (hashMap[counterpartIndex] != null) {
-                currentCounterPart = if (num == counterpartIndex && hashMap[counterpartIndex]!!.size <= 1) {
-                    null
-                } else {
-                    hashMap[counterpartIndex]?.last()
-                }
+                currentCounterPart =
+                    if (num == counterpartIndex && hashMap[counterpartIndex]!!.size <= 1) {
+                        null
+                    } else {
+                        hashMap[counterpartIndex]?.last()
+                    }
             } else {
                 currentCounterPart = null
             }
@@ -47,7 +54,10 @@ class TwoSum {
 
     // Lets get that cleaned up and optimise, to return immediately when finding a douplicate
     // Trick here: While filling the hashmap chekcing for the desired number (t = a + b so -> t - a = b)
-    fun twoSum3(nums: IntArray, target: Int): IntArray {
+    fun twoSum3(
+        nums: IntArray,
+        target: Int,
+    ): IntArray {
         val hashMap = HashMap<Int, Int>()
 
         nums.forEachIndexed { index: Int, num: Int ->

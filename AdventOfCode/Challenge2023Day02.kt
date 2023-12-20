@@ -3,8 +3,10 @@ import java.io.File
 import kotlin.test.assertEquals
 
 class Challenge2023Day02 {
-
-    private fun solve(gameConfig: GameConfig, file: String): Int {
+    private fun solve(
+        gameConfig: GameConfig,
+        file: String,
+    ): Int {
         val games = File(file).bufferedReader().readLines()
         val validGamesIdList = mutableListOf<Int>()
         val allowedCubeColors = gameConfig.cubes.map { it.color }

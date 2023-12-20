@@ -16,11 +16,12 @@ class Challenge2023Day03 {
             }
             currentLine = schema[lineNumber]
 
-            nextLine = if (schema.last() == schema[lineNumber]) {
-                null
-            } else {
-                schema[lineNumber + 1]
-            }
+            nextLine =
+                if (schema.last() == schema[lineNumber]) {
+                    null
+                } else {
+                    schema[lineNumber + 1]
+                }
 
             nummerRegex.findAll(currentLine).forEach { match ->
                 val startIndex = match.range.first
