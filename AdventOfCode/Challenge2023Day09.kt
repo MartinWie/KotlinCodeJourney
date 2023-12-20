@@ -1,12 +1,43 @@
 import org.junit.Test
 import java.io.File
+import kotlin.math.abs
 import kotlin.test.assertEquals
 
 class Challenge2023Day09 {
-
     private fun solve1(lines: List<String>): Int {
+        val results = mutableListOf<Int>()
 
-        return 0
+        lines.forEach { line ->
+            // Generate the relevant lines
+            val initialNumbers = line.split(" ").map { it.toInt() }
+            val numberRows = mutableListOf<List<Int>>()
+
+            numberRows.add(initialNumbers)
+
+            var currentRow = numberRows.first()
+
+            while (currentRow.reduce { acc, i -> abs(i) + acc } != 0) {
+                val newRow = mutableListOf<Int>()
+
+                var formerNumber: Int? = null
+                currentRow.forEach {
+                    if (formerNumber != null) {
+                        newRow.add(it - formerNumber!!)
+                    }
+                    formerNumber = it
+                }
+
+                numberRows.add(newRow)
+
+                currentRow = numberRows.last()
+            }
+
+            numberRows.reversed()
+
+            // TBD
+        }
+
+        return results.sum()
     }
 
     @Test
