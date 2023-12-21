@@ -32,9 +32,21 @@ class Challenge2023Day09 {
                 currentRow = numberRows.last()
             }
 
-            numberRows.reversed()
+            val numberRowsReversed = numberRows.reversed()
 
-            // TBD
+            var currentPredictedNumber = 0
+            var formerRow: MutableList<Int>? = null
+
+            for (row in numberRowsReversed) {
+                val formerPredict = currentPredictedNumber
+                if (formerRow != null) {
+                    currentPredictedNumber = row.last() + formerPredict
+                }
+
+                formerRow = row.toMutableList()
+                formerRow.add(formerPredict)
+            }
+            results.add(currentPredictedNumber)
         }
 
         return results.sum()
@@ -50,6 +62,6 @@ class Challenge2023Day09 {
         val realLines = File("./AdventOfCode/Data/Day09-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
-        assertEquals(18673, solution1)
+        assertEquals(1861775706, solution1)
     }
 }
