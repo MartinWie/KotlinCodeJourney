@@ -42,17 +42,18 @@ In here, I'm sharing the solutions (or attempts at solutions) for problems over 
 ## AdventOfCode
 You know the drill, here is what we got:
 
-| No. | Title                                             | Solution                                     |
-|-----|---------------------------------------------------|----------------------------------------------|
-| 1   | [2023-12-01](https://adventofcode.com/2023/day/1) | [Code](./AdventOfCode/Challenge2023Day01.kt) |
-| 2   | [2023-12-02](https://adventofcode.com/2023/day/2) | [Code](./AdventOfCode/Challenge2023Day02.kt) |
-| 3   | [2023-12-03](https://adventofcode.com/2023/day/3) | [Code](./AdventOfCode/Challenge2023Day03.kt) |
-| 4   | [2023-12-04](https://adventofcode.com/2023/day/4) | [Code](./AdventOfCode/Challenge2023Day04.kt) |
-| 5   | [2023-12-05](https://adventofcode.com/2023/day/5) | [Code](./AdventOfCode/Challenge2023Day05.kt) |
-| 6   | [2023-12-06](https://adventofcode.com/2023/day/6) | [Code](./AdventOfCode/Challenge2023Day06.kt) |
-| 7   | [2023-12-07](https://adventofcode.com/2023/day/7) | [Code](./AdventOfCode/Challenge2023Day07.kt) |
-| 8   | [2023-12-08](https://adventofcode.com/2023/day/8) | [Code](./AdventOfCode/Challenge2023Day08.kt) |
-| 9   | [2023-12-09](https://adventofcode.com/2023/day/9) | [Code](./AdventOfCode/Challenge2023Day09.kt) |
+| No. | Title                                              | Solution                                     |
+|-----|----------------------------------------------------|----------------------------------------------|
+| 1   | [2023-12-01](https://adventofcode.com/2023/day/1)  | [Code](./AdventOfCode/Challenge2023Day01.kt) |
+| 2   | [2023-12-02](https://adventofcode.com/2023/day/2)  | [Code](./AdventOfCode/Challenge2023Day02.kt) |
+| 3   | [2023-12-03](https://adventofcode.com/2023/day/3)  | [Code](./AdventOfCode/Challenge2023Day03.kt) |
+| 4   | [2023-12-04](https://adventofcode.com/2023/day/4)  | [Code](./AdventOfCode/Challenge2023Day04.kt) |
+| 5   | [2023-12-05](https://adventofcode.com/2023/day/5)  | [Code](./AdventOfCode/Challenge2023Day05.kt) |
+| 6   | [2023-12-06](https://adventofcode.com/2023/day/6)  | [Code](./AdventOfCode/Challenge2023Day06.kt) |
+| 7   | [2023-12-07](https://adventofcode.com/2023/day/7)  | [Code](./AdventOfCode/Challenge2023Day07.kt) |
+| 8   | [2023-12-08](https://adventofcode.com/2023/day/8)  | [Code](./AdventOfCode/Challenge2023Day08.kt) |
+| 9   | [2023-12-09](https://adventofcode.com/2023/day/9)  | [Code](./AdventOfCode/Challenge2023Day09.kt) |
+| 10  | [2023-12-10](https://adventofcode.com/2023/day/10) | [Code](./AdventOfCode/Challenge2023Day10.kt) |
 
 
 ## Kotlin-Learnings
