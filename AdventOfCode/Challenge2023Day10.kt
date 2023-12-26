@@ -20,11 +20,9 @@ class Challenge2023Day10 {
         var forbiddenNext = 'X'
         while ( steps == 0 || currentPosition != startingPosition ) {
 
-            if (currentPosition == startingPosition) {
-                val result = getNextPosition(currentPosition, map, forbiddenNext)
-                currentPosition = result.first
-                forbiddenNext = result.second
-            }
+            val result = getNextPosition(currentPosition, map, forbiddenNext)
+            currentPosition = result.first
+            forbiddenNext = result.second
 
             steps++
         }
@@ -36,25 +34,27 @@ class Challenge2023Day10 {
         map: MutableList<MutableList<Char>>,
         forbiddenNext: Char
         ): Pair<Pair<Int, Int>, Char> {
+
+        val currentChar = map[position.first][position.second]
         return when {
             // Below
-            map[position.first][position.second + 1] in "|LJ" && forbiddenNext != 'S' -> {
-                (position.first to position.second + 1) to 'N'
+            map[position.first + 1][position.second] in "|LJS" && forbiddenNext != 'S' -> {
+                (position.first + 1 to position.second) to 'N'
             }
 
             // Right
-            map[position.first + 1][position.second] in "-J7" && forbiddenNext != 'E' -> {
-                (position.first + 1 to position.second) to 'W'
+            map[position.first][position.second + 1] in "-J7S" && forbiddenNext != 'E' -> {
+                (position.first to position.second + 1) to 'W'
             }
 
             // Left
-            map[position.first - 1][position.second] in "-LF" && forbiddenNext != 'W' -> {
-                (position.first - 1 to position.second) to 'E'
+            map[position.first][position.second - 1] in "-LFS" && forbiddenNext != 'W' -> {
+                (position.first to position.second - 1) to 'E'
             }
 
             // Above
-            map[position.first][position.second - 1] in "|7F" && forbiddenNext != 'N' -> {
-                (position.first to position.second - 1) to 'S'
+            map[position.first - 1][position.second] in "|7FS" && forbiddenNext != 'N' -> {
+                (position.first - 1 to position.second) to 'S'
             }
 
             else -> { error("How did we end here?") }
