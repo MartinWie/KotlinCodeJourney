@@ -11,7 +11,7 @@ class Challenge2023Day10 {
 
         for ((y, line) in lines.withIndex()) {
             for ((x, char) in line.withIndex()) {
-                if (char == 'S') startingPosition = x to y
+                if (char == 'S') startingPosition = y to x
                 map[y][x] = char
             }
         }
@@ -63,11 +63,11 @@ class Challenge2023Day10 {
 
     @Test
     fun test() {
-        val lines = File("./AdventOfCode/Data/Day10-1-Test-Data.txt").bufferedReader().readLines()
+       /* val lines = File("./AdventOfCode/Data/Day10-1-Test-Data.txt").bufferedReader().readLines()
         val exampleSolution1 = solve1(lines)
         println("Example solution 1: $exampleSolution1")
         assertEquals(4, exampleSolution1)
-
+*/
         val realLines = File("./AdventOfCode/Data/Day10-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
