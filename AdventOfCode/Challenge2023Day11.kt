@@ -9,7 +9,7 @@ class Challenge2023Day11 {
         // First lets expand the map
         for (line in lines) {
             map.add(line)
-            // If the line does not contain any galaxies we can conviniently use it to add it to the expanded map
+            // If the line does not contain any galaxies we can conveniently use it to add it to the expanded map
             if (line.replace(".", "").isEmpty()) map.add(line)
         }
 
@@ -22,6 +22,7 @@ class Challenge2023Day11 {
                     tmpCharList.add(currentChar)
                 }
             }
+
             if (tmpCharList.isNotEmpty()) {
                 for (j in lines.indices) {
                     // TODO: implement expansion for columns
