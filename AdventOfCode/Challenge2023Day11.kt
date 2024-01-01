@@ -14,21 +14,10 @@ class Challenge2023Day11 {
         }
 
         val finalMap = mutableListOf<String>()
-        for (i in map.indices) {
-            val tmpCharList = mutableListOf<Char>()
-            for (j in lines.indices) {
-                val currentChar = map[i][j]
-                if (currentChar == '#') {
-                    tmpCharList.add(currentChar)
-                }
+        val columnsToExpand =
+            (0 until map[0].length).map { columnIndex ->
+                map.all { row -> row[columnIndex] == '.' }
             }
-
-            if (tmpCharList.isNotEmpty()) {
-                for (j in lines.indices) {
-                    // TODO: implement expansion for columns
-                }
-            }
-        }
 
         // Implement Galaxy numeration (use currentGalaxyAmount)
 
