@@ -13,13 +13,34 @@ class Challenge2023Day11 {
             if (line.replace(".", "").isEmpty()) map.add(line)
         }
 
-        val finalMap = mutableListOf<String>()
         val columnsToExpand =
             (0 until map[0].length).map { columnIndex ->
                 map.all { row -> row[columnIndex] == '.' }
             }
 
+        val expandedMap =
+            map.map { row ->
+                row.mapIndexed { index, char ->
+                    if (columnsToExpand[index]) "$char$char" else char
+                }.joinToString("")
+            }
+
         // Implement Galaxy numeration (use currentGalaxyAmount)
+        // More efficient would be to also do the galaxy enumeration in the former steps.
+        // (Decision here readability > performance)
+        val finalMap = mutableListOf<String>()
+        for(line in expandedMap) {
+            val newLine = StringBuilder()
+            for (char in line) {
+                if (char == '#') {
+                    newLine.append(currentGalaxyAmount)
+                    currentGalaxyAmount++
+                } else {
+                    newLine.append(char)
+                }
+            }
+            finalMap.add(newLine.toString())
+        }
 
         // Implement path calculation
 
@@ -28,12 +49,12 @@ class Challenge2023Day11 {
 
     @Test
     fun test() {
-        val lines = File("./AdventOfCode/Data/Day10-1-Test-Data.txt").bufferedReader().readLines()
+        val lines = File("./AdventOfCode/Data/Day11-1-Test-Data.txt").bufferedReader().readLines()
         val exampleSolution1 = solve1(lines)
         println("Example solution 1: $exampleSolution1")
         assertEquals(374, exampleSolution1)
 
-        val realLines = File("./AdventOfCode/Data/Day10-1-Data.txt").bufferedReader().readLines()
+        val realLines = File("./AdventOfCode/Data/Day11-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
         assertEquals(6701, solution1)
