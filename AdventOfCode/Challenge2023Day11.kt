@@ -1,10 +1,10 @@
 import org.junit.Test
 import java.io.File
+import kotlin.math.abs
 import kotlin.test.assertEquals
 
 class Challenge2023Day11 {
     private fun solve1(lines: List<String>): Int {
-        var currentGalaxyAmount = 0
         val map = mutableListOf<String>()
         // First lets expand the map
         for (line in lines) {
@@ -28,13 +28,17 @@ class Challenge2023Day11 {
         // Implement Galaxy numeration (use currentGalaxyAmount)
         // More efficient would be to also do the galaxy enumeration in the former steps.
         // (Decision here readability > performance)
+        // The list "finalMap" is currently not necessary, but I will keep it for now
+        var currentGalaxyAmount = 0
         val finalMap = mutableListOf<String>()
-        for(line in expandedMap) {
+        val galaxyCords = mutableListOf<Pair<Int, Int>>()
+        for((y, line) in expandedMap.withIndex()) {
             val newLine = StringBuilder()
-            for (char in line) {
+            for ((x, char) in line.withIndex()) {
                 if (char == '#') {
                     newLine.append(currentGalaxyAmount)
                     currentGalaxyAmount++
+                    galaxyCords.add(x to y)
                 } else {
                     newLine.append(char)
                 }
@@ -43,8 +47,14 @@ class Challenge2023Day11 {
         }
 
         // Implement path calculation
+        val pathsHashMap = HashMap<Pair<Pair<Int, Int>, Pair<Int, Int>>, Int>()
+        for (pos1 in galaxyCords) {
+            for (pos2 in galaxyCords) {
+                pathsHashMap[pos1 to pos2] = (abs(pos1.first - pos2.first) + abs(pos1.second - pos2.second))
+            }
+        }
 
-        return lines.size
+        return pathsHashMap.values.sum()
     }
 
     @Test
