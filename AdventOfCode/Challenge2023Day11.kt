@@ -32,7 +32,7 @@ class Challenge2023Day11 {
         var currentGalaxyAmount = 0
         val finalMap = mutableListOf<String>()
         val galaxyCords = mutableListOf<Pair<Int, Int>>()
-        for((y, line) in expandedMap.withIndex()) {
+        for ((y, line) in expandedMap.withIndex()) {
             val newLine = StringBuilder()
             for ((x, char) in line.withIndex()) {
                 if (char == '#') {
