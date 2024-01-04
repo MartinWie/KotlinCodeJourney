@@ -50,7 +50,9 @@ class Challenge2023Day11 {
         val pathsHashMap = HashMap<Pair<Pair<Int, Int>, Pair<Int, Int>>, Int>()
         for (pos1 in galaxyCords) {
             for (pos2 in galaxyCords) {
+                if(pathsHashMap[pos1 to pos2] == null && pathsHashMap[pos2 to pos1] == null ) {
                 pathsHashMap[pos1 to pos2] = (abs(pos1.first - pos2.first) + abs(pos1.second - pos2.second))
+                }
             }
         }
 
@@ -67,6 +69,6 @@ class Challenge2023Day11 {
         val realLines = File("./AdventOfCode/Data/Day11-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
-        assertEquals(6701, solution1)
+        assertEquals(9623138, solution1)
     }
 }
