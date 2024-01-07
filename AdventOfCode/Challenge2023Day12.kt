@@ -4,7 +4,13 @@ import kotlin.test.assertEquals
 class Challenge2023Day12 {
 
     private fun solve1(lines: List<String>): Int {
-        // TODO: Implement
+        var result = 0
+        lines.forEach { line ->
+            // split line by space and get two vars from it
+            val (springRow, controlRow) = line.split(" ")
+            // TBD
+        }
+
         return lines.size
     }
 
