@@ -2,13 +2,20 @@ import java.io.File
 import kotlin.test.assertEquals
 
 class Challenge2023Day12 {
-
     private fun solve1(lines: List<String>): Int {
         var result = 0
         lines.forEach { line ->
             // split line by space and get two vars from it
             val (springRow, controlRow) = line.split(" ")
-            // TBD
+            val controlNumbers = controlRow.split(",").map { it.toInt() }
+            val minRemainSpringRowLength = controlNumbers.reduce { acc, i -> acc + i + 1 }
+            var remainingSpringRow = springRow
+            while (remainingSpringRow.length >= minRemainSpringRowLength) {
+                for (number in controlNumbers) {
+                    // TBD
+                }
+                remainingSpringRow = remainingSpringRow.substring(1)
+            }
         }
 
         return lines.size
