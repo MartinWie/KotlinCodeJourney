@@ -5,20 +5,20 @@ class Challenge2023Day12 {
     private fun solve1(lines: List<String>): Int {
         var result = 0
         lines.forEach { line ->
-            // split line by space and get two vars from it
             val (springRow, controlRow) = line.split(" ")
             val controlNumbers = controlRow.split(",").map { it.toInt() }
-            val minRemainSpringRowLength = controlNumbers.reduce { acc, i -> acc + i + 1 }
-            var remainingSpringRow = springRow
-            while (remainingSpringRow.length >= minRemainSpringRowLength) {
-                for (number in controlNumbers) {
-                    // TBD
-                }
-                remainingSpringRow = remainingSpringRow.substring(1)
-            }
+            val totalSprings = controlNumbers.sum()
+
+            val unassignedSprings = totalSprings - springRow.count { it == '#' }
+
+            // Determin unassigned positions (index values should be enough(evaluate later))
+
+            // Get all combinations
+
+            // Check each combination if the arrangement is valid -> yes result++
         }
 
-        return lines.size
+        return result
     }
 
     fun test() {
