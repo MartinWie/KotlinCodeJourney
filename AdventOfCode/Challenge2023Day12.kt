@@ -16,9 +16,23 @@ class Challenge2023Day12 {
             // Get all combinations
 
             // Check each combination if the arrangement is valid -> yes result++
+            // isValidMap is now implemented, now need the other open points
         }
 
         return result
+    }
+
+    private fun isValidMap(
+        springRow: String,
+        controlNumbers: List<Int>,
+    ): Boolean {
+        val pattern = Regex("#+")
+        val matches = pattern.findAll(springRow)
+        matches.forEachIndexed {
+                index, matchResult ->
+            if (matchResult.value.length != controlNumbers[index]) return false
+        }
+        return true
     }
 
     fun test() {
