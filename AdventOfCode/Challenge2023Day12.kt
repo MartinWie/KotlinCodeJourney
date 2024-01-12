@@ -11,9 +11,12 @@ class Challenge2023Day12 {
 
             val unassignedSprings = totalSprings - springRow.count { it == '#' }
 
-            // Determin unassigned positions (index values should be enough(evaluate later))
+            val possibleSpringPositions =
+                springRow.mapIndexedNotNull { index, char ->
+                    if (char == '?') index else null
+                }
 
-            // Get all combinations
+            // Get all combinations(use unassigned amount(remaining missing springs) + possible positions)
 
             // Check each combination if the arrangement is valid -> yes result++
             // isValidMap is now implemented, now need the other open points
