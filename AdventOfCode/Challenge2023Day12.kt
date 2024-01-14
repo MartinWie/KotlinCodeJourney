@@ -25,6 +25,23 @@ class Challenge2023Day12 {
         return result
     }
 
+    private fun <T> List<T>.getCombinations(combLength: Int): List<List<T>> {
+        if (combLength == 0) return listOf(emptyList())
+
+        if (size <= combLength) return listOf(this)
+
+        val head = take(1)
+        val tail = drop(1)
+
+        // All combinations with head
+        val withHead = getCombinations(combLength - 1).map { head + it }
+
+        // All combinations without head
+        val withoutHead = tail.getCombinations(combLength)
+
+        return withHead + withoutHead
+    }
+
     private fun isValidMap(
         springRow: String,
         controlNumbers: List<Int>,
