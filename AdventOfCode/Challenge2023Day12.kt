@@ -1,4 +1,5 @@
 import java.io.File
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class Challenge2023Day12 {
@@ -16,10 +17,9 @@ class Challenge2023Day12 {
                     if (char == '?') index else null
                 }
 
-            // Get all combinations(use unassigned amount(remaining missing springs) + possible positions)
-
-            // Check each combination if the arrangement is valid -> yes result++
-            // isValidMap is now implemented, now need the other open points
+            possibleSpringPositions.getCombinations(unassignedSprings).forEach {
+                if (isValidMap(springRow, it)) result++
+            }
         }
 
         return result
@@ -55,6 +55,7 @@ class Challenge2023Day12 {
         return true
     }
 
+    @Test
     fun test() {
         val lines = File("./AdventOfCode/Data/Day12-1-Test-Data.txt").bufferedReader().readLines()
         val exampleSolution1 = solve1(lines)
