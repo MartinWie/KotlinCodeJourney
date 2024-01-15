@@ -5,6 +5,7 @@ import kotlin.test.assertEquals
 class Challenge2023Day12 {
     private fun solve1(lines: List<String>): Int {
         var result = 0
+
         lines.forEach { line ->
             val (springRow, controlRow) = line.split(" ")
             val controlNumbers = controlRow.split(",").map { it.toInt() }
@@ -18,7 +19,13 @@ class Challenge2023Day12 {
                 }
 
             possibleSpringPositions.getCombinations(unassignedSprings).forEach {
-                if (isValidMap(springRow, it)) result++
+                val tmpLine = StringBuilder(springRow)
+                for (char in it) {
+                    tmpLine[char] = '#'
+                }
+                if (isValidMap(tmpLine.toString(), controlNumbers)) {
+                    result++
+                }
             }
         }
 
@@ -48,9 +55,12 @@ class Challenge2023Day12 {
     ): Boolean {
         val pattern = Regex("#+")
         val matches = pattern.findAll(springRow)
+        if (matches.count() != controlNumbers.size) return false
         matches.forEachIndexed {
                 index, matchResult ->
-            if (matchResult.value.length != controlNumbers[index]) return false
+            if (matchResult.value.length != controlNumbers[index]) {
+                return false
+            }
         }
         return true
     }
