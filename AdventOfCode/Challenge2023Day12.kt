@@ -32,21 +32,21 @@ class Challenge2023Day12 {
         return result
     }
 
-    private fun <T> List<T>.getCombinations(combLength: Int): List<List<T>> {
-        if (combLength == 0) return listOf(emptyList())
+    private fun <T> List<T>.getCombinations(combLength: Int): Sequence<List<T>> {
+        if (combLength == 0) return sequenceOf(emptyList())
 
-        if (size <= combLength) return listOf(this)
+        if (size <= combLength) return sequenceOf(this)
 
-        val head = take(1)
-        val tail = drop(1)
+        return sequence {
+            val head = take(1)
+            val tail = drop(1)
 
-        // All combinations with head
-        val withHead = getCombinations(combLength - 1).map { head + it }
+            // All combinations with head
+            tail.getCombinations(combLength - 1).forEach { yield(head + it) }
 
-        // All combinations without head
-        val withoutHead = tail.getCombinations(combLength)
-
-        return withHead + withoutHead
+            // All combinations without head
+            tail.getCombinations(combLength).forEach { yield(it) }
+        }
     }
 
     private fun isValidMap(
@@ -75,6 +75,6 @@ class Challenge2023Day12 {
         val realLines = File("./AdventOfCode/Data/Day12-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
-        assertEquals(9623138, solution1)
+        assertEquals(7407, solution1)
     }
 }
