@@ -3,8 +3,31 @@ import kotlin.test.assertEquals
 
 class Challenge2023Day13 {
     private fun solve1(lines: List<String>): Int {
+        var result = 0
+
+        // Create list of maps
+
+        // Check all vertical lines of a given map + if found add number to result
+
+        // Check all horizontal lines of a given map + if found * 100 then add number to result
+
+        return result
+    }
+
+    private fun checkVertical(
+        map: Array<Char>,
+        lineNumber: Int,
+    ): Boolean {
         // TODO: Implement
-        return lines.size
+        return false
+    }
+
+    private fun checkHorizontal(
+        map: Array<Char>,
+        lineNumber: Int,
+    ): Boolean {
+        // TODO: Implement
+        return false
     }
 
     fun test() {
