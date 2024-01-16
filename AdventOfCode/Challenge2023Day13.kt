@@ -1,11 +1,21 @@
+import org.junit.Test
 import java.io.File
 import kotlin.test.assertEquals
 
 class Challenge2023Day13 {
     private fun solve1(lines: List<String>): Int {
         var result = 0
+        val maps = mutableListOf<ArrayList<String>>()
+        var mapCreationPosition = 0
 
-        // Create list of maps
+        lines.forEach { line ->
+            if (line.isEmpty()) {
+                mapCreationPosition++
+            } else {
+                if (mapCreationPosition >= maps.size) maps.add(ArrayList())
+                maps[mapCreationPosition].add(line)
+            }
+        }
 
         // Check all vertical lines of a given map + if found add number to result
 
@@ -30,6 +40,7 @@ class Challenge2023Day13 {
         return false
     }
 
+    @Test
     fun test() {
         val lines = File("./AdventOfCode/Data/Day13-1-Test-Data.txt").bufferedReader().readLines()
         val exampleSolution1 = solve1(lines)
