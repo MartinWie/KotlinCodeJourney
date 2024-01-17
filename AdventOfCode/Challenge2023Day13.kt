@@ -17,15 +17,29 @@ class Challenge2023Day13 {
             }
         }
 
-        // Check all vertical lines of a given map + if found add number to result
+        for (map in maps) {
+            // Check all vertical lines of a given map + if found add number to result
+            for (index in map.indices) {
+                if (checkVertical(map, index)) {
+                    result += index
+                    break
+                }
+            }
 
-        // Check all horizontal lines of a given map + if found * 100 then add number to result
+            // Check all horizontal lines of a given map + if found * 100 then add number to result
+            for (index in map.indices) {
+                if (checkVertical(map, index)) {
+                    result += (index * 100)
+                    break
+                }
+            }
+        }
 
         return result
     }
 
     private fun checkVertical(
-        map: Array<Char>,
+        map: ArrayList<String>,
         lineNumber: Int,
     ): Boolean {
         // TODO: Implement
@@ -33,7 +47,7 @@ class Challenge2023Day13 {
     }
 
     private fun checkHorizontal(
-        map: Array<Char>,
+        map: ArrayList<String>,
         lineNumber: Int,
     ): Boolean {
         // TODO: Implement
