@@ -42,8 +42,32 @@ class Challenge2023Day13 {
         map: ArrayList<String>,
         lineNumber: Int,
     ): Boolean {
-        // TODO: Implement
-        return false
+        if (lineNumber == 0 || lineNumber >= map.first().lastIndex) return false
+
+        var leftLine: Pair<String?, Int> = "" to lineNumber
+        var rightLine: Pair<String?, Int> = "" to lineNumber + 1
+
+        while (leftLine.second > 0 || rightLine.second < map.first().lastIndex) {
+            if (leftLine.second <= 0) {
+                leftLine = null to leftLine.second
+            } else {
+                var leftTmp = ""
+                // TODO: for () build new compare string
+                leftLine = leftTmp to leftLine.second
+            }
+
+            if (rightLine.second >= map.first().lastIndex) {
+                rightLine = null to rightLine.second
+            } else {
+                var rightTmp = ""
+                // TODO: for () build new compare string
+                rightLine = rightTmp to rightLine.second + 1
+            }
+
+            if ((leftLine.first ?: rightLine.first) != (rightLine.first ?: leftLine.first)) return false
+        }
+
+        return true
     }
 
     private fun checkHorizontal(
