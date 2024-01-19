@@ -52,7 +52,9 @@ class Challenge2023Day13 {
                 leftLine = null to leftLine.second
             } else {
                 var leftTmp = ""
-                // TODO: for () build new compare string
+                for (line in map) {
+                    leftTmp = leftTmp.plus(line[leftLine.second])
+                }
                 leftLine = leftTmp to leftLine.second - 1
             }
 
@@ -60,7 +62,9 @@ class Challenge2023Day13 {
                 rightLine = null to rightLine.second
             } else {
                 var rightTmp = ""
-                // TODO: for () build new compare string
+                for (line in map) {
+                    rightTmp = rightTmp.plus(line[rightLine.second])
+                }
                 rightLine = rightTmp to rightLine.second + 1
             }
 
