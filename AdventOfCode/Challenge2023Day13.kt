@@ -53,7 +53,7 @@ class Challenge2023Day13 {
             } else {
                 var leftTmp = ""
                 // TODO: for () build new compare string
-                leftLine = leftTmp to leftLine.second
+                leftLine = leftTmp to leftLine.second - 1
             }
 
             if (rightLine.second >= map.first().lastIndex) {
@@ -64,7 +64,9 @@ class Challenge2023Day13 {
                 rightLine = rightTmp to rightLine.second + 1
             }
 
-            if ((leftLine.first ?: rightLine.first) != (rightLine.first ?: leftLine.first)) return false
+            if ((leftLine.first ?: rightLine.first) != (rightLine.first ?: leftLine.first)) {
+                return false
+            }
         }
 
         return true
