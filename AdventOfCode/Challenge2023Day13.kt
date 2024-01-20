@@ -21,7 +21,7 @@ class Challenge2023Day13 {
             // Check all vertical lines of a given map + if found add number to result
             for (index in map.indices) {
                 if (checkVertical(map, index)) {
-                    result += index
+                    result += index + 1
                     break
                 }
             }
@@ -58,7 +58,7 @@ class Challenge2023Day13 {
                 leftLine = leftTmp to leftLine.second - 1
             }
 
-            if (rightLine.second >= map.first().lastIndex) {
+            if (rightLine.second > map.first().lastIndex) {
                 rightLine = null to rightLine.second
             } else {
                 var rightTmp = ""
@@ -80,8 +80,31 @@ class Challenge2023Day13 {
         map: ArrayList<String>,
         lineNumber: Int,
     ): Boolean {
-        // TODO: Implement
-        return false
+        if (lineNumber <= 0 || lineNumber >= map.lastIndex) return false
+
+        var topLine: Pair<String?, Int> = "" to lineNumber
+        var bottomLine: Pair<String?, Int> = "" to lineNumber + 1
+
+        while (topLine.second > 0 || bottomLine.second < map.lastIndex) {
+            topLine =
+                if (topLine.second <= 0) {
+                    null to topLine.second
+                } else {
+                    map[topLine.second] to topLine.second - 1
+                }
+
+            bottomLine =
+                if (bottomLine.second > map.lastIndex) {
+                    null to bottomLine.second
+                } else {
+                    map[bottomLine.second] to bottomLine.second + 1
+                }
+
+            if ((topLine.first ?: bottomLine.first) != (bottomLine.first ?: topLine.first)) {
+                return false
+            }
+        }
+        return true
     }
 
     @Test
