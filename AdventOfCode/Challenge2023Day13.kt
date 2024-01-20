@@ -28,8 +28,8 @@ class Challenge2023Day13 {
 
             // Check all horizontal lines of a given map + if found * 100 then add number to result
             for (index in map.indices) {
-                if (checkVertical(map, index)) {
-                    result += (index * 100)
+                if (checkHorizontal(map, index)) {
+                    result += ((index + 1) * 100)
                     break
                 }
             }
@@ -48,7 +48,7 @@ class Challenge2023Day13 {
         var rightLine: Pair<String?, Int> = "" to lineNumber + 1
 
         while (leftLine.second > 0 || rightLine.second < map.first().lastIndex) {
-            if (leftLine.second <= 0) {
+            if (leftLine.second < 0) {
                 leftLine = null to leftLine.second
             } else {
                 var leftTmp = ""
@@ -87,7 +87,7 @@ class Challenge2023Day13 {
 
         while (topLine.second > 0 || bottomLine.second < map.lastIndex) {
             topLine =
-                if (topLine.second <= 0) {
+                if (topLine.second < 0) {
                     null to topLine.second
                 } else {
                     map[topLine.second] to topLine.second - 1
