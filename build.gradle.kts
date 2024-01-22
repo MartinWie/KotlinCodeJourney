@@ -16,15 +16,25 @@ sourceSets {
     create("AdventOfCode") {
         kotlin.srcDirs("AdventOfCode")
     }
+    create("Kotlin-Play") {
+        kotlin.srcDirs("Kotlin-Play")
+    }
 }
 tasks.register<Test>("testLeetcode") {
     testClassesDirs = sourceSets["leetcode"].output.classesDirs
     classpath = sourceSets["leetcode"].runtimeClasspath
 }
+
 tasks.register<Test>("testAdventOfCode") {
     testClassesDirs = sourceSets["AdventOfCode"].output.classesDirs
     classpath = sourceSets["AdventOfCode"].runtimeClasspath
 }
+
+tasks.register<Test>("testKotlin-Play") {
+    testClassesDirs = sourceSets["Kotlin-Play"].output.classesDirs
+    classpath = sourceSets["Kotlin-Play"].runtimeClasspath
+}
+
 dependencies {
     val commonTestDependencies =
         listOf(
@@ -44,4 +54,5 @@ dependencies {
     }
     addCommonTestDependenciesToSourceSet("leetcode")
     addCommonTestDependenciesToSourceSet("AdventOfCode")
+    addCommonTestDependenciesToSourceSet("Kotlin-Play")
 }
