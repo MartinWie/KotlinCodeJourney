@@ -114,6 +114,11 @@ class Challenge2023Day13 {
         println("Example solution 1: $exampleSolution1")
         assertEquals(405, exampleSolution1)
 
+        val lines2 = File("./AdventOfCode/Data/Day13-1-Test-Data2.txt").bufferedReader().readLines()
+        val exampleSolution2 = solve1(lines2)
+        println("Example solution 1: $exampleSolution2")
+        assertEquals(405, exampleSolution2)
+
         val realLines = File("./AdventOfCode/Data/Day13-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
