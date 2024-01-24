@@ -18,10 +18,12 @@ class Challenge2023Day13 {
         }
 
         for (map in maps) {
+            var foundSolutions = 0
             // Check all vertical lines of a given map + if found add number to result
             for (index in map.indices) {
                 if (checkVertical(map, index)) {
                     result += index + 1
+                    foundSolutions++
                     break
                 }
             }
@@ -30,9 +32,11 @@ class Challenge2023Day13 {
             for (index in map.indices) {
                 if (checkHorizontal(map, index)) {
                     result += ((index + 1) * 100)
+                    foundSolutions++
                     break
                 }
             }
+            check(foundSolutions == 1)
         }
 
         return result
@@ -117,7 +121,7 @@ class Challenge2023Day13 {
         val lines2 = File("./AdventOfCode/Data/Day13-1-Test-Data2.txt").bufferedReader().readLines()
         val exampleSolution2 = solve1(lines2)
         println("Example solution 1: $exampleSolution2")
-        assertEquals(1, exampleSolution2)
+        assertEquals(13, exampleSolution2)
 
         val realLines = File("./AdventOfCode/Data/Day13-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
