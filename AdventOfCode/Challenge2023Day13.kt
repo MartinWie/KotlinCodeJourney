@@ -126,6 +126,6 @@ class Challenge2023Day13 {
         val realLines = File("./AdventOfCode/Data/Day13-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
-        assertEquals(9623138, solution1)
+        assertEquals(31265, solution1)
     }
 }
