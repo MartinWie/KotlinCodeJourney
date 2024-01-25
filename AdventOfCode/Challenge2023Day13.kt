@@ -20,7 +20,7 @@ class Challenge2023Day13 {
         for (map in maps) {
             var foundSolutions = 0
             // Check all vertical lines of a given map + if found add number to result
-            for (index in map.indices) {
+            for (index in map.first().indices) {
                 if (checkVertical(map, index)) {
                     result += index + 1
                     foundSolutions++
