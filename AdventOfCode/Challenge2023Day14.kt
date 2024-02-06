@@ -3,8 +3,16 @@ import kotlin.test.assertEquals
 
 class Challenge2023Day14 {
     private fun solve1(lines: List<String>): Int {
-        // TODO: implement
-        return lines.size
+        var resultLoad = 0
+
+        // TODO: go through each line starting at 1 and see if there is a round rock
+        // Found rock -> move up until line 0 or encountered other rock.
+        // Alternative path, on a row basis go through each row from 0 to n and store latest possible postition
+        // use that to move any found rock, the store nex possible position(current + 1)
+
+        // TOD0: implement result calculation
+        // (go through each line and calculate weight)
+        return resultLoad
     }
 
     fun test() {
