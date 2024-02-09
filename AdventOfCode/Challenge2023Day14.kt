@@ -17,9 +17,19 @@ class Challenge2023Day14 {
             while (verticalPointer < verticalMax) {
                 val currentChar = map[rowNum][verticalPointer]
                 when (currentChar) {
-                    '0' -> {
-                        map[rowNum][verticalPointer] = '.'
-                    } // TODO: finish implementation
+                    'O' -> {
+                        map[rowNum] = map[rowNum].set(verticalPointer, '.')
+                        map[rowNum] = map[rowNum].set(validVerticalPosition, 'O')
+                        validVerticalPosition++
+                    }
+
+                    '#' -> {
+                        validVerticalPosition = verticalPointer + 1
+                    }
+
+                    '.' -> {
+                        // Empty block, nothing to do here!
+                    }
 
                     else -> throw IllegalStateException("Illegal char!")
                 }
