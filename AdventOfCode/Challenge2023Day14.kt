@@ -8,32 +8,32 @@ class Challenge2023Day14 {
         map.addAll(lines)
 
         var resultLoad = 0
-        val verticalMax = map.indices.last
+        val highestIndex = map.indices.last
 
-        for (rowNum in 0..verticalMax) {
-            var verticalPointer = 0
-            var validVerticalPosition = 0
+        for (rowNum in 0..highestIndex) {
+            var columnPointer = 0
+            var validColumnPosition = 0
 
-            while (verticalPointer <= verticalMax) {
-                val currentChar = map[verticalPointer][rowNum]
+            while (columnPointer <= highestIndex) {
+                val currentChar = map[columnPointer][rowNum]
                 when (currentChar) {
                     'O' -> {
-                        map[verticalPointer] = map[verticalPointer].set(rowNum, '.')
-                        map[validVerticalPosition] = map[validVerticalPosition].set(rowNum, 'O')
-                        validVerticalPosition++
+                        map[columnPointer] = map[columnPointer].set(rowNum, '.')
+                        map[validColumnPosition] = map[validColumnPosition].set(rowNum, 'O')
+                        validColumnPosition++
                     }
 
                     '#' -> {
-                        validVerticalPosition = verticalPointer + 1
+                        validColumnPosition = columnPointer + 1
                     }
 
                     '.' -> {
                         // Empty block, nothing to do here!
                     }
 
-                    else -> throw IllegalStateException("Illegal char!")
+                    else -> throw IllegalStateException("Illegal char -> $currentChar")
                 }
-                verticalPointer++
+                columnPointer++
             }
         }
 
