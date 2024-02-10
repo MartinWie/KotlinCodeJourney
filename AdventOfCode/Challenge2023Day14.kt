@@ -14,12 +14,12 @@ class Challenge2023Day14 {
             var verticalPointer = 0
             var validVerticalPosition = 0
 
-            while (verticalPointer < verticalMax) {
-                val currentChar = map[rowNum][verticalPointer]
+            while (verticalPointer <= verticalMax) {
+                val currentChar = map[verticalPointer][rowNum]
                 when (currentChar) {
                     'O' -> {
-                        map[rowNum] = map[rowNum].set(verticalPointer, '.')
-                        map[rowNum] = map[rowNum].set(validVerticalPosition, 'O')
+                        map[verticalPointer] = map[verticalPointer].set(rowNum, '.')
+                        map[validVerticalPosition] = map[validVerticalPosition].set(rowNum, 'O')
                         validVerticalPosition++
                     }
 
