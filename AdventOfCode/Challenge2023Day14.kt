@@ -21,6 +21,9 @@ class Challenge2023Day14 {
                         map[columnPointer] = map[columnPointer].set(rowNum, '.')
                         map[validColumnPosition] = map[validColumnPosition].set(rowNum, 'O')
                         validColumnPosition++
+
+                        // Updating the result val based on the "game" rules.
+                        resultLoad += highestIndex + 1 - columnPointer
                     }
 
                     '#' -> {
@@ -37,15 +40,6 @@ class Challenge2023Day14 {
             }
         }
 
-        // TODO: go through each line starting at 1 and see if there is a round rock
-        // Found rock -> move up until line 0 or encountered other rock.
-        // Alternative path, on a row basis go through each row from 0 to n and store latest possible postition
-        // use that to move any found rock, the store nex possible position(current + 1)
-
-        // TOD0: implement result calculation
-        // (go through each line and calculate weight)
-
-        // Alternative calculate when moving the 'O's
         return resultLoad
     }
 
