@@ -44,6 +44,8 @@ class Challenge2023Day14 {
 
         // TOD0: implement result calculation
         // (go through each line and calculate weight)
+
+        // Alternative calculate when moving the 'O's
         return resultLoad
     }
 
