@@ -20,10 +20,13 @@ class Challenge2023Day14 {
                     'O' -> {
                         map[columnPointer] = map[columnPointer].set(rowNum, '.')
                         map[validColumnPosition] = map[validColumnPosition].set(rowNum, 'O')
-                        validColumnPosition++
 
                         // Updating the result val based on the "game" rules.
-                        resultLoad += highestIndex + 1 - columnPointer
+                        resultLoad += highestIndex + 1 - validColumnPosition
+
+                        // Don't forget to move the valid column pointer forward ;)
+                        validColumnPosition++
+
                     }
 
                     '#' -> {
@@ -53,7 +56,7 @@ class Challenge2023Day14 {
         val realLines = File("./AdventOfCode/Data/Day14-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
-        assertEquals(9623138, solution1)
+        assertEquals(108614, solution1)
     }
 
     @Test
