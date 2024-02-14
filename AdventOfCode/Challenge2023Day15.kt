@@ -15,6 +15,11 @@ class Challenge2023Day15 {
         return result
     }
 
+    private fun holidayASCIIStringHelperAlgorithm(char: Char): Int {
+        // TODO: implement
+        return 0
+    }
+
     @Test
     fun test() {
         val lines = File("./AdventOfCode/Data/Day15-1-Test-Data.txt").bufferedReader().readLines()
@@ -26,5 +31,10 @@ class Challenge2023Day15 {
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
         assertEquals(108614, solution1)
+    }
+
+    @Test
+    fun `verify Holiday ASCII String Helper algorithm`() {
+        // TODO: implement ant then Test for String "HASH" = 52
     }
 }
