@@ -15,9 +15,16 @@ class Challenge2023Day15 {
         return result
     }
 
-    private fun holidayASCIIStringHelperAlgorithm(char: Char): Int {
-        // TODO: implement
-        return 0
+    private fun String.toHolidayASCIIInt(): Int {
+        var result = 0
+
+        this.forEach {
+            result += it.code
+            result *= 17
+            result %= 256
+        }
+
+        return result
     }
 
     @Test
@@ -34,7 +41,7 @@ class Challenge2023Day15 {
     }
 
     @Test
-    fun `verify Holiday ASCII String Helper algorithm`() {
-        // TODO: implement ant then Test for String "HASH" = 52
+    fun `Verify holiday ASCII extension function works as expected`() {
+        assertEquals(52, "HASH".toHolidayASCIIInt())
     }
 }
