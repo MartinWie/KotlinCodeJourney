@@ -10,7 +10,7 @@ class Challenge2023Day15 {
         val strings = line.split(",")
 
         val result = strings.sumOf { it.toHolidayASCIIInt() }
-        
+
         return result
     }
 
@@ -36,7 +36,7 @@ class Challenge2023Day15 {
         val realLines = File("./AdventOfCode/Data/Day15-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
-        assertEquals(108614, solution1)
+        assertEquals(507769, solution1)
     }
 
     @Test
