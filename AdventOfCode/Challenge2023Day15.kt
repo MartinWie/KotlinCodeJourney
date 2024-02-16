@@ -5,13 +5,12 @@ import kotlin.test.assertEquals
 class Challenge2023Day15 {
 
     private fun solve1(lines: List<String>): Int {
-        val map = mutableListOf<String>()
-        map.addAll(lines)
+        val line = lines.first()
 
-        var result = 0
+        val strings = line.split(",")
 
-        // TODO: implement
-
+        val result = strings.sumOf { it.toHolidayASCIIInt() }
+        
         return result
     }
 
