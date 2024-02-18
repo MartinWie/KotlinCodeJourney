@@ -7,6 +7,7 @@ class Challenge2023Day16 {
     private fun solve1(lines: List<String>): Int {
         val map = lines.toMutableList()
         // TODO: implement recursive movement function
+        // Notes: Mark energized tiles by '#' recursive end is if current tile is '#' and next is also '#'
 
 
         return calculateEnergizedTiles(map)
