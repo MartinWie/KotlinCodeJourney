@@ -5,7 +5,19 @@ import kotlin.test.assertEquals
 class Challenge2023Day16 {
 
     private fun solve1(lines: List<String>): Int {
-        return 0
+        val map = lines.toMutableList()
+        // TODO: implement recursive movement function
+
+
+        return calculateEnergizedTiles(map)
+    }
+
+    private fun calculateEnergizedTiles(map: MutableList<String>): Int {
+        return map.reduce { acc, s ->
+            acc.plus(s)
+        }.count {
+            it == '#'
+        }
     }
 
     @Test
