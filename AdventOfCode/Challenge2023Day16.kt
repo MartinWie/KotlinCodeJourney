@@ -3,14 +3,39 @@ import java.io.File
 import kotlin.test.assertEquals
 
 class Challenge2023Day16 {
+    enum class Direction {
+        NORTH, SOUTH, EAST, WEST
+    }
+
+    private val map = mutableListOf<String>()
+    private val mapEnergized = mutableListOf<String>()
 
     private fun solve1(lines: List<String>): Int {
-        val map = lines.toMutableList()
-        // TODO: implement recursive movement function
-        // Notes: Mark energized tiles by '#' recursive end is if current tile is '#' and next is also '#'
+        lines.forEach {
+            map.add(it)
+            mapEnergized.add(it)
+        }
 
+        // Entering the map from the left side, so starting form WEST
+        takeNextStep(0, 0, Direction.WEST)
 
-        return calculateEnergizedTiles(map)
+        return calculateEnergizedTiles(mapEnergized)
+    }
+
+    private fun takeNextStep(x: Int, y: Int, cameFrom: Direction) {
+        // Get out if light moves out of map
+        if (x > map.first().lastIndex || y > map.lastIndex || x < 0 || y < 0) {
+            return
+        }
+
+        val currentChar = map[y][x]
+
+        when (cameFrom) {
+            Direction.NORTH -> TODO()
+            Direction.SOUTH -> TODO()
+            Direction.EAST -> TODO()
+            Direction.WEST -> TODO()
+        }
     }
 
     private fun calculateEnergizedTiles(map: MutableList<String>): Int {
