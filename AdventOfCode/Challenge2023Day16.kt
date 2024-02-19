@@ -3,8 +3,11 @@ import java.io.File
 import kotlin.test.assertEquals
 
 class Challenge2023Day16 {
-    enum class Direction {
-        NORTH, SOUTH, EAST, WEST
+    enum class Direction(val x: Int, val y: Int) {
+        NORTH(0, 1),
+        SOUTH(0, -1),
+        EAST(-1, 0),
+        WEST(1, 0)
     }
 
     private val map = mutableListOf<String>()
