@@ -33,4 +33,16 @@ class Challenge2023Day16 {
         println("Solution 1: $solution1")
         assertEquals(507769, solution1)
     }
+
+    @Test
+    fun `Test energized calculation`() {
+        // Mock map with 3 energized tiles
+        val mockMap = mutableListOf(
+            "....#..",
+            ".#.....",
+            "...#..."
+        )
+        val energizedTiles = calculateEnergizedTiles(mockMap)
+        assertEquals(3, energizedTiles, "The number of energized tiles should be 3.")
+    }
 }
