@@ -35,7 +35,6 @@ class Challenge2023Day16 {
 
         // TODO: implement code to energize the tile
 
-
         // TODO: implement movement logicbased on currentChar for all Directions(call takeNextStep porperly)
         when (cameFrom) {
             Direction.NORTH -> TODO()
@@ -43,6 +42,10 @@ class Challenge2023Day16 {
             Direction.EAST -> TODO()
             Direction.WEST -> TODO()
         }
+    }
+
+    private fun String.replace(index: Int, char: Char): String {
+        return this.take(index) + char + this.drop(index + 1)
     }
 
     private fun calculateEnergizedTiles(map: MutableList<String>): Int {
@@ -67,7 +70,7 @@ class Challenge2023Day16 {
     }
 
     @Test
-    fun `Test energized calculation`() {
+    fun `test energized calculation`() {
         // Mock map with 3 energized tiles
         val mockMap = mutableListOf(
             "....#..",
@@ -76,5 +79,10 @@ class Challenge2023Day16 {
         )
         val energizedTiles = calculateEnergizedTiles(mockMap)
         assertEquals(3, energizedTiles, "The number of energized tiles should be 3.")
+    }
+
+    @Test
+    fun `test String replace helper function`() {
+        assertEquals("AAA", "AAB".replace(2, 'A'))
     }
 }
