@@ -33,7 +33,8 @@ class Challenge2023Day16 {
 
         val currentChar = map[y][x]
 
-        // TODO: implement code to energize the tile
+        // Energize the current tile
+        mapEnergized[y] = mapEnergized[y].replace(x, '#')
 
         // TODO: implement movement logicbased on currentChar for all Directions(call takeNextStep porperly)
         when (cameFrom) {
