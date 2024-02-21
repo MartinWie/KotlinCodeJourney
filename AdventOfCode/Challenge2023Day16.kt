@@ -36,12 +36,50 @@ class Challenge2023Day16 {
         // Energize the current tile
         mapEnergized[y] = mapEnergized[y].replace(x, '#')
 
-        // TODO: implement movement logicbased on currentChar for all Directions(call takeNextStep porperly)
         when (cameFrom) {
-            Direction.NORTH -> TODO()
-            Direction.SOUTH -> TODO()
-            Direction.EAST -> TODO()
-            Direction.WEST -> TODO()
+            Direction.NORTH -> {
+                when (currentChar) {
+                    '.' -> takeNextStep(
+                        x + cameFrom.x,
+                        y + cameFrom.y,
+                        Direction.NORTH
+                    ) // TODO: think about proper movement and later optimize this
+                    '|' -> TODO()
+                    '-' -> TODO()
+                    '/' -> TODO()
+                    '\\' -> TODO()
+                }
+            }
+
+            Direction.SOUTH -> {
+                when (currentChar) {
+                    '.' -> TODO()
+                    '|' -> TODO()
+                    '-' -> TODO()
+                    '/' -> TODO()
+                    '\\' -> TODO()
+                }
+            }
+
+            Direction.EAST -> {
+                when (currentChar) {
+                    '.' -> TODO()
+                    '|' -> TODO()
+                    '-' -> TODO()
+                    '/' -> TODO()
+                    '\\' -> TODO()
+                }
+            }
+
+            Direction.WEST -> {
+                when (currentChar) {
+                    '.' -> TODO()
+                    '|' -> TODO()
+                    '-' -> TODO()
+                    '/' -> TODO()
+                    '\\' -> TODO()
+                }
+            }
         }
     }
 
