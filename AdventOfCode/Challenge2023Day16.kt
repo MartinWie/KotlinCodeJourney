@@ -39,45 +39,57 @@ class Challenge2023Day16 {
         when (cameFrom) {
             Direction.NORTH -> {
                 when (currentChar) {
-                    '.' -> takeNextStep(
-                        x + cameFrom.x,
-                        y + cameFrom.y,
-                        Direction.NORTH
-                    ) // TODO: think about proper movement and later optimize this
-                    '|' -> TODO()
-                    '-' -> TODO()
-                    '/' -> TODO()
-                    '\\' -> TODO()
+                    '.' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
+                    '|' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
+                    '-' -> {
+                        takeNextStep(x + Direction.EAST.x, y + Direction.EAST.y, Direction.EAST)
+                        takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
+                    }
+
+                    '/' -> takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
+                    '\\' -> takeNextStep(x + Direction.EAST.x, y + Direction.EAST.y, Direction.EAST)
                 }
             }
 
             Direction.SOUTH -> {
                 when (currentChar) {
-                    '.' -> TODO()
-                    '|' -> TODO()
-                    '-' -> TODO()
-                    '/' -> TODO()
-                    '\\' -> TODO()
+                    '.' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
+                    '|' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
+                    '-' -> {
+                        takeNextStep(x + Direction.EAST.x, y + Direction.EAST.y, Direction.EAST)
+                        takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
+                    }
+
+                    '/' -> takeNextStep(x + Direction.EAST.x, y + Direction.EAST.y, Direction.EAST)
+                    '\\' -> takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
                 }
             }
 
             Direction.EAST -> {
                 when (currentChar) {
-                    '.' -> TODO()
-                    '|' -> TODO()
-                    '-' -> TODO()
-                    '/' -> TODO()
-                    '\\' -> TODO()
+                    '.' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
+                    '|' -> {
+                        takeNextStep(x + Direction.NORTH.x, y + Direction.NORTH.y, Direction.NORTH)
+                        takeNextStep(x + Direction.SOUTH.x, y + Direction.SOUTH.y, Direction.SOUTH)
+                    }
+
+                    '-' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
+                    '/' -> takeNextStep(x + Direction.SOUTH.x, y + Direction.SOUTH.y, Direction.SOUTH)
+                    '\\' -> takeNextStep(x + Direction.NORTH.x, y + Direction.NORTH.y, Direction.NORTH)
                 }
             }
 
             Direction.WEST -> {
                 when (currentChar) {
-                    '.' -> TODO()
-                    '|' -> TODO()
-                    '-' -> TODO()
-                    '/' -> TODO()
-                    '\\' -> TODO()
+                    '.' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
+                    '|' -> {
+                        takeNextStep(x + Direction.NORTH.x, y + Direction.NORTH.y, Direction.NORTH)
+                        takeNextStep(x + Direction.SOUTH.x, y + Direction.SOUTH.y, Direction.SOUTH)
+                    }
+
+                    '-' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
+                    '/' -> takeNextStep(x + Direction.NORTH.x, y + Direction.NORTH.y, Direction.NORTH)
+                    '\\' -> takeNextStep(x + Direction.SOUTH.x, y + Direction.SOUTH.y, Direction.SOUTH)
                 }
             }
         }
