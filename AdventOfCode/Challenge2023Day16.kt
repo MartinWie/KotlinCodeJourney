@@ -12,8 +12,14 @@ class Challenge2023Day16 {
 
     private val map = mutableListOf<String>()
     private val mapEnergized = mutableListOf<String>()
+    private val alreadyDoneMoves = hashMapOf<Triple<Int, Int, Direction>, Int>()
 
     private fun solve1(lines: List<String>): Int {
+        // Clear out the global variables
+        map.clear()
+        mapEnergized.clear()
+        alreadyDoneMoves.clear()
+
         lines.forEach {
             map.add(it)
             mapEnergized.add(it)
@@ -31,6 +37,14 @@ class Challenge2023Day16 {
             return
         }
 
+        // Get out if move was already done
+        val currentStep = Triple(x, y, cameFrom)
+        if (alreadyDoneMoves.contains(currentStep)) {
+            return
+        } else {
+            alreadyDoneMoves[currentStep] = 1
+        }
+
         val currentChar = map[y][x]
 
         // Energize the current tile
@@ -46,8 +60,8 @@ class Challenge2023Day16 {
                         takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
                     }
 
-                    '/' -> takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
-                    '\\' -> takeNextStep(x + Direction.EAST.x, y + Direction.EAST.y, Direction.EAST)
+                    '/' -> takeNextStep(x + Direction.EAST.x, y + Direction.EAST.y, Direction.EAST)
+                    '\\' -> takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
                 }
             }
 
@@ -60,8 +74,8 @@ class Challenge2023Day16 {
                         takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
                     }
 
-                    '/' -> takeNextStep(x + Direction.EAST.x, y + Direction.EAST.y, Direction.EAST)
-                    '\\' -> takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
+                    '/' -> takeNextStep(x + Direction.WEST.x, y + Direction.WEST.y, Direction.WEST)
+                    '\\' -> takeNextStep(x + Direction.EAST.x, y + Direction.EAST.y, Direction.EAST)
                 }
             }
 
@@ -74,8 +88,8 @@ class Challenge2023Day16 {
                     }
 
                     '-' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
-                    '/' -> takeNextStep(x + Direction.SOUTH.x, y + Direction.SOUTH.y, Direction.SOUTH)
-                    '\\' -> takeNextStep(x + Direction.NORTH.x, y + Direction.NORTH.y, Direction.NORTH)
+                    '/' -> takeNextStep(x + Direction.NORTH.x, y + Direction.NORTH.y, Direction.NORTH)
+                    '\\' -> takeNextStep(x + Direction.SOUTH.x, y + Direction.SOUTH.y, Direction.SOUTH)
                 }
             }
 
@@ -88,8 +102,8 @@ class Challenge2023Day16 {
                     }
 
                     '-' -> takeNextStep(x + cameFrom.x, y + cameFrom.y, cameFrom)
-                    '/' -> takeNextStep(x + Direction.NORTH.x, y + Direction.NORTH.y, Direction.NORTH)
-                    '\\' -> takeNextStep(x + Direction.SOUTH.x, y + Direction.SOUTH.y, Direction.SOUTH)
+                    '/' -> takeNextStep(x + Direction.SOUTH.x, y + Direction.SOUTH.y, Direction.SOUTH)
+                    '\\' -> takeNextStep(x + Direction.NORTH.x, y + Direction.NORTH.y, Direction.NORTH)
                 }
             }
         }
@@ -117,7 +131,7 @@ class Challenge2023Day16 {
         val realLines = File("./AdventOfCode/Data/Day16-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
-        assertEquals(507769, solution1)
+        assertEquals(7074, solution1)
     }
 
     @Test
