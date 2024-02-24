@@ -27,20 +27,42 @@ class Challenge2023Day16 {
         var highestScore = 0
 
         // From top
-        //for ()...
+        for (index in lines.first().indices) {
+            setupField(lines)
+
+            takeNextStep(index, 0, Direction.NORTH)
+            val tmpEnergized = calculateEnergizedTiles(mapEnergized)
+            if (tmpEnergized > highestScore) highestScore = tmpEnergized
+        }
 
         // From bottom
+        for (index in lines.first().indices) {
+            setupField(lines)
+
+            takeNextStep(index, lines.lastIndex, Direction.SOUTH)
+            val tmpEnergized = calculateEnergizedTiles(mapEnergized)
+            if (tmpEnergized > highestScore) highestScore = tmpEnergized
+        }
 
         // From left
+        for (index in lines.indices) {
+            setupField(lines)
+
+            takeNextStep(0, index, Direction.WEST)
+            val tmpEnergized = calculateEnergizedTiles(mapEnergized)
+            if (tmpEnergized > highestScore) highestScore = tmpEnergized
+        }
 
         // From right
+        for (index in lines.indices) {
+            setupField(lines)
 
-        setupField(lines)
+            takeNextStep(lines.first().lastIndex, index, Direction.EAST)
+            val tmpEnergized = calculateEnergizedTiles(mapEnergized)
+            if (tmpEnergized > highestScore) highestScore = tmpEnergized
+        }
 
-        // Entering the map from the left side, so starting form WEST
-        takeNextStep(0, 0, Direction.WEST)
-
-        return calculateEnergizedTiles(mapEnergized)
+        return highestScore
     }
 
     private fun setupField(lines: List<String>) {
@@ -169,7 +191,7 @@ class Challenge2023Day16 {
         val realLines = File("./AdventOfCode/Data/Day16-1-Data.txt").bufferedReader().readLines()
         val solution1 = solve2(realLines)
         println("Solution 2: $solution1")
-        assertEquals(1, solution1)
+        assertEquals(7530, solution1)
     }
 
     @Test
