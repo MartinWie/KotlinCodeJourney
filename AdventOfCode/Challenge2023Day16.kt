@@ -15,20 +15,45 @@ class Challenge2023Day16 {
     private val alreadyDoneMoves = hashMapOf<Triple<Int, Int, Direction>, Int>()
 
     private fun solve1(lines: List<String>): Int {
-        // Clear out the global variables
-        map.clear()
-        mapEnergized.clear()
-        alreadyDoneMoves.clear()
-
-        lines.forEach {
-            map.add(it)
-            mapEnergized.add(it)
-        }
+        setupField(lines)
 
         // Entering the map from the left side, so starting form WEST
         takeNextStep(0, 0, Direction.WEST)
 
         return calculateEnergizedTiles(mapEnergized)
+    }
+
+    private fun solve2(lines: List<String>): Int {
+        var highestScore = 0
+
+        // From top
+        //for ()...
+
+        // From bottom
+
+        // From left
+
+        // From right
+
+        setupField(lines)
+
+        // Entering the map from the left side, so starting form WEST
+        takeNextStep(0, 0, Direction.WEST)
+
+        return calculateEnergizedTiles(mapEnergized)
+    }
+
+    private fun setupField(lines: List<String>) {
+        // Clear out the global variables
+        map.clear()
+        mapEnergized.clear()
+        alreadyDoneMoves.clear()
+
+
+        lines.forEach {
+            map.add(it)
+            mapEnergized.add(it)
+        }
     }
 
     private fun takeNextStep(x: Int, y: Int, cameFrom: Direction) {
@@ -132,6 +157,19 @@ class Challenge2023Day16 {
         val solution1 = solve1(realLines)
         println("Solution 1: $solution1")
         assertEquals(7074, solution1)
+    }
+
+    @Test
+    fun testSolve2() {
+        val lines = File("./AdventOfCode/Data/Day16-1-Test-Data.txt").bufferedReader().readLines()
+        val exampleSolution1 = solve2(lines)
+        println("Example solution 2: $exampleSolution1")
+        assertEquals(51, exampleSolution1)
+
+        val realLines = File("./AdventOfCode/Data/Day16-1-Data.txt").bufferedReader().readLines()
+        val solution1 = solve2(realLines)
+        println("Solution 2: $solution1")
+        assertEquals(1, solution1)
     }
 
     @Test
