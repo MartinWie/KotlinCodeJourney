@@ -62,7 +62,8 @@ You know the drill, here is what we got:
 | 13  | [2023-12-13](https://adventofcode.com/2023/day/13) | [Code](./AdventOfCode/Challenge2023Day13.kt) |
 | 14  | [2023-12-14](https://adventofcode.com/2023/day/14) | [Code](./AdventOfCode/Challenge2023Day14.kt) |
 | 15  | [2023-12-15](https://adventofcode.com/2023/day/15) | [Code](./AdventOfCode/Challenge2023Day15.kt) |
-| 16  | [2023-12-15](https://adventofcode.com/2023/day/16) | [Code](./AdventOfCode/Challenge2023Day16.kt) |
+| 16  | [2023-12-16](https://adventofcode.com/2023/day/16) | [Code](./AdventOfCode/Challenge2023Day16.kt) |
+| 17  | [2023-12-17](https://adventofcode.com/2023/day/17) | [Code](./AdventOfCode/Challenge2023Day17.kt) |
 
 ## Kotlin-Learnings
 
