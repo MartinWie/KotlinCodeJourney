@@ -40,6 +40,7 @@ because why not? We’ve got:
 | 16  | [3Sum](https://leetcode.com/problems/3sum/description/)                                                                                 | [Code](./LeetCode/ThreeSum.kt)                                   | Medium     |
 | 17  | [ContainerWithMostWater](https://leetcode.com/problems/container-with-most-water/description/)                                          | [Code](./LeetCode/ContainerWithMostWater.kt)                     | Medium     |
 | 18  | [LongestSubstringWithoutRepeatingCharacters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/) | [Code](./LeetCode/LongestSubstringWithoutRepeatingCharacters.kt) | Medium     |
+| 19  | [Longest-Common-Prefix](https://leetcode.com/problems/longest-common-prefix/description/)                                               | [Code](./LeetCode/LongestCommonPrefix.kt)                        | Easy       |
 
 ## AdventOfCode
 
