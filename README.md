@@ -42,6 +42,7 @@ because why not? We’ve got:
 | 18  | [LongestSubstringWithoutRepeatingCharacters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/) | [Code](./LeetCode/LongestSubstringWithoutRepeatingCharacters.kt) | Medium     |
 | 19  | [Longest-Common-Prefix](https://leetcode.com/problems/longest-common-prefix/description/)                                               | [Code](./LeetCode/LongestCommonPrefix.kt)                        | Easy       |
 | 20  | [Palindrome-Number](https://leetcode.com/problems/palindrome-number/)                                                                   | [Code](./LeetCode/PalindromeNumber.kt)                           | Easy       |
+| 20  | [Add-Two-Numbers](https://leetcode.com/problems/add-two-numbers/)                                                                       | [Code](./LeetCode/AddTwoNumbers.kt)                              | Medium     |
 
 ## AdventOfCode
 
