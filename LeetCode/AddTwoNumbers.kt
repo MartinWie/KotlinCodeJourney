@@ -13,8 +13,27 @@ import kotlin.test.assertTrue
  */
 
 class AddTwoNumbers {
-    private fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
-        // TODO: implement
+    private fun solve(l1: ListNode?, l2: ListNode?, carryForward: Int = 0): ListNode? {
+        if (l1 == null && l2 == null && carryForward == 0) return null
+
+        val sum = (l1?.`val` ?: 0) + (l2?.`val` ?: 0) + carryForward
+
+        var carryForward = 0
+
+        val final = if (sum >= 10) {
+            val lastDigit = sum % 10
+            carryForward = sum - lastDigit
+            lastDigit
+        } else {
+            sum
+        }
+        val currentNode = ListNode(final)
+        currentNode.next = solve(
+            l1?.next ?: null,
+            l2?.next ?: null,
+            carryForward / 10
+        )
+        return currentNode
     }
 
     class ListNode(var `val`: Int) {
@@ -72,7 +91,7 @@ class AddTwoNumbers {
         b2.next = b3
         b1.next = b2
 
-        assertTrue { result1.same(addTwoNumbers(a1, b1)) }
+        assertTrue { result1.same(solve(a1, b1)) }
     }
 
     private fun ListNode.same(node: ListNode?): Boolean {
