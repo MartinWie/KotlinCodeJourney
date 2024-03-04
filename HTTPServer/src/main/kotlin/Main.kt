@@ -6,11 +6,15 @@ import java.io.PrintWriter
 import java.net.ServerSocket
 
 fun main() {
-    println("Starting simple TCP server!")
 
     val port = 8888
-
     val serverSocket = ServerSocket(port)
+
+    simpleTCPEchoServer(serverSocket, port)
+}
+
+private fun simpleTCPEchoServer(serverSocket: ServerSocket, port: Int) {
+    println("Starting simple TCP echo server!")
     println("Listening on port: $port")
 
     while (true) {
