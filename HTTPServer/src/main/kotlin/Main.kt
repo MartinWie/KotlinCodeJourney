@@ -39,10 +39,10 @@ private fun simpleTCPEchoServer(serverSocket: ServerSocket, port: Int) {
 class HTTPServer(val serverSocket: ServerSocket) {
     private val crlf = "\r\n"
 
-    private val headers = listOf(
-        "Server: Mini test server",
-        "Content-Type: text/html"
-    ).joinToString(crlf) { it }.plus(crlf)
+    private val headersMap = mapOf(
+        "Server" to "Mini test server",
+        "Content-Type" to "text/html"
+    )
 
     fun start() {
         while (true) {
@@ -64,10 +64,13 @@ class HTTPServer(val serverSocket: ServerSocket) {
             </html>
         """.trimIndent()
 
-        return buildStatusLine(HttpCode.OK) + headers + crlf + responseBody
+        return buildStatusLine(HttpCode.OK) + prepareHeader(headersMap) + responseBody
     }
 
     private fun buildStatusLine(status: HttpCode): String = "HTTP/1.1 ${status.code} ${status.name}$crlf"
+
+    private fun prepareHeader(headers: Map<String, String>): String =
+        headers.map { "${it.key}: ${it.value}" }.joinToString(crlf).plus(crlf.repeat(2))
 
 }
 
