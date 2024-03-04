@@ -42,7 +42,7 @@ class HTTPServer(val serverSocket: ServerSocket) {
     private val headers = listOf(
         "Server: Mini test server",
         "Content-Type: text/html"
-    ).joinToString { it + crlf }
+    ).joinToString(crlf) { it }.plus(crlf)
 
     fun start() {
         while (true) {
@@ -56,8 +56,6 @@ class HTTPServer(val serverSocket: ServerSocket) {
     }
 
     private fun handleRequest(): String {
-        val statusLine = "HTTP/1.1 ${HttpCode.OK} ${HttpCode.OK.name}\r\n"
-
         val responseBody = """
             <html>
             <body>
@@ -66,8 +64,10 @@ class HTTPServer(val serverSocket: ServerSocket) {
             </html>
         """.trimIndent()
 
-        return statusLine + headers + crlf + responseBody
+        return buildStatusLine(HttpCode.OK) + headers + crlf + responseBody
     }
+
+    private fun buildStatusLine(status: HttpCode): String = "HTTP/1.1 ${status.code} ${status.name}$crlf"
 
 }
 
