@@ -10,7 +10,10 @@ fun main() {
     val port = 8888
     val serverSocket = ServerSocket(port)
 
-    simpleTCPEchoServer(serverSocket, port)
+    // simpleTCPEchoServer(serverSocket, port)
+
+    val httpServer = HTTPServer(serverSocket)
+    httpServer.start()
 }
 
 private fun simpleTCPEchoServer(serverSocket: ServerSocket, port: Int) {
@@ -32,3 +35,44 @@ private fun simpleTCPEchoServer(serverSocket: ServerSocket, port: Int) {
         clientSocket.close()
     }
 }
+
+class HTTPServer(val serverSocket: ServerSocket) {
+    private val crlf = "\r\n"
+
+    private val headers = listOf(
+        "Server: Mini test server",
+        "Content-Type: text/html"
+    ).joinToString { it + crlf }
+
+    fun start() {
+        while (true) {
+            val clientSocket = serverSocket.accept()
+            println("New connection: ${clientSocket.inetAddress}")
+
+            PrintWriter(clientSocket.getOutputStream(), true).println(handleRequest())
+
+            clientSocket.close()
+        }
+    }
+
+    private fun handleRequest(): String {
+        val statusLine = "HTTP/1.1 ${HttpCode.OK} ${HttpCode.OK.name}\r\n"
+
+        val responseBody = """
+            <html>
+            <body>
+            <h1>Hello World!</h1>
+            <body>
+            </html>
+        """.trimIndent()
+
+        return statusLine + headers + crlf + responseBody
+    }
+
+}
+
+enum class HttpCode(val code: Int) {
+    OK(200),
+    NOT_FOUND(404)
+}
+
