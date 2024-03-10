@@ -1,6 +1,7 @@
 package de.mw
 
 import java.io.BufferedReader
+import java.io.InputStream
 import java.io.InputStreamReader
 import java.io.PrintWriter
 import java.net.ServerSocket
@@ -36,7 +37,7 @@ private fun simpleTCPEchoServer(serverSocket: ServerSocket, port: Int) {
     }
 }
 
-class HTTPServer(val serverSocket: ServerSocket) {
+class HTTPServer(private val serverSocket: ServerSocket) {
     private val crlf = "\r\n"
 
     private val headersMap = mapOf(
@@ -72,6 +73,40 @@ class HTTPServer(val serverSocket: ServerSocket) {
     private fun prepareHeader(headers: Map<String, String>): String =
         headers.map { "${it.key}: ${it.value}" }.joinToString(crlf).plus(crlf.repeat(2))
 
+
+    // When implementing the path logic, lets stick to whithelisting(only server allowed/known files)
+    // Initilise with cache object/list, when found try to serve success/fail+clean cache
+    // When not in cache, refresh cache and try to match
+}
+
+class HttpRequest(
+    val method: HttpMethod,
+    val uri: String,
+    val httpVersion: String = "1.1"
+) {
+    fun parse(inputStream: InputStream): HttpRequest {
+        val lines = BufferedReader(InputStreamReader(inputStream)).readLines()
+
+        val requestLineRaw = lines.first().split(" ")
+
+        val httpMethod = HttpMethod.valueOf(requestLineRaw[0])
+        // TODO: Can throw an IllegalArgumentException, handle above
+
+        val request = if (requestLineRaw.size > 2) {
+            HttpRequest(httpMethod, requestLineRaw[1], requestLineRaw[2])
+        } else {
+            HttpRequest(httpMethod, requestLineRaw[1])
+        }
+
+        return request
+    }
+}
+
+enum class HttpMethod {
+    GET,
+    POST,
+    UPDATE,
+    DELETE
 }
 
 enum class HttpCode(val code: Int) {
