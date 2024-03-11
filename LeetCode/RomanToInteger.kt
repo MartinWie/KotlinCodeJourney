@@ -41,24 +41,24 @@ class RomanToInteger {
             'M' to 1000
         )
 
-        var result = 0
-        var currentPointer: Int = s.lastIndex
-        var nextPointer: Int = currentPointer - 1
 
-        while (nextPointer > -1) {
+        var formerPointer = s.lastIndex
+        var currentPointer = formerPointer - 1
+
+        var result = letterToValMap[s.last()]!!
+
+        while (currentPointer > -1) {
+            val former = letterToValMap[s[formerPointer]]!!
             val current = letterToValMap[s[currentPointer]]!!
-            val next = letterToValMap[s[nextPointer]]!!
-            result = if (next < current) {
+            result = if (former > current) {
                 result + (current * -1)
             } else {
                 result + current
             }
 
             currentPointer--
-            nextPointer--
+            formerPointer--
         }
-
-        result += letterToValMap[s.first()]!!
 
         return result
     }
