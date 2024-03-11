@@ -63,6 +63,41 @@ class RomanToInteger {
         return result
     }
 
+    private fun romanToInt3(s: String): Int {
+        var formerPointer = s.lastIndex
+        var currentPointer = formerPointer - 1
+
+        var result = s.last().romanToInt()
+
+        while (currentPointer > -1) {
+            val former = s[formerPointer].romanToInt()
+            val current = s[currentPointer].romanToInt()
+            result = if (former > current) {
+                result + (current * -1)
+            } else {
+                result + current
+            }
+
+            currentPointer--
+            formerPointer--
+        }
+
+        return result
+    }
+
+    private fun Char.romanToInt(): Int {
+        return when (this) {
+            'I' -> 1
+            'V' -> 5
+            'X' -> 10
+            'L' -> 50
+            'C' -> 100
+            'D' -> 500
+            'M' -> 1000
+            else -> 0
+        }
+    }
+
     @Test
     fun test1() {
         assertEquals(3, romanToInt("III"))
@@ -76,5 +111,13 @@ class RomanToInteger {
         assertEquals(58, romanToInt2("LVIII"))
         assertEquals(9, romanToInt2("IX"))
         assertEquals(1994, romanToInt2("MCMXCIV"))
+    }
+
+    @Test
+    fun test3() {
+        assertEquals(3, romanToInt3("III"))
+        assertEquals(58, romanToInt3("LVIII"))
+        assertEquals(9, romanToInt3("IX"))
+        assertEquals(1994, romanToInt3("MCMXCIV"))
     }
 }
