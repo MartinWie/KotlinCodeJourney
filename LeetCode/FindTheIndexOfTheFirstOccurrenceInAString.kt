@@ -4,7 +4,8 @@ import kotlin.test.assertEquals
 class FindTheIndexOfTheFirstOccurrenceInAString {
 
     private fun solve(haystack: String, needle: String): Int {
-        return -1
+        val pattern = needle.toRegex()
+        return pattern.find(haystack)?.range?.first ?: return -1
     }
 
     @Test
