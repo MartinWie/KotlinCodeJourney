@@ -5,6 +5,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import java.io.PrintWriter
 import java.net.ServerSocket
+import java.net.Socket
 
 fun main() {
 
@@ -50,20 +51,25 @@ class HTTPServer(private val serverSocket: ServerSocket) {
             val clientSocket = serverSocket.accept()
             println("New connection: ${clientSocket.inetAddress}")
 
-            PrintWriter(clientSocket.getOutputStream(), true).println(handleRequest())
+            val text = handleRequest(clientSocket)
+
+            PrintWriter(clientSocket.getOutputStream(), true).println(text)
 
             clientSocket.close()
         }
     }
 
-    private fun handleRequest(): String {
-        val responseBody = """
-            <html>
-            <body>
-            <h1>Hello World!</h1>
-            <body>
-            </html>
-        """.trimIndent()
+    private fun handleRequest(clientSocket: Socket): String {
+
+        val request: HttpRequest
+
+        try {
+            request = HttpRequest.parse(clientSocket.getInputStream())
+        } catch (e: Exception) {
+            return buildStatusLine(HttpCode.INTERNAL_SERVER_ERROR) + prepareHeader(emptyMap()) + e.message
+        }
+
+        val responseBody = request.method
 
         return buildStatusLine(HttpCode.OK) + prepareHeader(headersMap) + responseBody
     }
@@ -73,10 +79,6 @@ class HTTPServer(private val serverSocket: ServerSocket) {
     private fun prepareHeader(headers: Map<String, String>): String =
         headers.map { "${it.key}: ${it.value}" }.joinToString(crlf).plus(crlf.repeat(2))
 
-
-    // When implementing the path logic, lets stick to whithelisting(only server allowed/known files)
-    // Initilise with cache object/list, when found try to serve success/fail+clean cache
-    // When not in cache, refresh cache and try to match
 }
 
 class HttpRequest(
@@ -84,21 +86,31 @@ class HttpRequest(
     val uri: String,
     val httpVersion: String = "1.1"
 ) {
-    fun parse(inputStream: InputStream): HttpRequest {
-        val lines = BufferedReader(InputStreamReader(inputStream)).readLines()
+    companion object {
+        fun parse(inputStream: InputStream): HttpRequest {
+            val reader = BufferedReader(InputStreamReader(inputStream))
 
-        val requestLineRaw = lines.first().split(" ")
+            var currentLine: String? = reader.readLine()
 
-        val httpMethod = HttpMethod.valueOf(requestLineRaw[0])
-        // TODO: Can throw an IllegalArgumentException, handle above
+            val requestLineRaw = currentLine!!.split(" ")
+            val httpMethod = HttpMethod.valueOf(requestLineRaw[0])
 
-        val request = if (requestLineRaw.size > 2) {
-            HttpRequest(httpMethod, requestLineRaw[1], requestLineRaw[2])
-        } else {
-            HttpRequest(httpMethod, requestLineRaw[1])
+            val headers = mutableMapOf<String, String>()
+
+            currentLine = reader.readLine()
+            while (!currentLine.isNullOrBlank()) {
+
+                val headerLineSplitt = currentLine.split(": ")
+                headers[headerLineSplitt[0]] = headerLineSplitt[1]
+                currentLine = reader.readLine()
+            }
+
+            return if (requestLineRaw.size > 2) {
+                HttpRequest(httpMethod, requestLineRaw[1], requestLineRaw[2])
+            } else {
+                HttpRequest(httpMethod, requestLineRaw[1])
+            }
         }
-
-        return request
     }
 }
 
@@ -111,6 +123,8 @@ enum class HttpMethod {
 
 enum class HttpCode(val code: Int) {
     OK(200),
-    NOT_FOUND(404)
+    NOT_FOUND(404),
+    NOT_IMPLEMENTED(501),
+    INTERNAL_SERVER_ERROR(500)
 }
 
