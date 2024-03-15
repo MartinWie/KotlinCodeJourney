@@ -18,26 +18,6 @@ fun main() {
     httpServer.start()
 }
 
-private fun simpleTCPEchoServer(serverSocket: ServerSocket, port: Int) {
-    println("Starting simple TCP echo server!")
-    println("Listening on port: $port")
-
-    while (true) {
-        val clientSocket = serverSocket.accept()
-        println("New connection: ${clientSocket.inetAddress}")
-
-        val input = BufferedReader(InputStreamReader(clientSocket.getInputStream()))
-        val output = PrintWriter(clientSocket.getOutputStream(), true)
-
-        val clientMessage = input.readLines()
-        println("Message form client: $clientMessage")
-
-        output.println(clientMessage)
-
-        clientSocket.close()
-    }
-}
-
 class HTTPServer(private val serverSocket: ServerSocket) {
     private val crlf = "\r\n"
 
@@ -61,6 +41,11 @@ class HTTPServer(private val serverSocket: ServerSocket) {
 
     private fun handleRequest(clientSocket: Socket): String {
 
+        // TODO:
+        // When implementing the path logic, let's stick to whitelisting (only server allowed/known files).
+        // Initialize with a cache object/list. When found, try to serve success/fail + clean cache.
+        // When not in cache, refresh cache and try to match.
+
         val request: HttpRequest
 
         try {
@@ -69,7 +54,7 @@ class HTTPServer(private val serverSocket: ServerSocket) {
             return buildStatusLine(HttpCode.INTERNAL_SERVER_ERROR) + prepareHeader(emptyMap()) + e.message
         }
 
-        val responseBody = request.method
+        val responseBody = request.uri
 
         return buildStatusLine(HttpCode.OK) + prepareHeader(headersMap) + responseBody
     }

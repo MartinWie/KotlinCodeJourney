@@ -13,6 +13,7 @@ make while getting to know Kotlin a bit better.
 
 - [LeetCode Solutions](#LeetCode-Solutions)
 - [AdventOfCode Solutions](#AdventOfCode)
+- [Kotlin HTTP server with sockets](#kotlin-http-server)
 - [Kotlin Learnings](#kotlin-learnings)
 
 ## LeetCode-Solutions
@@ -69,6 +70,12 @@ You know the drill, here is what we got:
 | 15  | [2023-12-15](https://adventofcode.com/2023/day/15) | [Code](./AdventOfCode/Challenge2023Day15.kt) |
 | 16  | [2023-12-16](https://adventofcode.com/2023/day/16) | [Code](./AdventOfCode/Challenge2023Day16.kt) |
 | 17  | [2023-12-17](https://adventofcode.com/2023/day/17) | [Code](./AdventOfCode/Challenge2023Day17.kt) |
+
+## Kotlin-HTTP-Server
+
+A small self rolled http server, just as a small exercise.
+
+[Code](./HTTPServer/src/main/kotlin/Main.kt)
 
 ## Kotlin-Learnings
 
