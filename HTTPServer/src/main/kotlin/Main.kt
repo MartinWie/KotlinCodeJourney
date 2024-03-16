@@ -8,13 +8,10 @@ import java.net.ServerSocket
 import java.net.Socket
 
 fun main() {
-
     val port = 8888
     val serverSocket = ServerSocket(port)
-
-    // simpleTCPEchoServer(serverSocket, port)
-
     val httpServer = HTTPServer(serverSocket)
+
     httpServer.start()
 }
 
@@ -40,7 +37,6 @@ class HTTPServer(private val serverSocket: ServerSocket) {
     }
 
     private fun handleRequest(clientSocket: Socket): String {
-
         // TODO:
         // When implementing the path logic, let's stick to whitelisting (only server allowed/known files).
         // Initialize with a cache object/list. When found, try to serve success/fail + clean cache.
@@ -54,9 +50,16 @@ class HTTPServer(private val serverSocket: ServerSocket) {
             return buildStatusLine(HttpCode.INTERNAL_SERVER_ERROR) + prepareHeader(emptyMap()) + e.message
         }
 
-        val responseBody = request.uri
+        return when (request.method) {
+            HttpMethod.GET -> {
+                val responseBody = request.uri
+                buildStatusLine(HttpCode.OK) + prepareHeader(headersMap) + responseBody
+            }
 
-        return buildStatusLine(HttpCode.OK) + prepareHeader(headersMap) + responseBody
+            else -> {
+                buildStatusLine(HttpCode.NOT_IMPLEMENTED) + prepareHeader(emptyMap())
+            }
+        }
     }
 
     private fun buildStatusLine(status: HttpCode): String = "HTTP/1.1 ${status.code} ${status.name}$crlf"
