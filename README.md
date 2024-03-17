@@ -46,6 +46,7 @@ because why not? We’ve got:
 | 21  | [Add-Two-Numbers](https://leetcode.com/problems/add-two-numbers/)                                                                       | [Code](./LeetCode/AddTwoNumbers.kt)                              | Medium     |
 | 22  | [RomanToInteger](https://leetcode.com/problems/roman-to-integer/)                                                                       | [Code](./LeetCode/RomanToInteger.kt)                             | Easy       |
 | 23  | [FindTheIndexOfTheFirstOccurrenceInAString](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/)          | [Code](./LeetCode/FindTheIndexOfTheFirstOccurrenceInAString.kt)  | Easy       |
+| 24  | [RemoveDuplicatesFromSortedArray](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)                                   | [Code](./LeetCode/RemoveDuplicatesFromSortedArray.kt)            | Easy       |
 
 ## AdventOfCode
 
