@@ -11,7 +11,7 @@ class PlusOne {
         }
 
         return when {
-            currentPosition <= 0 -> {
+            currentPosition < 0 -> {
                 intArrayOf(1) + digits
             }
 
@@ -26,5 +26,6 @@ class PlusOne {
     fun testSolve() {
         assertEquals(intArrayOf(5, 0, 1).contentToString(), solve(intArrayOf(5, 0, 0)).contentToString())
         assertEquals(intArrayOf(1, 0, 0).contentToString(), solve(intArrayOf(9, 9)).contentToString())
+        assertEquals(intArrayOf(1).contentToString(), solve(intArrayOf(0)).contentToString())
     }
 }
