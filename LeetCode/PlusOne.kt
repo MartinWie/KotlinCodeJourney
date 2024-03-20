@@ -10,15 +10,11 @@ class PlusOne {
             currentPosition--
         }
 
-        return when {
-            currentPosition < 0 -> {
-                intArrayOf(1) + digits
-            }
-
-            else -> {
-                digits[currentPosition] = digits[currentPosition] + 1
-                digits
-            }
+        return if (currentPosition < 0) {
+            intArrayOf(1) + digits
+        } else {
+            digits[currentPosition] = digits[currentPosition] + 1
+            digits
         }
     }
 
