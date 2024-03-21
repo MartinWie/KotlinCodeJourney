@@ -48,6 +48,7 @@ because why not? We’ve got:
 | 23  | [FindTheIndexOfTheFirstOccurrenceInAString](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/)          | [Code](./LeetCode/FindTheIndexOfTheFirstOccurrenceInAString.kt)  | Easy       |
 | 24  | [RemoveDuplicatesFromSortedArray](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)                                   | [Code](./LeetCode/RemoveDuplicatesFromSortedArray.kt)            | Easy       |
 | 25  | [PlusOne](https://leetcode.com/problems/plus-one/description/)                                                                          | [Code](./LeetCode/PlusOne.kt)                                    | Easy       |
+| 26  | [LongestPalindromicSubstring](https://leetcode.com/problems/longest-palindromic-substring/description/)                                 | [Code](./LeetCode/LongestPalindromicSubstring.kt)                | Medium     |
 
 ## AdventOfCode
 
