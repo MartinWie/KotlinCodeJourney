@@ -5,14 +5,12 @@ import kotlin.test.assertTrue
 
 class LongestPalindromicSubstring {
     private fun solve(s: String): String {
-        if (s.length == 1) return s
-
         var currentLongestPalindrome = ""
 
         for (i in 0..s.lastIndex) {
             for (j in i..s.lastIndex) {
-                val current = s.substring(i, j)
-                if (isPalindrom(current) && current.length > currentLongestPalindrome.length) {
+                val current = s.substring(i, j + 1)
+                if (current.length > currentLongestPalindrome.length && isPalindrom(current)) {
                     currentLongestPalindrome = current
                 }
             }
