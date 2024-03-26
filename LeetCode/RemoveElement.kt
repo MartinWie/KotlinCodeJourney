@@ -14,6 +14,16 @@ class RemoveElement {
         return i
     }
 
+    fun solve2(nums: IntArray, `val`: Int): Int {
+        var counter = 0
+        nums.filter { it != `val` }.forEachIndexed { index, value ->
+            nums[index] = value
+            counter++
+        }
+
+        return counter
+    }
+
     @Test
     fun test() {
         assertEquals(5, solve1(intArrayOf(0, 1, 2, 2, 3, 0, 4, 2), 2))
