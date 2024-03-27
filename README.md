@@ -50,6 +50,7 @@ because why not? We’ve got:
 | 25  | [PlusOne](https://leetcode.com/problems/plus-one/description/)                                                                          | [Code](./LeetCode/PlusOne.kt)                                    | Easy       |
 | 26  | [LongestPalindromicSubstring](https://leetcode.com/problems/longest-palindromic-substring/description/)                                 | [Code](./LeetCode/LongestPalindromicSubstring.kt)                | Medium     |
 | 27  | [RemoveElement](https://leetcode.com/problems/remove-element/)                                                                          | [Code](./LeetCode/RemoveElement.kt)                              | Easy       |
+| 28  | [SearchInsertPosition](https://leetcode.com/problems/search-insert-position/)                                                           | [Code](./LeetCode/SearchInsertPosition.kt)                       | Easy       |
 
 ## AdventOfCode
 
