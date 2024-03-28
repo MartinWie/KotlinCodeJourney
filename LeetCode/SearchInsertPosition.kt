@@ -3,12 +3,10 @@ import kotlin.test.assertEquals
 
 class SearchInsertPosition {
     private fun solve1(nums: IntArray, target: Int): Int {
-        if (nums.first() >= target) return 0
-
         var leftPointer = 0
         var rightPoiter = nums.lastIndex
 
-        while (leftPointer < rightPoiter) {
+        while (leftPointer <= rightPoiter) {
             val middlePointer = (leftPointer + rightPoiter) / 2
             when {
                 nums[middlePointer] == target -> return middlePointer
@@ -17,7 +15,7 @@ class SearchInsertPosition {
             }
         }
 
-        return leftPointer + 1
+        return leftPointer
     }
 
     @Test
