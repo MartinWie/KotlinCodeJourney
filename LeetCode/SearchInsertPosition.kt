@@ -3,6 +3,8 @@ import kotlin.test.assertEquals
 
 class SearchInsertPosition {
     private fun solve1(nums: IntArray, target: Int): Int {
+        if (nums.first() >= target) return 0
+
         var leftPointer = 0
         var rightPoiter = nums.lastIndex
 
@@ -25,5 +27,7 @@ class SearchInsertPosition {
         assertEquals(1, solve1(nums = intArrayOf(1, 3, 5, 6), target = 2))
         assertEquals(4, solve1(nums = intArrayOf(1, 3, 5, 6), target = 7))
         assertEquals(0, solve1(nums = intArrayOf(1, 3, 5, 6), target = 0))
+        assertEquals(0, solve1(nums = intArrayOf(1), target = 1))
+        assertEquals(1, solve1(nums = intArrayOf(1, 3), target = 2))
     }
 }
