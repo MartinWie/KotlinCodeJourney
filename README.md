@@ -51,6 +51,7 @@ because why not? We’ve got:
 | 26  | [LongestPalindromicSubstring](https://leetcode.com/problems/longest-palindromic-substring/description/)                                 | [Code](./LeetCode/LongestPalindromicSubstring.kt)                | Medium     |
 | 27  | [RemoveElement](https://leetcode.com/problems/remove-element/)                                                                          | [Code](./LeetCode/RemoveElement.kt)                              | Easy       |
 | 28  | [SearchInsertPosition](https://leetcode.com/problems/search-insert-position/)                                                           | [Code](./LeetCode/SearchInsertPosition.kt)                       | Easy       |
+| 29  | [LengthOfLastWord](https://leetcode.com/problems/length-of-last-word/)                                                                  | [Code](./LeetCode/LengthOfLastWord.kt)                           | Easy       |
 
 ## AdventOfCode
 
