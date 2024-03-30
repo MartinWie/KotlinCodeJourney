@@ -3,8 +3,7 @@ import kotlin.test.assertEquals
 
 class LengthOfLastWord {
     private fun solve(s: String): Int {
-        // TODO: implement
-        return 1
+        return s.trim().split(' ').last().length
     }
 
     @Test
