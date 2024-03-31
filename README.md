@@ -52,6 +52,7 @@ because why not? We’ve got:
 | 27  | [RemoveElement](https://leetcode.com/problems/remove-element/)                                                                          | [Code](./LeetCode/RemoveElement.kt)                              | Easy       |
 | 28  | [SearchInsertPosition](https://leetcode.com/problems/search-insert-position/)                                                           | [Code](./LeetCode/SearchInsertPosition.kt)                       | Easy       |
 | 29  | [LengthOfLastWord](https://leetcode.com/problems/length-of-last-word/)                                                                  | [Code](./LeetCode/LengthOfLastWord.kt)                           | Easy       |
+| 30  | [AddBinary](https://leetcode.com/problems/add-binary/)                                                                                  | [Code](./LeetCode/AddBinary.kt)                                  | Easy       |
 
 ## AdventOfCode
 
