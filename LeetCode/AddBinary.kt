@@ -5,7 +5,7 @@ import kotlin.test.assertEquals
 class AddBinary {
     private fun solve(a: String, b: String): String {
         var result = ""
-        var carryOver = 0
+        var carryOver = false
 
         val aStack = Stack<Char>()
         val bStack = Stack<Char>()
@@ -13,15 +13,49 @@ class AddBinary {
         a.forEach { aStack.add(it) }
         b.forEach { bStack.add(it) }
 
-        while (a.isNotEmpty() || b.isNotEmpty()) {
-            val aTemp = aStack.pop()
-            val bTemp = bStack.pop()
+        while (aStack.isNotEmpty() || bStack.isNotEmpty()) {
+            val aTemp = if (aStack.isNotEmpty()) aStack.pop() else '0'
+            val bTemp = if (bStack.isNotEmpty()) bStack.pop() else '0'
 
             when {
-                aTemp == '1' && bTemp == '1' -> {}
-                // TODO: think about this and then implement efficient solution
+                aTemp == '1' && bTemp == '1' && carryOver -> {
+                    result = result.plus("1")
+                }
+
+                aTemp == '1' && bTemp == '1' && !carryOver -> {
+                    carryOver = true
+                    result = result.plus("0")
+                }
+
+
+                aTemp == '0' && bTemp == '1' && carryOver -> {
+                    result = result.plus("0")
+                }
+
+                aTemp == '1' && bTemp == '0' && !carryOver -> {
+                    result = result.plus("1")
+                }
+
+                aTemp == '1' && bTemp == '0' && carryOver -> {
+                    result = result.plus("0")
+                }
+
+                aTemp == '0' && bTemp == '1' && !carryOver -> {
+                    result = result.plus("1")
+                }
+
+                aTemp == '0' && bTemp == '0' && carryOver -> {
+                    carryOver = false
+                    result = result.plus("1")
+                }
+
+                aTemp == '0' && bTemp == '0' && !carryOver -> {
+                    result = result.plus("0")
+                }
             }
         }
+
+        if (carryOver) result = result.plus("1")
 
         return result.reversed()
     }
