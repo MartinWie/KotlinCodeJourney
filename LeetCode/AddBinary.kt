@@ -66,4 +66,15 @@ class AddBinary {
         assertEquals("111", solve("001", "110"))
         assertEquals("1000", solve("111", "001"))
     }
+
+    private fun solve2(a: String, b: String): String {
+        // TODO: implement BigInt conversion solution
+    }
+
+    @Test
+    fun testSolve2() {
+        assertEquals("100", solve2("001", "011"))
+        assertEquals("111", solve2("001", "110"))
+        assertEquals("1000", solve2("111", "001"))
+    }
 }
