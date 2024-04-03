@@ -68,7 +68,7 @@ class AddBinary {
     }
 
     private fun solve2(a: String, b: String): String {
-        // TODO: implement BigInt conversion solution
+        return (a.toBigInteger(2) + b.toBigInteger(2)).toString(2)
     }
 
     @Test
