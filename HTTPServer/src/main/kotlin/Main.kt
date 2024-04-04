@@ -1,9 +1,6 @@
 package de.mw
 
-import java.io.BufferedReader
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.io.PrintWriter
+import java.io.*
 import java.net.ServerSocket
 import java.net.Socket
 
@@ -17,6 +14,7 @@ fun main() {
 
 class HTTPServer(private val serverSocket: ServerSocket) {
     private val crlf = "\r\n"
+    var cachedFiles = getAvailableFiles()
 
     private val headersMap = mapOf(
         "Server" to "Mini test server",
@@ -28,20 +26,15 @@ class HTTPServer(private val serverSocket: ServerSocket) {
             val clientSocket = serverSocket.accept()
             println("New connection: ${clientSocket.inetAddress}")
 
-            val text = handleRequest(clientSocket)
+            val response = handleRequest(clientSocket)
 
-            PrintWriter(clientSocket.getOutputStream(), true).println(text)
+            PrintWriter(clientSocket.getOutputStream(), true).println(response)
 
             clientSocket.close()
         }
     }
 
     private fun handleRequest(clientSocket: Socket): String {
-        // TODO:
-        // When implementing the path logic, let's stick to whitelisting (only server allowed/known files).
-        // Initialize with a cache object/list. When found, try to serve success/fail + clean cache.
-        // When not in cache, refresh cache and try to match.
-
         val request: HttpRequest
 
         try {
@@ -52,8 +45,21 @@ class HTTPServer(private val serverSocket: ServerSocket) {
 
         return when (request.method) {
             HttpMethod.GET -> {
-                val responseBody = request.uri
-                buildStatusLine(HttpCode.OK) + prepareHeader(headersMap) + responseBody
+                val requestedFile = request.uri.removePrefix("/")
+
+                // Refresh cache if file was not found
+                if (!cachedFiles.any { it.name == requestedFile }) cachedFiles = getAvailableFiles()
+
+                val response = cachedFiles.firstOrNull {
+                    it.name == requestedFile
+                }?.bufferedReader()?.readLines()?.joinToString(crlf)
+
+                if (response != null) {
+                    buildStatusLine(HttpCode.OK) + prepareHeader(headersMap) + response
+                } else {
+                    buildStatusLine(HttpCode.NOT_FOUND) + prepareHeader(headersMap)
+                }
+
             }
 
             else -> {
@@ -66,6 +72,12 @@ class HTTPServer(private val serverSocket: ServerSocket) {
 
     private fun prepareHeader(headers: Map<String, String>): String =
         headers.map { "${it.key}: ${it.value}" }.joinToString(crlf).plus(crlf.repeat(2))
+
+    private fun getAvailableFiles(): Array<File> {
+        val currentDir = File("./HTTPServer/files/")
+        val filesWithPath = currentDir.listFiles() ?: emptyArray()
+        return filesWithPath
+    }
 
 }
 
