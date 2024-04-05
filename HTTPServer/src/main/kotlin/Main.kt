@@ -23,14 +23,14 @@ class HTTPServer(private val serverSocket: ServerSocket) {
 
     fun start() {
         while (true) {
-            val clientSocket = serverSocket.accept()
-            println("New connection: ${clientSocket.inetAddress}")
+            serverSocket.accept().use { clientSocket ->
 
-            val response = handleRequest(clientSocket)
+                println("New connection: ${clientSocket.inetAddress}")
 
-            PrintWriter(clientSocket.getOutputStream(), true).println(response)
+                val response = handleRequest(clientSocket)
 
-            clientSocket.close()
+                PrintWriter(clientSocket.getOutputStream(), true).println(response)
+            }
         }
     }
 
