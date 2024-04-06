@@ -84,6 +84,12 @@ A small self rolled http server, just as a small exercise.
 
 [Code](./HTTPServer/src/main/kotlin/Main.kt)
 
+## Kotlin-HTMX-Test
+
+A test for ktor in combination with HTMX and tailwind.
+
+[Code](./HTMXTest/src/main/kotlin/Main.kt)
+
 ## Kotlin-Learnings
 
 This part is just a collection of random thoughts, mini-projects, or tiny victories while getting my hands dirty with
