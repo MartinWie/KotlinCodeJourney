@@ -16,7 +16,7 @@ fun Application.module() {
 
 
 /* Project todos:
-    - First HTMX ure
+    - First HTMX use
     - Add tailwind
     - Implement mini use case with in memory state
     - Look into jOOQ ?
