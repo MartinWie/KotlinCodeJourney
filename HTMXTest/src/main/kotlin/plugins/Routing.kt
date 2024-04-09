@@ -1,5 +1,6 @@
 package de.mw.plugins
 
+import de.mw.utils.HxSwapOption
 import de.mw.utils.htmlBasePage
 import de.mw.utils.hxPost
 import de.mw.utils.hxSwap
@@ -19,7 +20,7 @@ fun Application.configureRouting() {
                 p { +"Wow much p tag :D" }
                 button {
                     hxPost("/clicked")
-                    hxSwap("outerHTML")
+                    hxSwap(HxSwapOption.OUTER_HTML.value)
                     +"Click Me"
                 }
             }

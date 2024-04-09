@@ -21,3 +21,14 @@ fun HTMLTag.hxPost(value: String) {
 fun HTMLTag.hxSwap(value: String) {
     attributes += "hx-swap" to value
 }
+
+enum class HxSwapOption(val value: String) {
+    INNER_HTML("innerHTML"),
+    OUTER_HTML("outerHTML"),
+    BEFORE_BEGIN("beforebegin"),
+    AFTER_BEGIN("afterbegin"),
+    BEFORE_END("beforeend"),
+    AFTER_END("afterend"),
+    DELETE("delete"),
+    NONE("none")
+}
