@@ -1,28 +1,26 @@
 package de.mw.plugins
 
+import de.mw.utils.htmlBasePage
+import de.mw.utils.hxPost
+import de.mw.utils.hxSwap
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.html.*
-import kotlinx.html.stream.createHTML
+import kotlinx.html.button
+import kotlinx.html.h1
+import kotlinx.html.p
 
 fun Application.configureRouting() {
     routing {
         get("/") {
-            val htmlContent = "<!DOCTYPE html>" + createHTML().html {
-                head {
-                    title = "My Web Page"
-                    script { src = "https://unpkg.com/htmx.org@1.9.11" }
-                }
-                body {
-                    h1 { +"Welcome to my first htmx page!" }
-                    p { +"Wow much p tag :D" }
-                    button {
-                        attributes["hx-post"] = "/clicked"
-                        attributes["hx-swap"] = "outerHTML"
-                        +"Click Me"
-                    }
+            val htmlContent = htmlBasePage("Test123") {
+                h1 { +"Welcome to my first htmx page!" }
+                p { +"Wow much p tag :D" }
+                button {
+                    hxPost("/clicked")
+                    hxSwap("outerHTML")
+                    +"Click Me"
                 }
             }
 
