@@ -16,7 +16,6 @@ fun Application.module() {
 
 
 /* Project todos:
-    - Cleanup code + get familiar with HTMX attributes and options
     - implement HTMX constants and extension functions
     - Implement simple todolist page
     - Add tailwind
