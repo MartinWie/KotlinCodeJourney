@@ -16,8 +16,11 @@ fun Application.module() {
 
 
 /* Project todos:
-    - First HTMX use
+    - Cleanup code + get familiar with HTMX attributes and options
+    - implement HTMX constants and extension functions
+    - Implement simple todolist page
     - Add tailwind
-    - Implement mini use case with in memory state
     - Look into jOOQ ?
+    - prep HTMX todolist repo
+    - prep HTMX + Kotlin + Ktor Template repo
  */
