@@ -53,3 +53,13 @@ enum class HxSwapOption(val value: String) {
 fun HTMLTag.hxPut(path: String) {
     attributes += "hx-put" to path
 }
+
+/**
+ * The hx-delete attribute will cause an element to issue a DELETE to the specified URL
+ * and swap the HTML into the DOM using a swap strategy (HxSwapOption).
+ *
+ * https://htmx.org/attributes/hx-delete/
+ */
+fun HTMLTag.hxDelete(path: String) {
+    attributes += "hx-delete" to path
+}
