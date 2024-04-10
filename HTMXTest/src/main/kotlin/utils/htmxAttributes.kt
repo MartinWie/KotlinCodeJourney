@@ -15,7 +15,7 @@ fun HTMLTag.hxGet(path: String) {
 
 /**
  * The hx-post attribute will cause an element to issue a POST to the specified URL
- * and swap the HTML into the DOM using a swap strategy(HxSwapOption).
+ * and swap the HTML into the DOM using a swap strategy (HxSwapOption).
  *
  * https://htmx.org/attributes/hx-post/
  */
@@ -25,7 +25,7 @@ fun HTMLTag.hxPost(path: String) {
 
 /**
  * The hx-swap attribute allows you to specify how the response will be swapped in relative to the target of an AJAX request.
- * If you do not specify the option(HxSwapOption), the default is htmx.config.defaultSwapStyle (innerHTML).
+ * If you do not specify the option (HxSwapOption), the default is htmx.config.defaultSwapStyle (innerHTML).
  *
  * https://htmx.org/attributes/hx-swap/
  */
@@ -42,4 +42,14 @@ enum class HxSwapOption(val value: String) {
     AFTER_END("afterend"),
     DELETE("delete"),
     NONE("none")
+}
+
+/**
+ * The hx-put attribute will cause an element to issue a PUT to the specified URL
+ * and swap the HTML into the DOM using a swap strategy (HxSwapOption).
+ *
+ * https://htmx.org/attributes/hx-put/
+ */
+fun HTMLTag.hxPut(path: String) {
+    attributes += "hx-put" to path
 }
