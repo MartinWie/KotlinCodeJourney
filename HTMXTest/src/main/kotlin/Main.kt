@@ -18,9 +18,9 @@ fun Application.module() {
 /* Project todos:
     - implement HTMX constants and extension functions
     - Implement simple todolist page
-    - Get HTMX into project instead of using unpkg
     - Add tailwind
-    - Look into jOOQ ?
     - prep HTMX todolist repo
     - prep HTMX + Kotlin + Ktor Template repo
+    - Get HTMX into project instead of using unpkg
+    - Get tailwind into project instead of using cdn
  */
