@@ -63,3 +63,13 @@ fun HTMLTag.hxPut(path: String) {
 fun HTMLTag.hxDelete(path: String) {
     attributes += "hx-delete" to path
 }
+
+/**
+ * The hx-patch attribute will cause an element to issue a PATCH to the specified URL
+ * and swap the HTML into the DOM using a swap strategy (HxSwapOption).
+ *
+ * https://htmx.org/attributes/hx-patch/
+ */
+fun HTMLTag.hxPatch(path: String) {
+    attributes += "hx-patch" to path
+}
