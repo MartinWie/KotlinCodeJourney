@@ -88,3 +88,25 @@ fun HTMLTag.hxOn(
 ) {
     attributes += "hx-on:$event" to jsCode
 }
+
+/**
+ *The hx-push-url attribute allows you to push a URL into the browser location history.
+ * This creates a new history entry, allowing navigation with the browser’s back and forward buttons.
+ * htmx snapshots the current DOM and saves it into its history cache, and restores from this cache on navigation.
+ *
+ * https://htmx.org/attributes/hx-push-url/
+ */
+fun HTMLTag.hxPushUrl(boolean: Boolean) {
+    attributes += "hx-push-url" to "$boolean"
+}
+
+/**
+ *The hx-push-url attribute allows you to push a URL into the browser location history.
+ * This creates a new history entry, allowing navigation with the browser’s back and forward buttons.
+ * htmx snapshots the current DOM and saves it into its history cache, and restores from this cache on navigation.
+ *
+ * https://htmx.org/attributes/hx-push-url/
+ */
+fun HTMLTag.hxPushUrl(path: String) {
+    attributes += "hx-push-url" to path
+}
