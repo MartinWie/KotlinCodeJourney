@@ -1,6 +1,7 @@
 package de.mw.utils
 
 import kotlinx.html.HTMLTag
+import org.intellij.lang.annotations.Language
 
 
 /**
@@ -72,4 +73,18 @@ fun HTMLTag.hxDelete(path: String) {
  */
 fun HTMLTag.hxPatch(path: String) {
     attributes += "hx-patch" to path
+}
+
+/**
+ * The hx-on* attributes allow you to embed scripts inline to respond to events directly on an element;
+ * Similar to the "onevent" properties found in HTML, such as onClick.
+ *
+ * https://htmx.org/attributes/hx-on/
+ */
+fun HTMLTag.hxOn(
+    event: String,
+    @Language("JavaScript")
+    jsCode: String
+) {
+    attributes += "hx-on:$event" to jsCode
 }
