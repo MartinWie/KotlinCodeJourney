@@ -118,5 +118,16 @@ fun HTMLTag.hxPushUrl(path: String) {
  * [Details](https://htmx.org/attributes/hx-select/)
  */
 fun HTMLTag.hxSelect(selector: String) {
-    attributes += "hx-get" to selector
+    attributes += "hx-select" to selector
+}
+
+/**
+ * The hx-select-oob attribute allows you to select content from a response to be swapped in via an out-of-band swap.
+ * The value of this attribute is comma separated list of elements to be swapped out of band.
+ * This attribute is almost always paired with hx-select.
+ *
+ * [Details](https://htmx.org/attributes/hx-select-oob//)
+ */
+fun HTMLTag.hxSelect(selector: String) {
+    attributes += "hx-select-oob" to selector
 }
