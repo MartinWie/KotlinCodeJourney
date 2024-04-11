@@ -90,7 +90,7 @@ fun HTMLTag.hxOn(
 }
 
 /**
- *The hx-push-url attribute allows you to push a URL into the browser location history.
+ * The hx-push-url attribute allows you to push a URL into the browser location history.
  * This creates a new history entry, allowing navigation with the browser’s back and forward buttons.
  * htmx snapshots the current DOM and saves it into its history cache, and restores from this cache on navigation.
  *
@@ -101,7 +101,7 @@ fun HTMLTag.hxPushUrl(boolean: Boolean) {
 }
 
 /**
- *The hx-push-url attribute allows you to push a URL into the browser location history.
+ * The hx-push-url attribute allows you to push a URL into the browser location history.
  * This creates a new history entry, allowing navigation with the browser’s back and forward buttons.
  * htmx snapshots the current DOM and saves it into its history cache, and restores from this cache on navigation.
  *
@@ -109,4 +109,14 @@ fun HTMLTag.hxPushUrl(boolean: Boolean) {
  */
 fun HTMLTag.hxPushUrl(path: String) {
     attributes += "hx-push-url" to path
+}
+
+/**
+ * The hx-select attribute allows you to select the content you want swapped from a response.
+ * The value of this attribute is a CSS query selector of the element or elements to select from the response.
+ *
+ * [Details](https://htmx.org/attributes/hx-select/)
+ */
+fun HTMLTag.hxSelect(selector: String) {
+    attributes += "hx-get" to selector
 }
