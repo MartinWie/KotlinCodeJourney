@@ -20,7 +20,7 @@ fun Application.configureRouting() {
                 p { +"Wow much p tag :D" }
                 button {
                     hxPost("/clicked")
-                    hxSwap(HxSwapOption.OUTER_HTML.value)
+                    hxSwap(HxSwapOption.OUTER_HTML)
                     +"Click Me"
                 }
             }

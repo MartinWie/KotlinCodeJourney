@@ -30,8 +30,8 @@ fun HTMLTag.hxPost(path: String) {
  *
  * [Details](https://htmx.org/attributes/hx-swap/)
  */
-fun HTMLTag.hxSwap(value: String) {
-    attributes += "hx-swap" to value
+fun HTMLTag.hxSwap(swapOption: HxSwapOption) {
+    attributes += "hx-swap" to swapOption.value
 }
 
 enum class HxSwapOption(val value: String) {
