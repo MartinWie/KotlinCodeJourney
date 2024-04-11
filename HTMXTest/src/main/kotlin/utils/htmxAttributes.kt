@@ -34,6 +34,34 @@ fun HTMLTag.hxSwap(swapOption: HxSwapOption) {
     attributes += "hx-swap" to swapOption.value
 }
 
+/**
+ * The hx-swap-oob attribute allows you to specify that some content in a response should be swapped into the DOM
+ * somewhere other than the target, that is “Out of Band”.
+ * This allows you to piggy back updates to other element updates on a response.
+ *
+ * TLDR: If hx-swap-oob is set to a boolean value in a server response,
+ * it can trigger an update of a specific element on the page that shares the same ID as the response element.
+ *
+ * [Details](https://htmx.org/attributes/hx-swap-oob/)
+ */
+fun HTMLTag.hxSwapOob(enabled: Boolean = true) {
+    attributes += "hx-swap-oob" to "$enabled"
+}
+
+/**
+ * The hx-swap-oob attribute allows you to specify that some content in a response should be swapped into the DOM
+ * somewhere other than the target, that is “Out of Band”.
+ * This allows you to piggy back updates to other element updates on a response.
+ *
+ * TLDR: If set, a server response containing the corresponding selector can update elements marked with hx-swap-oob,
+ * allowing for simultaneous, targeted updates on the page.
+ *
+ * [Details](https://htmx.org/attributes/hx-swap-oob/)
+ */
+fun HTMLTag.hxSwapOob(swapOption: HxSwapOption, selector: String? = null) {
+    attributes += "hx-swap-oob" to swapOption.value + selector?.let { ":$it" }
+}
+
 enum class HxSwapOption(val value: String) {
     INNER_HTML("innerHTML"),
     OUTER_HTML("outerHTML"),
@@ -126,8 +154,11 @@ fun HTMLTag.hxSelect(selector: String) {
  * The value of this attribute is comma separated list of elements to be swapped out of band.
  * This attribute is almost always paired with hx-select.
  *
+ * TLDR: If hx-select-oob is used in a server response, it enables the selection and manipulation of specific elements
+ * in the current page DOM, based on matching criteria, for dynamic content updates.
+ *
  * [Details](https://htmx.org/attributes/hx-select-oob//)
  */
-fun HTMLTag.hxSelect(selector: String) {
+fun HTMLTag.hxSelectOob(selector: String) {
     attributes += "hx-select-oob" to selector
 }
