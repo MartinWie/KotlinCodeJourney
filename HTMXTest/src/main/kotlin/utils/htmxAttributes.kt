@@ -157,8 +157,31 @@ fun HTMLTag.hxSelect(selector: String) {
  * TLDR: If hx-select-oob is used in a server response, it enables the selection and manipulation of specific elements
  * in the current page DOM, based on matching criteria, for dynamic content updates.
  *
- * [Details](https://htmx.org/attributes/hx-select-oob//)
+ * [Details](https://htmx.org/attributes/hx-select-oob/)
  */
 fun HTMLTag.hxSelectOob(selector: String) {
     attributes += "hx-select-oob" to selector
+}
+
+
+/**
+ * Defines the `hx-target` attribute used to specify the target element for content swapping in AJAX responses.
+ * This attribute can accept various values to determine the target element:
+ *
+ * - A CSS query selector specifying the exact element to target.
+ * - `this` to indicate that the element with the `hx-target` attribute is the target.
+ * - `closest <CSS selector>` to find the nearest ancestor (or the element itself) matching the specified selector.
+ *   For example, `closest tr` targets the nearest table row.
+ * - `find <CSS selector>` to locate the first child descendant that matches the specified selector.
+ * - `next` which targets the element immediately following the current one in the DOM.
+ * - `next <CSS selector>` to find the next element in the DOM that matches the specified selector.
+ *   For example, `next .error` would target the next sibling with the `error` class.
+ * - `previous` which targets the element immediately preceding the current one in the DOM.
+ * - `previous <CSS selector>` to find the previous element in the DOM that matches the specified selector.
+ *   For example, `previous .error` would target the previous sibling with the `error` class.
+ *
+ * [Details](https://htmx.org/attributes/hx-target/)
+ */
+fun HTMLTag.hxTarget(selector: String) {
+    attributes += "hx-target" to selector
 }
