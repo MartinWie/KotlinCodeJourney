@@ -206,3 +206,15 @@ fun HTMLTag.hxVals(json: String) {
     attributes += "hx-vals" to json
 }
 
+/**
+ * The hx-disable attribute will disable htmx processing for a given element and all its children.
+ * This can be useful as a backup for HTML escaping, when you include user generated content in your site,
+ * and you want to prevent malicious scripting attacks.
+ *
+ * The value of the tag is ignored, and it cannot be reversed by any content beneath it.
+ *
+ * [Details](https://htmx.org/attributes/hx-disable/)
+ */
+fun HTMLTag.hxDisable() {
+    attributes += "hx-disable" to "true"
+}
