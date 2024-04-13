@@ -185,3 +185,24 @@ fun HTMLTag.hxSelectOob(selector: String) {
 fun HTMLTag.hxTarget(selector: String) {
     attributes += "hx-target" to selector
 }
+
+/**
+ * The hx-vals attribute allows you to add to the parameters that will be submitted with an AJAX request.
+ *
+ * By default, the value of this attribute is a list of name-expression values in JSON format.
+ *
+ * If you wish for hx-vals to evaluate the values given, you can prefix the values with javascript: or js:
+ *
+ * Security Considerations
+ * By default, the value of hx-vals must be valid JSON.
+ * It is not dynamically computed. If you use the "javascript:" prefix, be aware that you are introducing
+ * security considerations, especially when dealing with user input such as query strings or user-generated
+ * content, which could introduce a Cross-Site Scripting (XSS) vulnerability.
+ *
+ *
+ * [Details](https://htmx.org/attributes/hx-vals/)
+ */
+fun HTMLTag.hxVals(json: String) {
+    attributes += "hx-vals" to json
+}
+
