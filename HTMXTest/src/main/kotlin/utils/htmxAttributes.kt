@@ -232,3 +232,13 @@ fun HTMLTag.hxDisable() {
 fun HTMLTag.hxDisabled(selector: String = "this") {
     attributes += "hx-disabled-elt" to selector
 }
+
+/**
+ * The hx-boost attribute allows you to “boost” normal anchors and form tags to use AJAX instead.
+ * This has the nice fallback that, if the user does not have javascript enabled, the site will continue to work.
+ *
+ * [Details](https://htmx.org/attributes/hx-boost/)
+ */
+fun HTMLTag.hxBoost(value: Boolean = true) {
+    attributes += "hx-boost" to "$value"
+}
