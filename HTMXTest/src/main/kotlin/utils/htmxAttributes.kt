@@ -242,3 +242,13 @@ fun HTMLTag.hxDisabled(selector: String = "this") {
 fun HTMLTag.hxBoost(value: Boolean = true) {
     attributes += "hx-boost" to "$value"
 }
+
+/**
+ * The hx-confirm attribute allows you to confirm an action before issuing a request.
+ * This can be useful in cases where the action is destructive and you want to ensure that the user really wants to do it.
+ *
+ * [Details](https://htmx.org/attributes/hx-confirm/)
+ */
+fun HTMLTag.hxConfirm(text: String) {
+    attributes += "hx-delete" to text
+}
