@@ -250,5 +250,15 @@ fun HTMLTag.hxBoost(value: Boolean = true) {
  * [Details](https://htmx.org/attributes/hx-confirm/)
  */
 fun HTMLTag.hxConfirm(text: String) {
-    attributes += "hx-delete" to text
+    attributes += "hx-confirm" to text
+}
+
+/**
+ * The hx-prompt attribute allows you to show a prompt before issuing a request.
+ * The value of the prompt will be included in the request in the "HX-Prompt" header.
+ *
+ * [Details](https://htmx.org/attributes/hx-prompt/)
+ */
+fun HTMLTag.hxPrompt(text: String) {
+    attributes += "hx-prompt" to text
 }
