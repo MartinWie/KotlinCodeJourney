@@ -291,3 +291,16 @@ fun HTMLTag.hxDisinherit(htmxTags: List<String> = listOf("*")) {
 fun HTMLTag.hxEncoding() {
     attributes += "hx-encoding" to "multipart/form-data"
 }
+
+/**
+ * The hx-headers attribute allows you to add to the headers that will be submitted with an AJAX request.
+ *
+ * By default, the value of this attribute is a list of name-expression values in JSON format.
+ *
+ * If you wish for hx-headers to evaluate the values given, you can prefix the values with "javascript:" or "js:".
+ *
+ * [Details](https://htmx.org/attributes/hx-headers/)
+ */
+fun HTMLTag.hxHeaders(headers: String) {
+    attributes += "hx-headers" to headers
+}
