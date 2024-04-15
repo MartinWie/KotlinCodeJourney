@@ -276,3 +276,18 @@ fun HTMLTag.hxPrompt(text: String) {
 fun HTMLTag.hxDisinherit(htmxTags: List<String> = listOf("*")) {
     attributes += "hx-disinherit" to htmxTags.joinToString(" ")
 }
+
+/**
+ * The hx-encoding attribute allows you to switch the request encoding
+ * from the usual "application/x-www-form-urlencoded" encoding to "multipart/form-data", usually
+ * to support file uploads in an ajax request.
+ *
+ * The value of this attribute should be multipart/form-data.
+ *
+ * The hx-encoding tag may be placed on parent elements.
+ *
+ * [Details](https://htmx.org/attributes/hx-encoding/)
+ */
+fun HTMLTag.hxEncoding() {
+    attributes += "hx-encoding" to "multipart/form-data"
+}
