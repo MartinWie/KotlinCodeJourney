@@ -262,3 +262,17 @@ fun HTMLTag.hxConfirm(text: String) {
 fun HTMLTag.hxPrompt(text: String) {
     attributes += "hx-prompt" to text
 }
+
+/**
+ * The default behavior for htmx is to “inherit” many attributes automatically: that is,
+ * an attribute such as hx-target may be placed on a parent element, and all child elements will inherit that target.
+ *
+ * The hx-disinherit attribute allows you to control this automatic attribute inheritance.
+ * An example scenario is to allow you to place an hx-boost on the body element of a page,
+ * but overriding that behavior in a specific part of the page to allow for more specific behaviors.
+ *
+ * [Details](https://htmx.org/attributes/hx-disinherit/)
+ */
+fun HTMLTag.hxDisinherit(htmxTags: List<String> = listOf("*")) {
+    attributes += "hx-disinherit" to htmxTags.joinToString(" ")
+}
