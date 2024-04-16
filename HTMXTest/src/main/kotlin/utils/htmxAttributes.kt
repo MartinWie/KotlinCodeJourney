@@ -330,3 +330,16 @@ fun HTMLTag.hxHistory() {
 fun HTMLTag.hxHistoryElt() {
     attributes += "hx-history-elt" to "true"
 }
+
+/**
+ * The hx-validate attribute will cause an element to validate itself by way of the HTML5 Validation API
+ * before it submits a request.
+ *
+ * Only <form> elements validate data by default, but other elements do not.
+ * Adding hx-validate="true" to <input>, <textarea> or <select> enables validation before sending requests.
+ *
+ * [Details](https://htmx.org/attributes/hx-validate/)
+ */
+fun HTMLTag.hxValidate() {
+    attributes += "hx-validate" to "true"
+}
