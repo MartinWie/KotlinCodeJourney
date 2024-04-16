@@ -304,3 +304,17 @@ fun HTMLTag.hxEncoding() {
 fun HTMLTag.hxHeaders(headers: String) {
     attributes += "hx-headers" to headers
 }
+
+/**
+ * Set the hx-history attribute to false on any element in the current document,
+ * or any html fragment loaded into the current document by htmx, to prevent sensitive data being saved to
+ * the localStorage cache when htmx takes a snapshot of the page state.
+ *
+ * History navigation will work as expected, but on restoration the URL
+ * will be requested from the server instead of the history cache.
+ *
+ * [Details](https://htmx.org/attributes/hx-history/)
+ */
+fun HTMLTag.hxHistory() {
+    attributes += "hx-history" to "false"
+}
