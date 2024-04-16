@@ -355,3 +355,28 @@ fun HTMLTag.hxValidate() {
 fun HTMLTag.hxPreserve() {
     attributes += "hx-preserve" to "true"
 }
+
+/**
+ * The hx-include attribute allows you to include additional element values in an AJAX request.
+ * The value of this attribute can be:
+ *
+ * A CSS query selector of the elements to include.
+ *
+ * "this" which will include the descendants of the element.
+ *
+ * "closest <CSS selector>" which will find the closest ancestor element or itself, that matches the given CSS selector
+ * (e.g. closest tr will target the closest table row to the element).
+ *
+ * "find <CSS selector>" which will find the first child descendant element that matches the given CSS selector.
+ *
+ * "[next <CSS selector>]" which will scan the DOM forward for the first element that matches the given CSS selector.
+ * (e.g. next .error will target the closest following sibling element with error class)
+ *
+ * "previous <CSS selector>" which will scan the DOM backwards for the first element that matches the given CSS selector
+ * (e.g previous .error will target the closest previous sibling with error class)
+ *
+ * [Details](https://htmx.org/attributes/hx-include/)
+ */
+fun HTMLTag.hxInclude(selector: String = "this") {
+    attributes += "hx-include" to selector
+}
