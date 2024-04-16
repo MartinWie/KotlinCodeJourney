@@ -318,3 +318,15 @@ fun HTMLTag.hxHeaders(headers: String) {
 fun HTMLTag.hxHistory() {
     attributes += "hx-history" to "false"
 }
+
+/**
+ * The hx-history-elt attribute allows you to specify the element that will be used to snapshot and restore
+ * page state during navigation. By default, the body tag is used. This is typically good enough for most setups,
+ * but you may want to narrow it down to a child element. Just make sure that the element is always visible
+ * in your application, or htmx will not be able to restore history navigation properly.
+ *
+ * [Details](https://htmx.org/attributes/hx-history/)
+ */
+fun HTMLTag.hxHistoryElt() {
+    attributes += "hx-history-elt" to "true"
+}
