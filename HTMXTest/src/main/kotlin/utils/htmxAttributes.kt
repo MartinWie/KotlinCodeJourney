@@ -457,3 +457,19 @@ fun HTMLTag.hxParamsInclude(vararg params: String) {
     }
 }
 
+/**
+ * The hx-request attribute allows you to configure various aspects of the request via the following attributes:
+ *
+ * "timeout" - the timeout for the request, in milliseconds
+ * "credentials" - if the request will send credentials
+ * "noHeaders" - strips all headers from the request
+ *
+ * It is possible to concat multiple with a ","
+ *
+ * You may make the values dynamically evaluated by adding the javascript: or js: prefix.
+ *
+ * [Details](https://htmx.org/attributes/hx-params/)
+ */
+fun HTMLTag.hxRequest(requestAttributes: String) {
+    attributes += "hx-request" to requestAttributes
+}
