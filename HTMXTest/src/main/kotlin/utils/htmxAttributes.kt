@@ -412,3 +412,48 @@ enum class SyncModifier(val value: String) {
     QUEUE_LAST("queue last"),
     QUEUE_ALL("queue all")
 }
+
+/**
+ * The hx-params attribute allows you to filter the parameters that will be submitted with an AJAX request.
+ *
+ * The possible values of this attribute are:
+ *
+ * "*" - Include all parameters (default)
+ * "none" - Include no parameters
+ * "not <param-list>" - Include all except the comma separated list of parameter names
+ * "<param-list>" - Include all the comma separated list of parameter names
+ *
+ * [Details](https://htmx.org/attributes/hx-params/)
+ */
+fun HTMLTag.hxParams(value: String = "*") {
+    attributes += "hx-params" to value
+}
+
+/**
+ * Exclude version of hxParams function to handle excluding certain parameters.
+ * "not <param-list>" - Include all except the comma-separated list of parameter names.
+ * Utilizes vararg to make it easy to pass multiple parameters to exclude.
+ */
+fun HTMLTag.hxParamsExclude(vararg params: String) {
+    if (params.isNotEmpty()) {
+        attributes += "hx-params" to params.joinToString(",")
+    } else {
+        // If no param is provided we can assume we do not want to exclude any param
+        attributes += "hx-params" to "*"
+    }
+}
+
+/**
+ * Include version of hxParams function to handle including only specific parameters.
+ * "<param-list>" - Include only the comma-separated list of parameter names.
+ * Utilizes vararg to allow passing multiple parameters to include.
+ */
+fun HTMLTag.hxParamsInclude(vararg params: String) {
+    if (params.isNotEmpty()) {
+        attributes += "hx-params" to params.joinToString(",")
+    } else {
+        // If no param is provided we can assume we do not want any param.
+        attributes += "hx-params" to "none"
+    }
+}
+
