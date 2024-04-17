@@ -435,11 +435,11 @@ fun HTMLTag.hxParams(value: String = "*") {
  * Utilizes vararg to make it easy to pass multiple parameters to exclude.
  */
 fun HTMLTag.hxParamsExclude(vararg params: String) {
-    if (params.isNotEmpty()) {
-        attributes += "hx-params" to params.joinToString(",")
+    attributes += if (params.isNotEmpty()) {
+        "hx-params" to params.joinToString(",")
     } else {
         // If no param is provided we can assume we do not want to exclude any param
-        attributes += "hx-params" to "*"
+        "hx-params" to "*"
     }
 }
 
@@ -449,11 +449,11 @@ fun HTMLTag.hxParamsExclude(vararg params: String) {
  * Utilizes vararg to allow passing multiple parameters to include.
  */
 fun HTMLTag.hxParamsInclude(vararg params: String) {
-    if (params.isNotEmpty()) {
-        attributes += "hx-params" to params.joinToString(",")
+    attributes += if (params.isNotEmpty()) {
+        "hx-params" to params.joinToString(",")
     } else {
         // If no param is provided we can assume we do not want any param.
-        attributes += "hx-params" to "none"
+        "hx-params" to "none"
     }
 }
 
