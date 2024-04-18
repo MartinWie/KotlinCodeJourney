@@ -488,3 +488,33 @@ fun HTMLTag.hxRequest(requestAttributes: String) {
 fun HTMLTag.hxIndicator(selector: String) {
     attributes += "hx-indicator" to selector
 }
+
+/**
+ * The hx-replace-url attribute allows you to replace the current url of the browser location history.
+ *
+ * The possible values of this attribute are:
+ *
+ * "true", which replaces the fetched URL in the browser navigation bar.
+ * "false", which disables replacing the fetched URL if it would otherwise be replaced due to inheritance.
+ * A URL to be replaced into the location bar. This may be relative or absolute, as per history.replaceState().
+ *
+ * [Details](https://htmx.org/attributes/hx-replace-url/)
+ */
+fun HTMLTag.hxReplaceUrl(useFetchedUrl: Boolean) {
+    attributes += "hx-replace-url" to useFetchedUrl.toString()
+}
+
+/**
+ * The hx-replace-url attribute allows you to replace the current url of the browser location history.
+ *
+ * The possible values of this attribute are:
+ *
+ * "true", which replaces the fetched URL in the browser navigation bar.
+ * "false", which disables replacing the fetched URL if it would otherwise be replaced due to inheritance.
+ * A URL to be replaced into the location bar. This may be relative or absolute, as per history.replaceState().
+ *
+ * [Details](https://htmx.org/attributes/hx-replace-url/)
+ */
+fun HTMLTag.hxReplaceUrl(url: String) {
+    attributes += "hx-replace-url" to url
+}
