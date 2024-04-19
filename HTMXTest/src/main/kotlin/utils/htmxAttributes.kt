@@ -532,3 +532,17 @@ fun HTMLTag.hxReplaceUrl(url: String) {
 fun HTMLTag.hxTrigger(trigger: String) {
     attributes += "hx-trigger" to trigger
 }
+
+/**
+ * The hx-ext attribute enables an htmx extension for an element and all its children.
+ *
+ * The value can be a single extension name or a comma separated list of extensions to apply.
+ *
+ * The hx-ext tag may be placed on parent elements if you want a plugin to apply to an entire swath of the DOM,
+ * and on the body tag for it to apply to all htmx requests.
+ *
+ * [Details](https://htmx.org/attributes/hx-ext/)
+ */
+fun HTMLTag.hxExt(extension: HtmxExtension) {
+    attributes += "hx-ext" to extension.name
+}
