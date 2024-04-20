@@ -534,7 +534,7 @@ fun HTMLTag.hxTrigger(trigger: String) {
 }
 
 /**
- * The hx-ext attribute enables an htmx extension for an element and all its children.
+ * The hx-ext attribute enables a htmx extension for an element and all its children.
  *
  * The value can be a single extension name or a comma separated list of extensions to apply.
  *
