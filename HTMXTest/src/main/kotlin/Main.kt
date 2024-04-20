@@ -16,7 +16,6 @@ fun Application.module() {
 
 
 /* Project todos:
-    - implement HTMX constants and extension functions
     - Implement simple todolist page
     - Add tailwind
     - prep HTMX todolist repo
