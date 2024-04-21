@@ -7,7 +7,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.html.*
-import kotlinx.html.stream.createHTML
+import kotlinx.html.stream.appendHTML
 
 fun Application.configureRouting() {
     val tmpGlobalState = mutableListOf<String>()
@@ -48,13 +48,14 @@ fun Application.configureRouting() {
                 tmpGlobalState.add(it)
             }
 
-            val htmlContent = createHTML().html {
-                body {
+            val htmlContent = buildString {
+                appendHTML().apply {
                     tmpGlobalState.forEach { element ->
                         p { +element }
                     }
                 }
             }
+
             call.respondText(htmlContent, ContentType.Text.Html)
         }
     }
