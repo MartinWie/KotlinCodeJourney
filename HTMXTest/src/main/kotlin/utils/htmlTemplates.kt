@@ -1,6 +1,7 @@
 package de.mw.utils
 
 import kotlinx.html.*
+import kotlinx.html.stream.appendHTML
 import kotlinx.html.stream.createHTML
 
 fun htmlBasePage(pageTitle: String, bodyFunction: BODY.() -> Unit): String {
@@ -12,5 +13,11 @@ fun htmlBasePage(pageTitle: String, bodyFunction: BODY.() -> Unit): String {
         body {
             bodyFunction()
         }
+    }
+}
+
+fun buildHTMLString(builderAction: TagConsumer<StringBuilder>.() -> Unit): String {
+    return buildString {
+        appendHTML().builderAction()
     }
 }

@@ -7,7 +7,6 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.html.*
-import kotlinx.html.stream.appendHTML
 
 fun Application.configureRouting() {
     val tmpGlobalState = mutableListOf<String>()
@@ -44,15 +43,14 @@ fun Application.configureRouting() {
 
         post("/clicked") {
             val userInput = call.receiveParameters()["todoItem"]
+
             userInput?.let {
                 tmpGlobalState.add(it)
             }
 
-            val htmlContent = buildString {
-                appendHTML().apply {
-                    tmpGlobalState.forEach { element ->
-                        p { +element }
-                    }
+            val htmlContent = buildHTMLString {
+                tmpGlobalState.forEach { element ->
+                    p { +element }
                 }
             }
 
