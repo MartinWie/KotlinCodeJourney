@@ -3,6 +3,7 @@ package de.mw.plugins
 import de.mw.utils.*
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.html.*
@@ -10,24 +11,26 @@ import kotlinx.html.stream.createHTML
 
 fun Application.configureRouting() {
     val tmpGlobalState = mutableListOf<String>()
-    tmpGlobalState.add("0")
 
     routing {
         get("/") {
             val htmlContent = htmlBasePage("Todo List") {
                 h1 { +"Todo test app" }
 
+                input { id = "todo-input" }
+
                 button {
                     hxPost("/clicked")
                     hxSwap(HxSwapOption.INNER_HTML)
-                    hxTarget(".todos")
+                    hxTarget("#todos")
+                    hxVals("js:{'todoItem' : document.getElementById('todo-input').value}")
                     +"Click Me"
                 }
 
                 br()
 
                 div {
-                    classes = setOf("todos")
+                    id = "todos"
                     tmpGlobalState.forEach { element ->
                         p { +element }
                     }
@@ -40,7 +43,11 @@ fun Application.configureRouting() {
         }
 
         post("/clicked") {
-            tmpGlobalState.add(tmpGlobalState.size.toString())
+            val userInput = call.receiveParameters()["todoItem"]
+            userInput?.let {
+                tmpGlobalState.add(it)
+            }
+
             val htmlContent = createHTML().html {
                 body {
                     tmpGlobalState.forEach { element ->
