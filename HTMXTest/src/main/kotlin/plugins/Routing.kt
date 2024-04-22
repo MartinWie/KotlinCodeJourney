@@ -64,13 +64,12 @@ fun Application.configureRouting() {
                         p { +element }
                     }
                 }
+                
                 call.respondText(errorHtml, ContentType.Text.Html, HttpStatusCode.UnprocessableEntity)
                 return@post
             }
 
-            userInput.let {
-                tmpTodoState.add(it)
-            }
+            tmpTodoState.add(userInput)
 
             val htmlContent = buildHTMLString {
                 tmpTodoState.forEach { element ->
