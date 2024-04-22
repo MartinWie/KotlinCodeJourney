@@ -32,16 +32,17 @@ fun Application.configureRouting() {
                     }
                 }
 
-                br()
+                div {
+                    id = "add-todo-error"
+                }
 
                 div {
                     id = "todos"
+
                     tmpTodoState.forEach { element ->
                         p { +element }
                     }
                 }
-
-                br()
             }
 
             call.respondText(htmlContent, ContentType.Text.Html)
@@ -51,7 +52,19 @@ fun Application.configureRouting() {
             val userInput = call.receiveParameters()["todoItem"]
 
             if (userInput.isNullOrEmpty() || tmpTodoState.contains(userInput)) {
-                call.respond(HttpStatusCode.BadRequest)
+                val errorMessage = "Error: Todo is empty or already exists!"
+                val errorHtml = buildHTMLString {
+                    div {
+                        id = "add-todo-error"
+                        hxSwapOob()
+                        +errorMessage
+                    }
+
+                    tmpTodoState.forEach { element ->
+                        p { +element }
+                    }
+                }
+                call.respondText(errorHtml, ContentType.Text.Html, HttpStatusCode.UnprocessableEntity)
                 return@post
             }
 
