@@ -9,28 +9,34 @@ import io.ktor.server.routing.*
 import kotlinx.html.*
 
 fun Application.configureRouting() {
-    val tmpGlobalState = mutableListOf<String>()
+    val tmpTodoState = mutableListOf<String>()
 
     routing {
         get("/") {
             val htmlContent = htmlBasePage("Todo List") {
                 h1 { +"Todo test app" }
 
-                input { id = "todo-input" }
-
-                button {
-                    hxPost("/clicked")
+                form {
+                    hxPost("/add-todo")
                     hxSwap(HxSwapOption.INNER_HTML)
                     hxTarget("#todos")
-                    hxVals("js:{'todoItem' : document.getElementById('todo-input').value}")
-                    +"Click Me"
+
+                    input {
+                        type = InputType.text
+                        name = "todoItem"
+                    }
+
+                    button {
+                        type = ButtonType.submit
+                        +"Add"
+                    }
                 }
 
                 br()
 
                 div {
                     id = "todos"
-                    tmpGlobalState.forEach { element ->
+                    tmpTodoState.forEach { element ->
                         p { +element }
                     }
                 }
@@ -41,15 +47,20 @@ fun Application.configureRouting() {
             call.respondText(htmlContent, ContentType.Text.Html)
         }
 
-        post("/clicked") {
+        post("/add-todo") {
             val userInput = call.receiveParameters()["todoItem"]
 
-            userInput?.let {
-                tmpGlobalState.add(it)
+            if (userInput.isNullOrEmpty() || tmpTodoState.contains(userInput)) {
+                call.respond(HttpStatusCode.BadRequest)
+                return@post
+            }
+
+            userInput.let {
+                tmpTodoState.add(it)
             }
 
             val htmlContent = buildHTMLString {
-                tmpGlobalState.forEach { element ->
+                tmpTodoState.forEach { element ->
                     p { +element }
                 }
             }
