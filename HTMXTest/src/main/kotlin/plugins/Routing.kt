@@ -18,8 +18,7 @@ fun Application.configureRouting() {
 
                 form {
                     hxPost("/add-todo")
-                    hxSwap(HxSwapOption.INNER_HTML)
-                    hxTarget("#todos")
+                    hxSwap(HxSwapOption.NONE)
 
                     input {
                         type = InputType.text
@@ -59,12 +58,8 @@ fun Application.configureRouting() {
                         hxSwapOob()
                         +errorMessage
                     }
-
-                    tmpTodoState.forEach { element ->
-                        p { +element }
-                    }
                 }
-                
+
                 call.respondText(errorHtml, ContentType.Text.Html, HttpStatusCode.UnprocessableEntity)
                 return@post
             }
@@ -72,8 +67,10 @@ fun Application.configureRouting() {
             tmpTodoState.add(userInput)
 
             val htmlContent = buildHTMLString {
-                tmpTodoState.forEach { element ->
-                    p { +element }
+                div {
+                    id = "todos"
+                    hxSwapOob("afterbegin")
+                    p { +userInput }
                 }
             }
 

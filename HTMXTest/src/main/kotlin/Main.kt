@@ -17,6 +17,8 @@ fun Application.module() {
 
 /* Project todos:
     - Implement simple todolist page
+        - Improve potentially todo sending
+        - Make todos clickable to remove them
     - Add tailwind
     - Add tailwind enum or extension setup
     - prep HTMX todolist repo

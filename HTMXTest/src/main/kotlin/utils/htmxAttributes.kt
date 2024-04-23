@@ -58,6 +58,20 @@ fun HTMLTag.hxSwapOob(enabled: Boolean = true) {
  *
  * [Details](https://htmx.org/attributes/hx-swap-oob/)
  */
+fun HTMLTag.hxSwapOob(selector: String) {
+    attributes += "hx-swap-oob" to selector
+}
+
+/**
+ * The hx-swap-oob attribute allows you to specify that some content in a response should be swapped into the DOM
+ * somewhere other than the target, that is “Out of Band”.
+ * This allows you to piggy back updates to other element updates on a response.
+ *
+ * TLDR: If set, a server response containing the corresponding selector can update elements marked with hx-swap-oob,
+ * allowing for simultaneous, targeted updates on the page.
+ *
+ * [Details](https://htmx.org/attributes/hx-swap-oob/)
+ */
 fun HTMLTag.hxSwapOob(swapOption: HxSwapOption, selector: String? = null) {
     attributes += "hx-swap-oob" to swapOption.value + selector?.let { ":$it" }
 }
