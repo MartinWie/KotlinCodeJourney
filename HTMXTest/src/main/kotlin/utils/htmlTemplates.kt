@@ -50,3 +50,28 @@ fun buildHTMLString(builderAction: TagConsumer<StringBuilder>.() -> Unit): Strin
         appendHTML().builderAction()
     }
 }
+
+fun DIV.getTodoForm(errorMessage: String? = null) {
+    form {
+        id = "todo-form"
+        hxPost("/add-todo")
+        hxSwap(HxSwapOption.OUTER_HTML)
+        hxTarget("closest div")
+
+        input {
+            type = InputType.text
+            name = "todoItem"
+        }
+
+        button {
+            type = ButtonType.submit
+            +"Add"
+        }
+
+        errorMessage?.let {
+            div {
+                +errorMessage
+            }
+        }
+    }
+}

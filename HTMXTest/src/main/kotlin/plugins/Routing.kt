@@ -1,12 +1,18 @@
 package de.mw.plugins
 
-import de.mw.utils.*
+import de.mw.utils.buildHTMLString
+import de.mw.utils.getTodoForm
+import de.mw.utils.htmlBasePage
+import de.mw.utils.hxSwapOob
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.html.*
+import kotlinx.html.div
+import kotlinx.html.h1
+import kotlinx.html.id
+import kotlinx.html.p
 
 fun Application.configureRouting() {
     val tmpTodoState = mutableListOf<String>()
@@ -16,25 +22,10 @@ fun Application.configureRouting() {
             val htmlContent = htmlBasePage("Todo List") {
                 h1 { +"Todo test app" }
 
-                form {
-                    hxPost("/add-todo")
-                    hxSwap(HxSwapOption.NONE)
-
-                    input {
-                        type = InputType.text
-                        name = "todoItem"
-                    }
-
-                    button {
-                        type = ButtonType.submit
-                        +"Add"
-                    }
-                }
-
                 div {
-                    id = "add-todo-error"
+                    getTodoForm()
                 }
-
+                
                 div {
                     id = "todos"
 
@@ -54,9 +45,7 @@ fun Application.configureRouting() {
                 val errorMessage = "Error: Todo is empty or already exists!"
                 val errorHtml = buildHTMLString {
                     div {
-                        id = "add-todo-error"
-                        hxSwapOob()
-                        +errorMessage
+                        getTodoForm(errorMessage)
                     }
                 }
 
@@ -67,6 +56,10 @@ fun Application.configureRouting() {
             tmpTodoState.add(userInput)
 
             val htmlContent = buildHTMLString {
+                div {
+                    getTodoForm()
+                }
+
                 div {
                     id = "todos"
                     hxSwapOob("afterbegin")
