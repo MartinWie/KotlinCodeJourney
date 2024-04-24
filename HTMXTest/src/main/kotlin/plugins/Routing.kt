@@ -25,11 +25,11 @@ fun Application.configureRouting() {
                 div {
                     getTodoForm()
                 }
-                
+
                 div {
                     id = "todos"
 
-                    tmpTodoState.forEach { element ->
+                    tmpTodoState.reversed().forEach { element ->
                         p { +element }
                     }
                 }
