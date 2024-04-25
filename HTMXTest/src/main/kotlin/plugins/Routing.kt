@@ -1,18 +1,12 @@
 package de.mw.plugins
 
-import de.mw.utils.buildHTMLString
-import de.mw.utils.getTodoForm
-import de.mw.utils.htmlBasePage
-import de.mw.utils.hxSwapOob
+import de.mw.utils.*
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.html.div
-import kotlinx.html.h1
-import kotlinx.html.id
-import kotlinx.html.p
+import kotlinx.html.*
 
 fun Application.configureRouting() {
     val tmpTodoState = mutableListOf<String>()
@@ -22,8 +16,27 @@ fun Application.configureRouting() {
             val htmlContent = htmlBasePage("Todo List") {
                 h1 { +"Todo test app" }
 
+                form {
+                    id = "todo-form"
+                    hxPost("/add-todo")
+                    hxSwap(HxSwapOption.NONE)
+                    hxOn(
+                        "after-request",
+                        "if(event.detail.successful) this.reset()"
+                    ) // TODO: move into reusable function(hxClear form or extension of FORM)
+
+                    input {
+                        type = InputType.text
+                        name = "todoItem"
+                    }
+
+                    button {
+                        type = ButtonType.submit
+                        +"Add"
+                    }
+                }
                 div {
-                    getTodoForm()
+                    id = "todo-input-error"
                 }
 
                 div {
@@ -42,14 +55,17 @@ fun Application.configureRouting() {
             val userInput = call.receiveParameters()["todoItem"]
 
             if (userInput.isNullOrEmpty() || tmpTodoState.contains(userInput)) {
+                call.response.header( // TODO: clean up and add HTMX headers to utils
+                    "HX-Retarget",
+                    "#todo-input-error"
+                )
+                call.response.header(
+                    "HX-Reswap",
+                    HxSwapOption.INNER_HTML.name
+                )
                 val errorMessage = "Error: Todo is empty or already exists!"
-                val errorHtml = buildHTMLString {
-                    div {
-                        getTodoForm(errorMessage)
-                    }
-                }
 
-                call.respondText(errorHtml, ContentType.Text.Html, HttpStatusCode.UnprocessableEntity)
+                call.respondText(errorMessage, ContentType.Text.Html, HttpStatusCode.UnprocessableEntity)
                 return@post
             }
 
@@ -57,14 +73,16 @@ fun Application.configureRouting() {
 
             val htmlContent = buildHTMLString {
                 div {
-                    getTodoForm()
-                }
-
-                div {
                     id = "todos"
                     hxSwapOob("afterbegin")
                     p { +userInput }
                 }
+
+                div {
+                    id = "todo-input-error"
+                    hxSwapOob()
+                }
+
             }
 
             call.respondText(htmlContent, ContentType.Text.Html)
