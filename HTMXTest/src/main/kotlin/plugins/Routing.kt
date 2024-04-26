@@ -7,9 +7,10 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.html.*
+import java.util.*
 
 fun Application.configureRouting() {
-    val tmpTodoState = mutableListOf<String>()
+    val tmpTodoState = mutableMapOf<String, String>()
 
     routing {
         get("/") {
@@ -18,7 +19,7 @@ fun Application.configureRouting() {
 
                 form {
                     id = "todo-form"
-                    hxPost("/add-todo")
+                    hxPost("/todo")
                     hxSwap(HxSwapOption.NONE)
                     hxResetFormAfterSuccess()
                     input {
@@ -38,8 +39,13 @@ fun Application.configureRouting() {
                 div {
                     id = "todos"
 
-                    tmpTodoState.reversed().forEach { element ->
-                        p { +element }
+                    tmpTodoState.keys.reversed().forEach { todoId ->
+                        p {
+                            id = todoId
+                            hxDelete("/todo/$todoId")
+                            hxSwap(HxSwapOption.DELETE)
+                            +tmpTodoState[todoId]!!
+                        }
                     }
                 }
             }
@@ -47,10 +53,10 @@ fun Application.configureRouting() {
             call.respondText(htmlContent, ContentType.Text.Html)
         }
 
-        post("/add-todo") {
+        post("/todo") {
             val userInput = call.receiveParameters()["todoItem"]
 
-            if (userInput.isNullOrEmpty() || tmpTodoState.contains(userInput)) {
+            if (userInput.isNullOrEmpty() || tmpTodoState.values.contains(userInput)) {
                 call.response.header(
                     HtmxHeaders.RESPONSE_HX_RETARGET.value,
                     "#todo-input-error"
@@ -65,23 +71,38 @@ fun Application.configureRouting() {
                 return@post
             }
 
-            tmpTodoState.add(userInput)
+            val newTodoId = UUID.randomUUID().toString()
+            tmpTodoState[newTodoId] = userInput
 
             val htmlContent = buildHTMLString {
                 div {
                     id = "todos"
                     hxSwapOob("afterbegin")
-                    p { +userInput }
+                    p {
+                        id = userInput
+                        hxDelete("/todo/$newTodoId")
+                        hxSwap(HxSwapOption.DELETE)
+                        +userInput
+                    }
                 }
 
                 div {
                     id = "todo-input-error"
                     hxSwapOob()
                 }
-
             }
 
             call.respondText(htmlContent, ContentType.Text.Html)
         }
+
+        delete("/todo/{todoId}") {
+            val todoId = call.parameters["todoId"]
+            if (tmpTodoState.remove(todoId) != null) {
+                call.respond(HttpStatusCode.OK)
+            } else {
+                call.respond(HttpStatusCode.NotFound)
+            }
+        }
+
     }
 }
