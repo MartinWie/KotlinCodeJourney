@@ -1,5 +1,6 @@
 package de.mw.utils
 
+@Suppress("unused", "MayBeConstant")
 object HtmxExtensions {
     // Includes the commonly-used X-Requested-With header that identifies ajax requests in many backend frameworks.
     val AjaxHeader = "ajax-header"
