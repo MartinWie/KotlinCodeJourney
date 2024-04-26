@@ -1,73 +1,69 @@
 package de.mw.utils
 
-enum class HtmxExtension(private val extensionName: String) {
-    // includes the commonly-used X-Requested-With header that identifies ajax requests in many backend frameworks
-    AJAX_HEADER("ajax-header"),
+object HtmxExtensions {
+    // Includes the commonly-used X-Requested-With header that identifies ajax requests in many backend frameworks.
+    val AjaxHeader = "ajax-header"
 
-    // an extension for using the Alpine.js morph plugin as the swapping mechanism in htmx
-    ALPINE_MORPH("alpine-morph"),
+    // An extension for using the Alpine.js morph plugin as the swapping mechanism in htmx.
+    val AlpineMorph = "alpine-morph"
 
-    // an extension for manipulating timed addition and removal of classes on HTML elements
-    CLASS_TOOLS("class-tools"),
+    // An extension for manipulating timed addition and removal of classes on HTML elements.
+    val ClassTools = "class-tools"
 
-    // support for client side template processing of JSON/XML responses
-    CLIENT_SIDE_TEMPLATES("client-side-templates"),
+    // Support for client side template processing of JSON/XML responses.
+    val ClientSideTemplates = "client-side-templates"
 
-    // an extension for debugging of a particular element using htmx
-    DEBUG("debug"),
+    // An extension for debugging of a particular element using htmx.
+    val Debug = "debug"
 
-    // includes a JSON serialized version of the triggering event, if any
-    EVENT_HEADER("event-header"),
+    // Includes a JSON serialized version of the triggering event, if any.
+    val EventHeader = "event-header"
 
-    // support for merging the head tag from responses into the existing document's head
-    HEAD_SUPPORT("head-support"),
+    // Support for merging the head tag from responses into the existing document's head.
+    val HeadSupport = "head-support"
 
-    // allows you to include additional values in a request
-    INCLUDE_VALS("include-vals"),
+    // Allows you to include additional values in a request.
+    val IncludeVals = "include-vals"
 
-    // use JSON encoding in the body of requests, rather than the default x-www-form-urlencoded
-    JSON_ENC("json-enc"),
+    // Use JSON encoding in the body of requests, rather than the default x-www-form-urlencoded.
+    val JsonEnc = "json-enc"
 
-    // an extension for using the idiomorph morphing algorithm as a swapping mechanism
-    IDIOMORPH("idiomorph"),
+    // An extension for using the idiomorph morphing algorithm as a swapping mechanism.
+    val Idiomorph = "idiomorph"
 
-    // allows you to disable inputs, add and remove CSS classes to any element while a request is in-flight
-    LOADING_STATES("loading-states"),
+    // Allows you to disable inputs, add and remove CSS classes to any element while a request is in-flight.
+    val LoadingStates = "loading-states"
 
-    // use the X-HTTP-Method-Override header for non-GET and POST requests
-    METHOD_OVERRIDE("method-override"),
+    // Use the X-HTTP-Method-Override header for non-GET and POST requests.
+    val MethodOverride = "method-override"
 
-    // an extension for using the morphdom library as the swapping mechanism in htmx
-    MORPHDOM_SWAP("morphdom-swap"),
+    // An extension for using the morphdom library as the swapping mechanism in htmx.
+    val MorphdomSwap = "morphdom-swap"
 
-    // allows to swap multiple elements with different swap methods
-    MULTI_SWAP("multi-swap"),
+    // Allows to swap multiple elements with different swap methods.
+    val MultiSwap = "multi-swap"
 
-    // an extension for expressing path-based dependencies similar to intercooler.js
-    PATH_DEPS("path-deps"),
+    // An extension for expressing path-based dependencies similar to intercooler.js.
+    val PathDeps = "path-deps"
 
-    // preloads selected href and hx-get targets based on rules you control
-    PRELOAD("preload"),
+    // Preloads selected href and hx-get targets based on rules you control.
+    val Preload = "preload"
 
-    // allows you to remove an element after a given amount of time
-    REMOVE_ME("remove-me"),
+    // Allows you to remove an element after a given amount of time.
+    val RemoveMe = "remove-me"
 
-    // allows to specify different target elements to be swapped when different HTTP response codes are received
-    RESPONSE_TARGETS("response-targets"),
+    // Allows to specify different target elements to be swapped when different HTTP response codes are received.
+    val ResponseTargets = "response-targets"
 
-    // allows you to trigger events when the back button has been pressed
-    RESTORED("restored"),
+    // Allows you to trigger events when the back button has been pressed.
+    val Restored = "restored"
 
-    // uni-directional server push messaging via EventSource
-    SERVER_SENT_EVENTS("server-sent-events"),
+    // Uni-directional server push messaging via EventSource.
+    val ServerSentEvents = "server-sent-events"
 
-    // bi-directional connection to WebSocket servers
-    WEB_SOCKETS("web-sockets"),
+    // Bi-directional connection to WebSocket servers.
+    val WebSockets = "web-sockets"
 
-    // allows to use parameters for path variables instead of sending them in query or body
-    PATH_PARAMS("path-params");
-
-    override fun toString(): String {
-        return extensionName
-    }
+    // Allows to use parameters for path variables instead of sending them in query or body.
+    val PathParams = "path-params"
 }
