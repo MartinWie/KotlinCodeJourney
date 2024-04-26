@@ -87,37 +87,7 @@ enum class HtmxHeaders(private val header: String) {
      * [Details](https://htmx.org/headers/hx-trigger/)
      */
     RESPONSE_HX_TRIGGER("HX-Trigger"),
-
-    /**
-     * These response headers can be used to trigger client side actions on the target element within a response
-     * to htmx.
-     *
-     * You can trigger a single event or as many uniquely named events as you would like.
-     *
-     * The headers are:
-     *
-     * HX-Trigger - trigger events as soon as the response is received.
-     * HX-Trigger-After-Settle - trigger events after the settling step.
-     * HX-Trigger-After-Swap - trigger events after the swap step.
-     *
-     * [Details](https://htmx.org/headers/hx-trigger/)
-     */
     RESPONSE_HX_TRIGGER_AFTER_SETTLE("HX-Trigger-After-Settle"),
-
-    /**
-     * These response headers can be used to trigger client side actions on the target element within a response
-     * to htmx.
-     *
-     * You can trigger a single event or as many uniquely named events as you would like.
-     *
-     * The headers are:
-     *
-     * HX-Trigger - trigger events as soon as the response is received.
-     * HX-Trigger-After-Settle - trigger events after the settling step.
-     * HX-Trigger-After-Swap - trigger events after the swap step.
-     *
-     * [Details](https://htmx.org/headers/hx-trigger/)
-     */
     RESPONSE_HX_TRIGGER_AFTER_SWAP("HX-Trigger-After-Swap");
 
     override fun toString(): String {
