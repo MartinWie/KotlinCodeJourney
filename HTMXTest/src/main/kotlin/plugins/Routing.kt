@@ -20,11 +20,7 @@ fun Application.configureRouting() {
                     id = "todo-form"
                     hxPost("/add-todo")
                     hxSwap(HxSwapOption.NONE)
-                    hxOn(
-                        "after-request",
-                        "if(event.detail.successful) this.reset()"
-                    ) // TODO: move into reusable function(hxClear form or extension of FORM)
-
+                    hxResetFormAfterSuccess()
                     input {
                         type = InputType.text
                         name = "todoItem"
@@ -55,12 +51,12 @@ fun Application.configureRouting() {
             val userInput = call.receiveParameters()["todoItem"]
 
             if (userInput.isNullOrEmpty() || tmpTodoState.contains(userInput)) {
-                call.response.header( // TODO: clean up and add HTMX headers to utils
-                    "HX-Retarget",
+                call.response.header(
+                    HtmxHeaders.RESPONSE_HX_RETARGET.value,
                     "#todo-input-error"
                 )
                 call.response.header(
-                    "HX-Reswap",
+                    HtmxHeaders.RESPONSE_HX_RESWAP.value,
                     HxSwapOption.INNER_HTML.name
                 )
                 val errorMessage = "Error: Todo is empty or already exists!"
