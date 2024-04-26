@@ -133,6 +133,16 @@ fun HTMLTag.hxOn(
 }
 
 /**
+ * Own extension
+ *
+ * Resets a form after a successful submit.
+ */
+fun HTMLTag.hxResetFormAfterSuccess(
+) {
+    attributes += "hx-on::after-request" to "if(event.detail.successful) this.reset()"
+}
+
+/**
  * The hx-push-url attribute allows you to push a URL into the browser location history.
  * This creates a new history entry, allowing navigation with the browser’s back and forward buttons.
  * htmx snapshots the current DOM and saves it into its history cache, and restores from this cache on navigation.
