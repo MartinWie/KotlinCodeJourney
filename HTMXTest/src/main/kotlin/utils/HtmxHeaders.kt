@@ -1,7 +1,7 @@
 package de.mw.utils
 
 @Suppress("unused")
-enum class HtmxHeaders(private val header: String) {
+enum class HtmxHeaders(val value: String) {
     // Indicates that the request is via an element using hx-boost
     REQUEST_HX_BOOSTED("HX-Boosted"),
 
@@ -91,6 +91,6 @@ enum class HtmxHeaders(private val header: String) {
     RESPONSE_HX_TRIGGER_AFTER_SWAP("HX-Trigger-After-Swap");
 
     override fun toString(): String {
-        return header
+        return value
     }
 }

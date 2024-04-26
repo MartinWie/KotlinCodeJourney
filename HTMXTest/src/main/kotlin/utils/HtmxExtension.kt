@@ -1,7 +1,7 @@
 package de.mw.utils
 
 @Suppress("unused")
-enum class HtmxExtension(private val extensionName: String) {
+enum class HtmxExtension(val value: String) {
     // includes the commonly-used X-Requested-With header that identifies ajax requests in many backend frameworks
     AJAX_HEADER("ajax-header"),
 
@@ -69,6 +69,6 @@ enum class HtmxExtension(private val extensionName: String) {
     PATH_PARAMS("path-params");
 
     override fun toString(): String {
-        return extensionName
+        return value
     }
 }
