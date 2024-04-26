@@ -76,6 +76,7 @@ fun HTMLTag.hxSwapOob(swapOption: HxSwapOption, selector: String? = null) {
     attributes += "hx-swap-oob" to swapOption.value + selector?.let { ":$it" }
 }
 
+@Suppress("unused")
 enum class HxSwapOption(val value: String) {
     INNER_HTML("innerHTML"),
     OUTER_HTML("outerHTML"),
