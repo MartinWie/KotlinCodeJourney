@@ -2,10 +2,9 @@ package de.mw.utils
 
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
-import kotlinx.html.stream.createHTML
 
-fun htmlBasePage(pageTitle: String, bodyFunction: BODY.() -> Unit): String {
-    return "<!DOCTYPE html>" + createHTML().html {
+fun htmlBasePage(pageTitle: String, bodyTags: TagConsumer<StringBuilder>.() -> Unit): String {
+    return "<!DOCTYPE html>" + buildHTMLString {
         head {
             title = pageTitle
             script { src = "https://unpkg.com/htmx.org@1.9.11" }
@@ -36,7 +35,7 @@ fun htmlBasePage(pageTitle: String, bodyFunction: BODY.() -> Unit): String {
 
         }
         body {
-            bodyFunction()
+            bodyTags()
         }
     }
 }
