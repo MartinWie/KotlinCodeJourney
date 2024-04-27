@@ -10,10 +10,6 @@ fun htmlBasePage(pageTitle: String, bodyFunction: BODY.() -> Unit): String {
             title = pageTitle
             script { src = "https://unpkg.com/htmx.org@1.9.11" }
             script(type = ScriptType.textJavaScript) {
-                // Using raw strings (triple quotes) to insert multiline JavaScript.
-                // The .trimIndent() function is called to ensure that the indentation
-                // within the Kotlin source does not affect the indentation in the output text,
-                // making it look cleaner in the generated HTML.
                 unsafe {
                     // Using unsafe{}.raw() to insert raw HTML/JS.
                     // Be cautious with 'unsafe' as it can potentially open up for XSS vulnerabilities
