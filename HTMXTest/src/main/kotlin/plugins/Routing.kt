@@ -40,12 +40,7 @@ fun Application.configureRouting() {
                     id = "todos"
 
                     tmpTodoState.keys.reversed().forEach { todoId ->
-                        p {
-                            id = todoId
-                            hxDelete("/todo/$todoId")
-                            hxSwap(HxSwapOption.DELETE)
-                            +tmpTodoState[todoId]!!
-                        }
+                        createTodoTag(todoId, tmpTodoState[todoId]!!)
                     }
                 }
             }
@@ -78,12 +73,7 @@ fun Application.configureRouting() {
                 div {
                     id = "todos"
                     hxSwapOob("afterbegin")
-                    p {
-                        id = userInput
-                        hxDelete("/todo/$newTodoId")
-                        hxSwap(HxSwapOption.DELETE)
-                        +userInput
-                    }
+                    createTodoTag(newTodoId, userInput)
                 }
 
                 div {
