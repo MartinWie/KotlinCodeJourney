@@ -46,3 +46,15 @@ fun buildHTMLString(builderAction: TagConsumer<StringBuilder>.() -> Unit): Strin
         appendHTML().builderAction()
     }
 }
+
+fun TagConsumer<*>.createTodoTag(todoId: String, todoValue: String, classes: String? = null) {
+    p {
+        this.id = todoId
+        if (classes != null) {
+            this.classes = setOf(classes)
+        }
+        hxDelete("/todo/$todoId")
+        hxSwap(HxSwapOption.DELETE)
+        +todoValue
+    }
+}
