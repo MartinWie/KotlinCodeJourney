@@ -16,9 +16,6 @@ fun Application.module() {
 
 
 /* Project todos:
-    - Implement simple todolist page
-        - Move todoItems p tag into own object
-    - Add tailwind
     - Add tailwind enum or extension setup
     - prep HTMX todolist repo
     - prep HTMX + Kotlin + Ktor Template repo

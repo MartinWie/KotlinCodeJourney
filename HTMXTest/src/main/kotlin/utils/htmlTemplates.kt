@@ -8,6 +8,10 @@ fun htmlBasePage(pageTitle: String, bodyTags: TagConsumer<StringBuilder>.() -> U
         head {
             title = pageTitle
             script { src = "https://unpkg.com/htmx.org@1.9.11" }
+            link {
+                rel = "stylesheet"
+                href = "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            }
             script(type = ScriptType.textJavaScript) {
                 unsafe {
                     // Using unsafe{}.raw() to insert raw HTML/JS.

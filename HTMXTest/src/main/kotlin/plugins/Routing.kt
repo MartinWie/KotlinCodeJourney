@@ -15,7 +15,10 @@ fun Application.configureRouting() {
     routing {
         get("/") {
             val htmlContent = htmlBasePage("Todo List") {
-                h1 { +"Todo test app" }
+                h1 {
+                    classes = setOf("text-3xl", "font-bold", "underline")
+                    +"Todo test app"
+                }
 
                 form {
                     id = "todo-form"
