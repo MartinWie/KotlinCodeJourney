@@ -16,11 +16,12 @@ fun Application.module() {
 
 
 /* Project todos:
-    - Add tailwind enum or extension setup
     - prep HTMX todolist repo
+    - prep HTMX + Ktor service template
     - prep HTMX + Kotlin + Ktor Template repo
     - Get HTMX into project instead of using unpkg
     - Get tailwind into project instead of using cdn
+    - Setup tailwind theme
     - Make use of html templates instead of fully utilizing kotlin dsl to safe CPU on constructing the page every time
     (rapid prototyping vs efficient production application) (ftr a string builder is probably not horrible for now)
  */

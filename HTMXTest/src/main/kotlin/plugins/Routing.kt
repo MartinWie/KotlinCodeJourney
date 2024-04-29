@@ -16,7 +16,7 @@ fun Application.configureRouting() {
         get("/") {
             val htmlContent = htmlBasePage("Todo List") {
                 h1 {
-                    classes = setOf("text-3xl", "font-bold", "underline")
+                    classes = setOf("text-4xl", "font-bold", "underline")
                     +"Todo test app"
                 }
 
@@ -25,9 +25,11 @@ fun Application.configureRouting() {
                     hxPost("/todo")
                     hxSwap(HxSwapOption.NONE)
                     hxResetFormAfterSuccess()
+
                     input {
                         type = InputType.text
                         name = "todoItem"
+                        classes = setOf("border-4", "border-black-800", "rounded-md", "border-solid", "m-2")
                     }
 
                     button {
